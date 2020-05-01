@@ -1,4 +1,5 @@
 # **PYTHON: OBJECT-ORIENTED PROGRAMMING**
+파이썬 : 객체 지향 프로그래밍
 
 Previous chapter has explained and dealt with procedural and functional programming. The third scripting method, object-oriented programming (abbrev. OOP) is based around usage of classes and objects instead of functions.
 
