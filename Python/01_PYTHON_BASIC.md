@@ -4,17 +4,37 @@ Python is a high-level programming language with applications in numerous areas,
 
 This chapter describes on basic concepts and coding syntax used in Python.
 
-## Interpreter
+# **파이썬(Python): 기초**
+파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 줄-다음-줄로 순차적으로 실행되며 줄의 끝에 세미콜론(';')이 필요하지 않다.
+
+이 챕터에서는 파이썬에서 사용되는 코딩 구문과 기초적인 개념에 대해 설명하려 한다.
+
+
+
+##  Interpreter
 
 Programming language such as C/C++ uses compiler that translates a source code (written in English) to a computer language (such as binary language) computer can understand for execution. However, interpreter allows computer to execute the program directly from a source code without translation.
 
 Python is interpreter-driven high-level language: this allows scripting the code much easier than compiler, but its execution time can be slower in comparison.
+
+## 인터프리터
+C/C++과 같은 프로그래밍 언어는 소스 코드(영어로 쓰여진)를 컴퓨터가 이해하고 실행할 수 있는 컴퓨터 언어(이진언어와 같이)로 번역하는데 컴파일러를 사용한다. 그러나, 인터프리터는 컴퓨터가 번역 없이 소스코드에서 직접 프로그램을 실행할 수 있도록 한다.
+<!-- 여기 문장이 조금 이상한듯
+인터프리터도 번역을 하지 않나?-->
+
+파이썬은 인터프리터로 동작하는 고수준 언어: 코드를 작성할 때 컴파일러보다 쉽지만, 실행 시간에 있어서 비교했을 때 느리다.
 
 ### CPython
 
 Originally, Python interpreter was developed using C programming language. This implementation is called CPython and is the most widely used implementation of all. Other implementations are Jython (Java-implementation), IronPython (.NET-implementation), PyPy (Python-implementation), and more.
 
 While Python is introduced as an interpreter language, it actually is both interpreter and compiler: CPython first processes Python code into intermediate bytecode which is than executed by CPython interpreter. Because of this, Python execution takes longer time on first run from compilation.
+
+### CPython (C-파이썬)
+
+원래, 파이썬 인터프리터는 C 언어를 사용하여 개발되었다. 이렇게 구현된 것을 'CPython'이라 불리며 가장 널리 사용된다. 다른 언어로 구현된 것은 Jython(Java로 구현된 인터프리터), IronPython(.NET로 구현된 인터프리터), PyPy(Python로 구현된 인터프리터) 등 이 있다.
+
+파이썬은 인터프티 언어로 소개되지만, 실제로 인터프리터와 컴파일러 둘 다 해당된다: CPython은 먼저 파이썬 코드를 CPython 인터프리터에 의해 실행되기 전에 중간 바이트 코드로 처리한다. 이 때문에 파이썬의 실행은 첫 컴파일로부터 더 오랜 시간이 걸린다.
 
 ## Comment
 
@@ -31,6 +51,21 @@ BLOCK COMMENT:
 multiple line of comment can be placed here and can even be viewed on runtime.
 """
 # LINE COMMENT: for a single line of code.
+```
+## 주석
+
+
+파이썬에는 다른 두 가지 주석이 있다 : 줄 주석과 블록 주석
+
+* **줄 주석** : 코드 한 줄짜리 주석, `#`(octothorpe, 샵, 해시태그 등)에 의해 선언된다.
+* **블록 주석**(별명. docstrings) : 작은 따옴표 3개 `''' '''`나 큰 따옴표 3개 `""" """`를 사용해서 여러 줄 주석을 할 수 있다. Docstrings는 또한 여러 줄의 문장을 쓰는데 사용될 수 있고, 실행할 때 볼 수 있다.
+
+```Python
+"""
+블록 주석:
+여기에 여러 줄 주석을 달 수 있고, 실행 시 볼 수 있다.
+"""
+# 줄 주석: 한줄 짜리 주석이다.
 ```
 
 ## Input & Output
@@ -77,6 +112,57 @@ To print mixture of more than a single data type in a single `print()` function,
    B = "Python3"
    
    # MIXTURE OF STRING AND INT IS CONCATENATED USING "+" AFTER STRING CONVERSION.
+   print("A is", str(A) + ", \nand B is", B + ".")
+   ```
+
+   ```
+   A is 10.0,
+   and B is Python3.
+   ```
+
+## 입력 & 출력
+
+파이썬은 터미날 텍스트 기반으로 된 단일 입력, 출력 함수를 가지고 있다.
+
+| 입력/출력 | 구문            | 설명                                                  |
+| ------------ | ----------------- | ------------------------------------------------------------ |
+| `input()`    | `input("쓰기:")` | 입력이 필요할 때 텍스트 데이터를 `input()`함수에 넣으면 터미널에 표시되며, 항상 입력한 데이터는 텍스트의 형태로 반환된다. |
+| `print()`    | `print("읽기:",변수)` | 콘솔에서 데이터 타입(예 : 텍스트, 번호)을 출력한다. 여기서 `변수`는 연결을 위한 텍스트 데이터이다. |
+
+```python
+variable = input("쓰기: ")
+print("읽기:", variable)
+# 동일한 기능: print("읽기:", input("쓰기: "))
+```
+
+```
+쓰기: Hello World!
+읽기: Hello World!
+```
+단일 `print()` 함수를 사용하여 혼합된 단일 데이터 유형을 출력하려 하면, 약간의 다른 결과가 나오지만 두 가지의 방법이 있다.
+
+1. 쉼표(`'`)를 사용하여 연속적으로 데이터를 나열할 수 있다. 하지만 항상 쉼표에는 공백이 놓여지게 된다.
+    ```python
+    A = 10.0
+    B = "Python3"
+    
+    # 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
+    print("A is", A , ", \nand B is", B, ".")
+    ```
+
+    ```
+    A is 10.0 ,
+    and B is Python3 .
+    ```
+
+
+2. 문자열의 연결에서 `+`를 사용하면 사이에 공백이 생기지 않는다. 하지만, 문자열이 아닌 데이터 형식은 연결을 사용하려면 문자열로 변환해야 한다.
+
+   ```python
+   A = 10.0
+   B = "Python3"
+   
+   # 문자열 변환 후, 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
    print("A is", str(A) + ", \nand B is", B + ".")
    ```
 
