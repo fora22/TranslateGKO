@@ -1,24 +1,15 @@
-# **PYTHON: OBJECT-ORIENTED PROGRAMMING**
-파이썬 : 객체 지향 프로그래밍
+# **파이썬: 객체지향 프로그래밍**
 
-Previous chapter has explained and dealt with procedural and functional programming. The third scripting method, object-oriented programming (abbrev. OOP) is based around usage of classes and objects instead of functions.
+이전 챕터에서는 절차적 및 함수형 프로그래밍을 소개하고 설명하였다. 세 번째 프로그래밍 방법인 객체지향 프로그래밍(object-oriennted programming, 일명 OOP)은 함수 대신 클래스와 객체 사용을 기반으로 한다.
 
-이전의 챕터에서는 절자척이고 함수형 프로그래밍을 다루는 것을 설명했었다. 세 번째 스크립팅 방법인 객체 지향 프로그래밍 (약어. OOP)은 함수 대신 클래스와 객체 사용을 기반으로 한다.
+## 객체
 
-## Object
-객체
+객체(object 혹은 instance)는 건물의 벽돌 역할을 하는 데이터 블록이다. 모든 객체 안에는 자신만의 성질과 성능을 일컫는 속성을 가진다. 속성은 `object.attribute` 형식으로 접근하여 활용할 수 있다.
 
-Object (aka. instance) is a block of data which acts like a building brick; every object has its own attributes that are properties and capabilities of the object. The attribute can be accessed and utilized by `object.attribute` format.
-
-객체 (일명. 인스턴스)는 빌딩 블록처럼 작동하는 데이터 블록이다.모든 객체에는 객체의 속성 및 기능인 고유한 속성이 있다. 속성은 `object.attribute` 형식으로 엑세스하고 활용할 수 있다.
-
-The programming based around use of a custom objects is called *object-oriented programming*.
-
-사용자 지정 객체의 사용에 기반한 프로그래밍을 *object-oriented programming*이라고 한다.
+사용자 정의 객체의 사용에 기반한 프로그래밍을 *객체지향 프로그래밍*이라고 한다.
 
 ```python
-# OBJECT "x" CALLING METHOD "append()" AVAILABLE IN STRING
-# 문자열 안에서 사용가능한 "append()"를 통해 객체 "x"의 호출 방법
+# 문자열 메소드 "append()"를 객체 "x"에서 호출
 x = [0 ,3 ,5 ,9]
 print( x.append(13) )
 ```
@@ -27,26 +18,17 @@ print( x.append(13) )
 [0, 3, 5, 9, 13]
 ```
 
-### Method & Attribute
-메소드와 속성
+### 메소드 및 속성
 
-Below is a description of method and attribute of an object in Python.
-
-아래는 파이썬 안에서 객체의 메소드와 속성에 관한 설명이다.
-
-* **Method**
-    : method is an object-dependent function that is bounded by the object, meaning the object needs to be presented to use a method and cannot be used independently.
+다음은 파이썬 객체의 메소드 및 속성에 관한 설명이다.
 
 * **메소드**
-    :메소드는 객체에 의해 제한되는 객체 종속 함수로서, 객체를 표현해야 방법을 사용할 수 있으며 독립적으로 사용할 수 없다는 것을 의미한다.
-        
-* **Attribute**
-    : attribute is a features and properties of the object (including bounded function). Hence, methods are included as one of the attributes of the object. However, for easier understanding, this document will distinguish attribute as attribute without methods.
+    : 메소드는 객체 한정 종속함수로써 객체가 없이 독립적인 함수처럼 사용할 수 없으며, 객체가 있어야만 사용할 수 있다.
+    
 * **속성**
-    : 속성은 객체(제한 함수 포함)의 특징과 특성이다.따라서 메소드는 개체의 속성 중 하나로 포함된다. 하지만 이 문서는 이해하기 쉽도록 메소드가 없는 속성으로 속성을 구별할 것이다.
+    : 속성은 객체가 가지는 특성과 성질이며, 여기에는 객체한정 종속 함수도 포함된다. 따라서 메소드도 속성 중 하나로 속한다. 하지만 본 문서에서는 이해를 돕기 위해 속성을 *메소드를 제외한 속성*으로 구별한다.
 
-## Class
-클래스
+## 클래스
 
 Class is used to create objects (aka. instance), hence can be deemed as an object’s blueprint. Classes are created first by a keyword `class` containing functions as method of the class in indented block.
 
