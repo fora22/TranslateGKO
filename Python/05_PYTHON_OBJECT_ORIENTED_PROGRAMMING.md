@@ -3,14 +3,22 @@
 
 Previous chapter has explained and dealt with procedural and functional programming. The third scripting method, object-oriented programming (abbrev. OOP) is based around usage of classes and objects instead of functions.
 
+이전의 챕터에서는 절자척이고 함수형 프로그래밍을 다루는 것을 설명했었다. 세 번째 스크립팅 방법인 객체 지향 프로그래밍 (약어. OOP)은 함수 대신 클래스와 객체 사용을 기반으로 한다.
+
 ## Object
+객체
 
 Object (aka. instance) is a block of data which acts like a building brick; every object has its own attributes that are properties and capabilities of the object. The attribute can be accessed and utilized by `object.attribute` format.
 
+객체 (일명. 인스턴스)는 빌딩 블록처럼 작동하는 데이터 블록이다.모든 객체에는 객체의 속성 및 기능인 고유한 속성이 있다. 속성은 `object.attribute` 형식으로 엑세스하고 활용할 수 있다.
+
 The programming based around use of a custom objects is called *object-oriented programming*.
+
+사용자 지정 객체의 사용에 기반한 프로그래밍을 *object-oriented programming*이라고 한다.
 
 ```python
 # OBJECT "x" CALLING METHOD "append()" AVAILABLE IN STRING
+# 문자열 안에서 사용가능한 "append()"를 통해 객체 "x"의 호출 방법
 x = [0 ,3 ,5 ,9]
 print( x.append(13) )
 ```
@@ -20,32 +28,49 @@ print( x.append(13) )
 ```
 
 ### Method & Attribute
+메소드와 속성
 
 Below is a description of method and attribute of an object in Python.
+
+아래는 파이썬 안에서 객체의 메소드와 속성에 관한 설명이다.
 
 * **Method**
     : method is an object-dependent function that is bounded by the object, meaning the object needs to be presented to use a method and cannot be used independently.
 
+* **메소드**
+    :메소드는 객체에 의해 제한되는 객체 종속 함수로서, 객체를 표현해야 방법을 사용할 수 있으며 독립적으로 사용할 수 없다는 것을 의미한다.
+        
 * **Attribute**
     : attribute is a features and properties of the object (including bounded function). Hence, methods are included as one of the attributes of the object. However, for easier understanding, this document will distinguish attribute as attribute without methods.
+* **속성**
+    : 속성은 객체(제한 함수 포함)의 특징과 특성이다.따라서 메소드는 개체의 속성 중 하나로 포함된다. 하지만 이 문서는 이해하기 쉽도록 메소드가 없는 속성으로 속성을 구별할 것이다.
 
 ## Class
+클래스
 
 Class is used to create objects (aka. instance), hence can be deemed as an object’s blueprint. Classes are created first by a keyword `class` containing functions as method of the class in indented block.
 
+클래스는 객체(일명. 인스턴스)들을 생성하는데 사용되므로 객체의 도면으로 간주될 수 있다. 클래스는 들여쓰기 블록에서 클래스의 메서드로 함수를 포함하는 키워드 `class` 에 의해 먼저 생성된다.
+
 ```python
 # CREATING CLASS
+# 클래스 생성하기
 class CLASS∶
 	global var			# GLOBAL VARIABLE: LINKED TO VARAIBLE OUTSIDE WITH SAME NAME
+                        # 전역 변수 : 이름 같은 외부 변수와 연결된다.
     attr0 = value		# CLASS ATTRIBUTE
+                        # 클래스 속성
     
     # INSTANCE INITIALIZATION (= CONSTRUCTOR)
+    # 인스턴스 초기화(= 생성)
     def __init__(self, arg1, arg2):
         # INSTANCE ATTRIBUTES
+        # 인스턴스 속성들
         self.attr1 = arg1
         self.attr2 = arg2
         
     # INSTANCE METHOD
+    # 인스턴스 메소드
     def method(self, arg3):
         """
         statements including var3
@@ -53,10 +78,13 @@ class CLASS∶
         return arg3
 
 var = "Hello World!"			# DECLARE VARIABLE (LINKED TO GLOBAL VARIABLE)
+                                #변수 선언(전역변수와 연결)
 instance = CLASS(var1, var2)	# CREATE INSTANCE FROM THE CLASS
-
+                                # 클래스로 부터 인스턴스 생성
 instance.method(var3)			# CALLING METHOD
+                                # 메소드 호출
 instance.var					# CALLING ATTRIBUTE
+                                # 속성 호출
 ```
 
 ```
@@ -65,43 +93,68 @@ var3
 ```
 
 ### `__init__` Method
+`__init__`메소드
 
 The `__init__` method is the most important method in class which is used to create class constructor (like the *constructor* in C/C++ language). This method defines how many parameters the instance can have and also responsible for initializing attribute values for instance.
 
+`__init__` 메소드는 클래스 생성자를 만드는데 사용되는 클래스에서 가장 중요한 메소드이다 (C / C ++ 언어의 생성자). 이 메소드는 인스턴스가 가질 수있는 매개 변수의 수를 정의하고 또한 인스턴스에 대한 속성 값을 초기화해야 한다.
+
 The `__init__` method automatically called only when instance is created from the class. Therefore, initialized attribute can only be access through instance, but not from the class directly. As oppose to this, attribute declared outside the `__init__` method is accessible from both instance and class.
 
+`__init__` 메소드는 클래스에서 인스턴스가 생성 될 때만 자동으로 호출된다.따라서 초기화 된 속성은 인스턴스를 통해서만 액세스 할 수 있으며 클래스에서는 직접 액세스 할 수 없다. 이와는 다르게 `__init__` 메소드 외부에서 선언 된 속성은 인스턴스와 클래스 모두 액세스 할 수 있다.
+
 ### Global Variable
+전역 변수
 
 Variable assigned with `global` keyword represents global variable. This variable is linked to the variable outside the class but shares the same name.
 
+`global` 키워드가 할당 된 변수는 전역 변수를 나타낸다. 이 변수는 클래스 외부의 변수에 연결되어 있지만 동일한 이름을 공유한다.
+
 Without `global` keyword, the variable inside the class becomes local variable. Local variable and variable declared outside the class will be irrelevant to each other.
 
+`global` 키워드가 없으면 클래스 내부의 변수가 지역변수가 된다. 지역변수와 클래스 외부에서 선언된 변수는 서로 관련이 없다.
+
 ## Instance Method
+인스턴스 메소드
 
 All methods (or attributes) that are declared normally within the class are instance methods (or attributes). There is no special syntax that need to declare for instance method.
 
+클래스 내에서 정상적으로 선언된 모든 메소드(혹은 속성)는 인스턴스 메소드(혹은 속성)이다. 인스턴스 메소드를 선언해야하는 특별한 구문은 없다.
+
 Some may misunderstand instance method can be distinguished by checking whether the argument `self` is there or not. This is not true as `self` is purely an argument and has no power on defining the type of method or attribute. The detail information is explained under the subsection below.
 
+ 일부에서는 `self`라는 인자가 있는지 여부를 확인함으로써 인스턴스 메소드를 구별할 수 있다는 오해를 불러오기도 한다. `self`가 순전히 인수이고 메소드 또는 속성의 타입을 정의 할 힘이 없기 때문에 이것은 사실이 아니다. 더 자세한 정보는 
+ 아래에 설명되어 있다.
+
 ### `self` Variable
+`self` 변수
 
 The `self` variable is a conventional name to indicate a current instance, meaning it is not a keyword and the name can be set however developer wants. Variables with `self` prefix become instance attributes.
 
+`self` 변수는 현재 인스턴스를 나타내는 일반적인 이름으로, 키워드가 아니며 개발자가 원하는대로 이름을 설정할 수 있다. `self` 접두사가 있는 변수들은 인스턴스 속성이 된다.
+
 These instance attribute can be accessed only upon declaring an instance (like `this` pointer in C++ language). Variables without `self` prefix cannot be called from the instance as they are not an attribute but a plain local variables. Local variables cannot be called outside its scope of method, and attempting to do so results "AttributeError".
+
+이 인스턴스 속성은 인스턴스를 선언 할 때만 액세스 할 수 있다(C ++ 언어의`this` 포인터).`self` 접두사가 없는 변수들은 속성이 아니라 단순한 지역 변수이기에 인스턴스(instance)에서 부를 수 없다. 지역 변수는 메소드의 범위를 벗어나 호출할 수 없으며, 이를 시도하면 "AttributeError"의 결과가 나오게 된다.
 
 ```python
 # CREATING CLASS
+# 클래스 생성하기
 class CLASS():
     def __init__(self, arg1, arg2, arg3):
         self.A = arg1
         self.B = arg2
         self.C
         D = arg3			# LOCAL VARIABLE
-        
+                            # 지역 변수
     def method(other, x)	# REPLACING "self" VARIABLE TO DIFFERENT NAME STILL WORKS.
+                            # 다른 이름으로 변수"self"를 교체해도 여전히 작동한다.
     	other.C = x			# ATTRIBUTE "self.C" IS AVAILABLE IN DIFFERENT METHODS.
+                            # 속성 "self.c"는 다른 메소드로 사용 가능하다.
 
 
 # INSTANTIATION
+# 인스턴드화
 instance = CLASS(1, 2, 3)
 instance.method(4)
 '''EQUIVALENT: 
@@ -110,12 +163,17 @@ Class.method_name(other = instance, x = 4)
 '''
 
 # THEREFORE...
+# 그러므로...
 CLASS.A			# AttributeError: type object 'Class' has no attribute 'A'
-
+                # AttributeError: 객체 유형 'Class'가 'A'속성을 가지고있지 않다.
 instance.A		# >> OUTPUT: 1
+                # >> 출력 : 1 
 instance.B		# >> OUTPUT: 2
-instance.C		# >> OUTPUT: 4
+                # >> 출력 : 2
+instance.C		# >> OUTPUT: 4 
+                # >> 출력 : 4
 instance.D		# AttributeError: 'Class' object has no attribute 'D'
+                # AttributeError: 'Class' 객체가 'D'속성을 가지고 있지 않다.
 ```
 
 ## Class Method
