@@ -32,7 +32,7 @@ print( x.append(13) )
 
 Class is used to create objects (aka. instance), hence can be deemed as an object’s blueprint. Classes are created first by a keyword `class` containing functions as method of the class in indented block.
 
-클래스는 객체(일명. 인스턴스)들을 생성하는데 사용되므로 객체의 도면으로 간주될 수 있다. 클래스는 들여쓰기 블록에서 클래스의 메서드로 함수를 포함하는 키워드 `class` 에 의해 먼저 생성된다.
+클래스는 객체(일명. 객체)들을 생성하는데 사용되므로 객체의 도면으로 간주될 수 있다. 클래스는 들여쓰기 블록에서 클래스의 메서드로 함수를 포함하는 키워드 `class` 에 의해 먼저 생성된다.
 
 ```python
 # CREATING CLASS
@@ -47,12 +47,12 @@ class CLASS∶
     # 인스턴스 초기화(= 생성)
     def __init__(self, arg1, arg2):
         # INSTANCE ATTRIBUTES
-        # 인스턴스 속성들
+        # 객체 속성들
         self.attr1 = arg1
         self.attr2 = arg2
         
     # INSTANCE METHOD
-    # 인스턴스 메소드
+    # 객체 메소드
     def method(self, arg3):
         """
         statements including var3
@@ -62,7 +62,7 @@ class CLASS∶
 var = "Hello World!"			# DECLARE VARIABLE (LINKED TO GLOBAL VARIABLE)
                                 #변수 선언(전역변수와 연결)
 instance = CLASS(var1, var2)	# CREATE INSTANCE FROM THE CLASS
-                                # 클래스로 부터 인스턴스 생성
+                                # 클래스로 부터 객체 생성
 instance.method(var3)			# CALLING METHOD
                                 # 메소드 호출
 instance.var					# CALLING ATTRIBUTE
@@ -79,11 +79,11 @@ var3
 
 The `__init__` method is the most important method in class which is used to create class constructor (like the *constructor* in C/C++ language). This method defines how many parameters the instance can have and also responsible for initializing attribute values for instance.
 
-`__init__` 메소드는 클래스 생성자를 만드는데 사용되는 클래스에서 가장 중요한 메소드이다 (C / C ++ 언어의 생성자). 이 메소드는 인스턴스가 가질 수있는 매개 변수의 수를 정의하고 또한 인스턴스에 대한 속성 값을 초기화해야 한다.
+`__init__` 메소드는 클래스 생성자를 만드는데 사용되는 클래스에서 가장 중요한 메소드이다 (C / C ++ 언어의 생성자). 이 메소드는 객체가 가질 수있는 매개 변수의 수를 정의하고 또한 객체에 대한 속성 값을 초기화해야 한다.
 
 The `__init__` method automatically called only when instance is created from the class. Therefore, initialized attribute can only be access through instance, but not from the class directly. As oppose to this, attribute declared outside the `__init__` method is accessible from both instance and class.
 
-`__init__` 메소드는 클래스에서 인스턴스가 생성 될 때만 자동으로 호출된다.따라서 초기화 된 속성은 인스턴스를 통해서만 액세스 할 수 있으며 클래스에서는 직접 액세스 할 수 없다. 이와는 다르게 `__init__` 메소드 외부에서 선언 된 속성은 인스턴스와 클래스 모두 액세스 할 수 있다.
+`__init__` 메소드는 클래스에서 객체가 생성 될 때만 자동으로 호출된다.따라서 초기화 된 속성은 객체를 통해서만 액세스 할 수 있으며 클래스에서는 직접 액세스 할 수 없다. 이와는 다르게 `__init__` 메소드 외부에서 선언 된 속성은 객체와 클래스 모두 액세스 할 수 있다.
 
 ### Global Variable
 전역 변수
@@ -97,15 +97,15 @@ Without `global` keyword, the variable inside the class becomes local variable. 
 `global` 키워드가 없으면 클래스 내부의 변수가 지역변수가 된다. 지역변수와 클래스 외부에서 선언된 변수는 서로 관련이 없다.
 
 ## Instance Method
-인스턴스 메소드
+객체 메소드
 
 All methods (or attributes) that are declared normally within the class are instance methods (or attributes). There is no special syntax that need to declare for instance method.
 
-클래스 내에서 정상적으로 선언된 모든 메소드(혹은 속성)는 인스턴스 메소드(혹은 속성)이다. 인스턴스 메소드를 선언해야하는 특별한 구문은 없다.
+클래스 내에서 정상적으로 선언된 모든 메소드(혹은 속성)는 객체 메소드(혹은 속성)이다. 객체 메소드를 선언해야하는 특별한 구문은 없다.
 
 Some may misunderstand instance method can be distinguished by checking whether the argument `self` is there or not. This is not true as `self` is purely an argument and has no power on defining the type of method or attribute. The detail information is explained under the subsection below.
 
- 일부에서는 `self`라는 인자가 있는지 여부를 확인함으로써 인스턴스 메소드를 구별할 수 있다는 오해를 불러오기도 한다. `self`가 순전히 인수이고 메소드 또는 속성의 타입을 정의 할 힘이 없기 때문에 이것은 사실이 아니다. 더 자세한 정보는 
+ 일부에서는 `self`라는 인자가 있는지 여부를 확인함으로써 객체 메소드를 구별할 수 있다는 오해를 불러오기도 한다. `self`가 순전히 인자이고 메소드 또는 속성의 타입을 정의 할 힘이 없기 때문에 이것은 사실이 아니다. 더 자세한 정보는 
  아래에 설명되어 있다.
 
 ### `self` Variable
@@ -113,11 +113,11 @@ Some may misunderstand instance method can be distinguished by checking whether 
 
 The `self` variable is a conventional name to indicate a current instance, meaning it is not a keyword and the name can be set however developer wants. Variables with `self` prefix become instance attributes.
 
-`self` 변수는 현재 인스턴스를 나타내는 일반적인 이름으로, 키워드가 아니며 개발자가 원하는대로 이름을 설정할 수 있다. `self` 접두사가 있는 변수들은 인스턴스 속성이 된다.
+`self` 변수는 현재 객체를 나타내는 일반적인 이름으로, 키워드가 아니며 개발자가 원하는대로 이름을 설정할 수 있다. `self` 접두사가 있는 변수들은 객체 속성이 된다.
 
 These instance attribute can be accessed only upon declaring an instance (like `this` pointer in C++ language). Variables without `self` prefix cannot be called from the instance as they are not an attribute but a plain local variables. Local variables cannot be called outside its scope of method, and attempting to do so results "AttributeError".
 
-이 인스턴스 속성은 인스턴스를 선언 할 때만 액세스 할 수 있다(C ++ 언어의`this` 포인터).`self` 접두사가 없는 변수들은 속성이 아니라 단순한 지역 변수이기에 인스턴스에서 부를 수 없다. 지역 변수는 메소드의 범위를 벗어나 호출할 수 없으며, 이를 시도하면 "AttributeError"의 결과가 나오게 된다.
+이 객체 속성은 객체를 선언 할 때만 액세스 할 수 있다(C ++ 언어의`this` 포인터).`self` 접두사가 없는 변수들은 속성이 아니라 단순한 지역 변수이기에 객체에서 부를 수 없다. 지역 변수는 메소드의 범위를 벗어나 호출할 수 없으며, 이를 시도하면 "AttributeError"의 결과가 나오게 된다.
 
 ```python
 # CREATING CLASS
@@ -136,7 +136,7 @@ class CLASS():
 
 
 # INSTANTIATION
-# 인스턴드화
+# 객체화
 instance = CLASS(1, 2, 3)
 instance.method(4)
 '''EQUIVALENT: 
@@ -163,7 +163,7 @@ instance.D		# AttributeError: 'Class' object has no attribute 'D'
 
 A method which can be accessed through class alone without needs of creating an instance.
 
-인스턴스를 생성할 필요없이 클래스만으로 액세스 할 수있는 메소드.
+객체를 생성할 필요없이 클래스만으로 액세스 할 수있는 메소드.
 
 |     SYNTAX     | DESCRIPTION                              |
 | :------------: | ---------------------------------------- |
@@ -175,7 +175,7 @@ A method which can be accessed through class alone without needs of creating an 
 
 Though class method is defined by the decorator syntax mentioned above, the method also requires parameter to indicate the class itself (just like instance method have `self` parameter to mention instance itself), conventionally written as `cls`.
 
-클래스 메소드는 위에서 언급 한 데코레이터 구문에 의해 정의되지만, 메소드는 클래스 자체를 나타내는 매개 변수도 필요한데(인스턴스 메소드가 `self`매개 변수가 인스턴스 자체를 언급하는 것처럼)일반적으로 `cls`로 작성되어진다.
+클래스 메소드는 위에서 언급 한 데코레이터 구문에 의해 정의되지만, 메소드는 클래스 자체를 나타내는 매개 변수도 필요한데(객체 메소드가 `self`매개 변수가 객체 자체를 언급하는 것처럼)일반적으로 `cls`로 작성되어진다.
 
 ```python
 # CREATING CLASS
@@ -196,19 +196,19 @@ class CLASS:
         return arg4
     
     # DEFINING CLASS METHOD FOR INSTANTIATION
-    # 인스턴트화를 위해 클래스 메소드 생성하기
+    # 객체화를 위해 클래스 메소드 생성하기
     @classmethod
     def method3(cls, x, y):
         return cls(x**2, y**2)
     
     
 # INSTANTIATION
-#인스턴트화
+# 객체화
 instance1 = CLASS(1, 2)
 instance1.method1(4)
 
 instance2 = CLASS.method3(1, 2)	# INSTANTIATE: arg1 = 1**1, arg2 = 2**2
-                                # 인스턴트 : arg1 = 1**1, arg2 = 2**2
+                                # 객체 : arg1 = 1**1, arg2 = 2**2
 instance2.method1(4)
 
 # THEREFORE...
@@ -236,7 +236,7 @@ CLASS.method2(3)	# >> OUTPUT: 3
 
 A method that can be called without instantiation, but without parameter to call itself like `self` and `cls`.
 
-인스턴스화 없이 호출 할 수 있지만 `self` 및`cls`처럼 자신을 호출하는 매개변수 없이 호출 할 수있는 메소드.
+객체화 없이 호출 할 수 있지만 `self` 및`cls`처럼 자신을 호출하는 매개변수 없이 호출 할 수있는 메소드.
 
 | SYNTAX          | DESCRIPTION                               |
 | --------------- | ----------------------------------------- |
@@ -248,7 +248,7 @@ A method that can be called without instantiation, but without parameter to call
 
 Since static method does not have a parameter to call itself, static method cannot access or modify any attribute from class and instance. This makes static method identical to normal function belonged to class.
 
-정적메소드가 자체 호출 할 매개 변수를 가지지 않은 이후로,정적메소드는 클래스 와 인스턴스의 속성을 액세스하거나 수정할 수 없다. 이것은 정적메소드를 클래스에 속하는 일반 함수와 동일하게 만든다.
+정적메소드가 자체 호출 할 매개 변수를 가지지 않은 이후로,정적메소드는 클래스 와 객체의 속성을 액세스하거나 수정할 수 없다. 이것은 정적메소드를 클래스에 속하는 일반 함수와 동일하게 만든다.
 
 ```python
 # CREATING CLASS
@@ -268,7 +268,7 @@ class CLASS:
 
 
 # INSTANTIATION
-# 인스턴트화
+# 객체화
 instance = CLASS(1, 2)
 instance.method1(4)
 
@@ -293,7 +293,7 @@ Magic method is a special method which has Double UNDERscores(dunder) on both si
 
 Previously encountered `__init__` method used for instance initialization is one of the widely used magic method. More can be seen on the table below:
 
-이전에 인스턴스 초기화에 사용 된`__init__` 메소드는 널리 사용되는 매직 메소드 중 하나이다. 아래 표에서 더 많은 것을 볼 수 있다:
+이전에 객체 초기화에 사용 된`__init__` 메소드는 널리 사용되는 매직 메소드 중 하나이다. 아래 표에서 더 많은 것을 볼 수 있다:
 
 | OPERATOR | NAME           | MAGIC METHOD               |
 | -------- | -------------- | -------------------------- |
@@ -377,7 +377,7 @@ class SUBCLASS (SUPERCLASS):
 
 
 # INSTANTIATION  
-# 인스턴트화
+# 객체화
 instance = SUBCLASS(1, 3)
 
 instance.A		# >> OUTPUT: 1 (ALTHOUGH INHERITED "self.A = 3", OVERWRITTEN BY SUBCLASS)
@@ -393,7 +393,7 @@ instance.C		# >> OUTPUT: 3
 
 The `super()` function calls the attributes or methods from its superclass directly. Without this function, the `instance.B` will cause "AttributeError" saying no attribute `B` exist within `SUBCLASS` instance. 
 
-`super ()` 함수는 슈퍼클래스에서 속성들이나 메소드들을 직접 호출한다. 이 함수 없이`instance.B`는 `SUBCLASS`인스턴스 안에 `B` 속성이 없다고하는 "AttributeError"를 초래하게 된다.
+`super ()` 함수는 슈퍼클래스에서 속성들이나 메소드들을 직접 호출한다. 이 함수 없이`instance.B`는 `SUBCLASS`객체 안에 `B` 속성이 없다고하는 "AttributeError"를 초래하게 된다.
 
 The following syntax is used for single base class inheritance:
 
@@ -452,7 +452,7 @@ class SUBCLASS(INTERCLASS1, INTERCLASS2):
         
         
 # INSTANTIATION
-# 인스턴트화
+# 객체화
 instance = SUBCLASS()
 ```
 
