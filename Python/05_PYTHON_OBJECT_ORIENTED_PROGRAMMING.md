@@ -484,27 +484,48 @@ Object has three stages of lifecycle:
     : Python automatically deletes instance once the number of variables referring to the instance counts down to zero, called reference count. Manual instance deletion can be done by `del` statement (aka. `__del__`  method). This process of instance deletion is called *garbage collection*.
 
 ## Encapsulation
+캡슐화
 
 Encapsulation is one of the fundamental concept which (1) combines attributes and methods into a single class data, and/or (2) restricts direct access to these attributes and methods (aka. data hiding). This feature prevents accidental modification on class from code outside.
 
+캡슐화는 (1) 속성과 메소드를 하나의 클래스 데이터로 결합하고, (2) 이러한 속성과 메소드(일명 데이터 숨기기)에 대한 직접 접근을 제한하는 기본 개념의 하나이다. 이 특징은 외부 코드로부터 클래스의 우발적인 수정을 방지한다.
+
 ### Data Hiding
+데이터 숨기기
 
 Despite encapsulation is also implemented on Python classes, external code can still access to these attributes and methods as they are not restricted. If there are attributes and methods in class that needs to be hidden as possible, method such as name mangling is conventionally used in Python.
+
+캡슐화는 파이썬 클래스에서도 구현되지만, 외부 코드는 이러한 속성과 메소드에 제한이 없으므로 액세스 할 수 있다. 클래스에 가능한 숨겨져야하는 속성과 메소드가있는 경우 이름 변환과 같은 메소드가 일반적으로 파이썬에서 사용된다.
 
 | SYMBOL | EXAMPLE       | DESCRIPTION                                                  |
 | :----: | ------------- | ------------------------------------------------------------ |
 |  `_`   | `_attribute`  | Though not a name mangling, it can prevent accessing attributes and methods from being passed via module import but not from codes outside the class. |
 |  `__`  | `__attribute` | Name mangling: this prevents accessing attributes and methods from being passed via module import and codes outside the class, thus becomes "private". |
 
+| 상징 | 예시       | 설명                                                  |
+| :----: | ------------- | ------------------------------------------------------------ |
+|  `_`   | `_attribute`  | 이름을 다루지 않더라도 속성 및 메소드에 대한 엑세스가 모듈 가져 오기를 통해 전달되는 것을 막을 수 있지만 클래스 외부의 코드에서 전달되지 않는다. |
+|  `__`  | `__attribute` | 이름 변경: 이는 속성 및 메서드에 대한 엑세스가 모듈 가져오기 및 클래스 외부의 코드를 통해 전달되는 것을 예방해서 "전용 "이 된다. |
+
+
 ### Properties
+프로퍼티
 
 Properties is a decorator that allows method to be updated without modifying the method directly. Because of this, property does not permitted direct change of data which makes the method seems read-only.
+
+프로퍼티는 메소드를 직접 수정없이 메소드를 업데이트 할 수있는 데코레이터이다. 이 때문에 프로퍼티는 데이터를 직접 변경할 수 없어서 메소드가 읽기 전용으로 보인다.
 
 | SYNTAX      | DESCRIPTION                           |
 | ----------- | ------------------------------------- |
 | `@property` | Decorator used to declare properties. |
 
 Property is declared using decorator symbol, meaning it is used specifically for method. One of the special feature of property is it does not take any argument except `self` variable to call itself from instance. Although property is based on method, syntax to call property is same as attribute: `instance.attribute`.
+
+| 구문      | 설명                           |
+| ----------- | ------------------------------------- |
+| `@property` | 프로퍼티를 선언하는 데 사용되는 데코레이터. |
+
+프로퍼티는 데코레이터 기호를 사용하여 선언된다. 즉, 메서드를 위해 특별히 사용된다. 프로퍼티의 특별한 특성 중 하나는 `self` 변수를 제외하고 객체에서 자신을 호출하는 인자를 취하지 않는다는 것이다. 비록 프로터피는 메소드를 기본으로 두지만 프로퍼티를 호출하는 구문은 속성과 같다. :`instance.attribute`
 
 ```python
 class CLASS:
@@ -518,12 +539,17 @@ class CLASS:
     
     
  # INSTANTIATION 
+ # 객체화
 instance = CLASS(1, 3)
 instance.method				# >> OUTPUT: True
+                            # >> 출력: True
 instance.method = False		# AttributeError: can't set attribute
+                            # AttributeError: 속성을 설정할 수 없다.
 ```
 
 Properties are consist of three different method used for encapsulation: `getter`, `setter`, and `deleter`.
+
+프로퍼티는 캡슐화에 사용되는 세 다른 메소드로 구성된다 : `getter`, `setter`, 그리고 `deleter`.
 
 | METHOD  | SYNTAX            | DESCRIPTION                                           |
 | ------- | ----------------- | ----------------------------------------------------- |
@@ -531,26 +557,40 @@ Properties are consist of three different method used for encapsulation: `getter
 | Setter  | `@method.setter`  | Method for setting the value of property attribute.   |
 | Deleter | `@method.deleter` | Method for deleting property attribute.               |
 
+| 메소드  | 구문            | 설명                                           |
+| ------- | ----------------- | ----------------------------------------------------- |
+| Getter  | `@property`       | 프로퍼티 속성에서 값을 가져 오는 메소드 |
+| Setter  | `@method.setter`  | 프로퍼티 속성 값을 설정하는 메소드   |
+| Deleter | `@method.deleter` | 프로퍼티 속성을 삭제하는 방법               |
+
 ```python
 # CREATING CLASS
+# 클래스 생성하기
 class CLASS:
     def __init__(self, arg1, arg2):
         self.A = arg1
         self.B = arg2
         
     @property			# GETTER METHOD
+                        # GETTER 메소드
     def method(self):
         return self.A
         
     @method.setter		# SETTER METHOD
+                        # SETTER 메소드
     def method(self, arg3):
         statements
         
     @method.deleter		# DELETER METHOD
+                        # DELETER 메소드
     def method(self):
         del self.A
 ```
 
 The `setter` method is used to modify the property attribute which may seems like defining property is unnecessary. However, this is not true as a single function is separated into more than one method: method exclusive for setting value and returning value.
 
+`setter` 메소드는 프로퍼티 정의가 필요하지 않은 프로퍼티 속성을 수정하는 데 사용된다. 그러나 하나의 함수가 둘 이상의 메소드 (값 설정 및 리턴 값 전용 메소드)로 분리되므로 사실이 아니다.
+
 Using the property with these methods encapsulate sensitive codes that shouldn't be modified by the user (such as `setter` method), while maintaining constant API user can access despite having updated function.
+
+이 메소드들과 함께 이 프로퍼티를 사용하면 사용자가 수정해서는 안되는 민감한 코드 (예 :`setter` 메소드)를 캡슐화하면서, 업데이트된 기능에도 불구하고 일정한 API 사용자가 액세스할 수 있다.
