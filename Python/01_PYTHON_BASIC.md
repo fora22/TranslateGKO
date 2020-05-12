@@ -162,6 +162,85 @@ Although a function and a method will be introduced in later chapter, knowing th
 * **Method**
   : an object-exclusive function. Method also has parenthesis `()` at suffix of its name but is always bounded to an object; `object.method()`.
 
+### Numeric Data Type
+
+Numeric data type is widely used in Python for scientific purpose such as plotting, processing, and on the field of modeling neural network in artificial intelligence. Following are the list of numeric data types:
+
+| KEYWORD   | DATA TYPE             | DESCRIPTION                                                  |
+| --------- | --------------------- | ------------------------------------------------------------ |
+| `int`     | Integer               | 32-bits precision integer number.<br />Size: unlimited (max. 400 bytes) |
+| `float`   | Floating point number | Real number with decimal points.<br />Size: unlimited (max. 400 bytes) |
+| `complex` | Complex number        | Contains floating real and imaginary number.<br />Size: unlimited (max. 400 bytes) |
+
+The byte size of numeric data type is greater than any other languages. This is just a maximum byte size numeric data type can have and it can be much smaller depending on the what the number is. This flexibility of the byte size makes Python doesn't require data type declaration.
+
+Data type `float` is one of the commonly used numeric data type as it’s the smallest data type that can express the fraction besides `complex`. The `float` data type has following properties:
+
+* Extra zeros (beside right behind the decimal point) at end of the number are ignored.
+* Calculation returns `float` data type automatically when…
+  * Arithmetic operation involving even one single `float`.
+  * Division of `int`.
+
+```python
+print(9.8765000)
+print(4 ** 2.0)
+print(4 + 1.0)
+```
+
+```
+9.8765
+16.0
+5.0
+```
+
+Arithmetic operation of a numeric data type is as follows:
+
+| NAME                           | OPERATOR | DESCRIPTION                                                  |
+| ------------------------------ | :------: | ------------------------------------------------------------ |
+| Addition                       |   `+`    | -                                                            |
+| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Instead, negative sign substitutes subtraction, as adding negative value is equal to subtracting. |
+| Multiplication                 |   `*`    | -                                                            |
+| Exponential                    |   `**`   | -                                                            |
+| Division                       |   `/`    | When divided, the value automatically changes to data type of `float`, a data type of number with decimal point. |
+| Quotient (aka. floor division) |   `//`   | When divided, gives an output a quotient of division only, without a remainder. |
+| Remainder                      |   `%`    | When divided, gives an output a remainder of the division.   |
+
+For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect anything on its output.
+
+Additional operations using with built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iteratable object called *list* which will be introduced later.
+
+| FUNCTION  | EXAMPLE             | DESCRIPTION                                                  |
+| --------- | ------------------- | ------------------------------------------------------------ |
+| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
+| `min()`   | `min([0,1,2,3,4])`  | Find the minimum number inside.                              |
+| `abs()`   | `abs(-21)`          | Find out absolute value of the number.                       |
+| `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
+| `sum()`   | `sum([0,1,2,3,4])`  | Sum all the numbers in the list.                             |
+
+```python
+# EXAMPLE OF ROUND() FUNCTION
+print(round(164.259763145))
+print(round(164.259763145,2))
+```
+
+```
+164
+164.26
+```
+
+Assignment operator is a combination of an arithmetic and an assignment sign `=`, making numerical calculation code to be written more concisely.
+
+| OPERATOR | EXAMPLE  | EQUIVALENT                                                   |
+| :------: | -------- | ------------------------------------------------------------ |
+|   `=`    | `x = y`  | `x = y`; assign the value of variable `y` to the variable `x`. |
+|   `+=`   | `x += y` | `x = x + y`                                                  |
+|   `-=`   | `x -= y` | `x = x - y`                                                  |
+|   `*=`   | `x *= y` | `x = x * y`                                                  |
+|   `/=`   | `x /= y` | `x = x / y`                                                  |
+|   `%=`   | `x %= y` | `x = x % y`                                                  |
+
+Increment and decrement does not exist in Python programming language.
+
 
 # **파이썬(Python): 기초**
 파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 줄-다음-줄로 순차적으로 실행되며 줄의 끝에 세미콜론(';')이 필요하지 않다.
@@ -340,24 +419,25 @@ NameError: name 'x' is not defined
 * **메서드**
   : 객체 변환 함수. 메서드 또한 이름 접미사에 괄호 `()`가 있지만 항상 객체에 묶여 있다. `object.method()` 
   
-### Numeric Data Type
+### 숫자 데이터 타입
 
-Numeric data type is widely used in Python for scientific purpose such as plotting, processing, and on the field of modeling neural network in artificial intelligence. Following are the list of numeric data types:
+숫자 데이터 타입은 그래프, 연산처리, 인공지능의 뉴럴 네트워크 모델링 등 과학적인 목적으로 파있너에서 널리 사용되고 있다. 다음은 숫자 데이터 타입 목록이다:
 
-| KEYWORD   | DATA TYPE             | DESCRIPTION                                                  |
+| 키워드   | 데이터 타입             | 설명                                                  |
 | --------- | --------------------- | ------------------------------------------------------------ |
-| `int`     | Integer               | 32-bits precision integer number.<br />Size: unlimited (max. 400 bytes) |
-| `float`   | Floating point number | Real number with decimal points.<br />Size: unlimited (max. 400 bytes) |
-| `complex` | Complex number        | Contains floating real and imaginary number.<br />Size: unlimited (max. 400 bytes) |
+| `int`     | 정수               | 32 비트 정밀 정수이다.<br /> 크기 : 제한 없음(최대. 400bytes) |
+| `float`   | 부동 소수점 수 | 소수점을 포함한 실수.<br />크기: 제한 없음 (최대. 400bytes) |
+| `complex` | 복소수        | 부동 소수점 수와 허수를 포함한 수.<br />제한 없음 (최대. 400bytes) |
 
-The byte size of numeric data type is greater than any other languages. This is just a maximum byte size numeric data type can have and it can be much smaller depending on the what the number is. This flexibility of the byte size makes Python doesn't require data type declaration.
+숫자 데이터 타입의 바이트 크기는 다른 언어에서 보다 크다. 이것은 숫자 데이터 타입이 가질 수 있는 최대 바이트 크기일 뿐이고 숫자가 얼마인지에 따라 훨씬 더 작을 수 있다. 이러한 바이트 크기의 유연성은 파이썬에 데이터 타입 선언이 필요하지 않게 만든다.
 
-Data type `float` is one of the commonly used numeric data type as it’s the smallest data type that can express the fraction besides `complex`. The `float` data type has following properties:
+`float` 데이터 타입은 `complex` 외에 분수를 표한할 수 있는 가장 작은 데이터 타입이기 때문에 일반적으로 사용되는 숫자 데이터 타입 중 하나이다. `float` 데이터 타입에는 다음과 같은 특징이 있다.
 
-* Extra zeros (beside right behind the decimal point) at end of the number are ignored.
-* Calculation returns `float` data type automatically when…
-  * Arithmetic operation involving even one single `float`.
-  * Division of `int`.
+
+* 숫자 끝에 있는 추가 0(십진점 바로 뒤에 있음)은 무시된다.
+* 다음과 같은 경우 `float` 데이터 타입으로 계산결과를 자동으로 반환한다.
+  * `float`를 하나라도 포함하는 연산
+  * `int`의 나눗셈 연산.
 
 ```python
 print(9.8765000)
