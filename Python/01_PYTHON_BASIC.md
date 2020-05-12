@@ -4,37 +4,17 @@ Python is a high-level programming language with applications in numerous areas,
 
 This chapter describes on basic concepts and coding syntax used in Python.
 
-# **파이썬(Python): 기초**
-파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 줄-다음-줄로 순차적으로 실행되며 줄의 끝에 세미콜론(';')이 필요하지 않다.
-
-이 챕터에서는 파이썬에서 사용되는 코딩 구문과 기초적인 개념에 대해 설명하려 한다.
-
-
-
 ##  Interpreter
 
 Programming language such as C/C++ uses compiler that translates a source code (written in English) to a computer language (such as binary language) computer can understand for execution. However, interpreter allows computer to execute the program directly from a source code without translation.
 
 Python is interpreter-driven high-level language: this allows scripting the code much easier than compiler, but its execution time can be slower in comparison.
 
-## 인터프리터
-C/C++과 같은 프로그래밍 언어는 소스 코드(영어로 쓰여진)를 컴퓨터가 이해하고 실행할 수 있는 컴퓨터 언어(이진언어와 같이)로 번역하는데 컴파일러를 사용한다. 그러나, 인터프리터는 컴퓨터가 번역 없이 소스코드에서 직접 프로그램을 실행할 수 있도록 한다.
-<!-- 여기 문장이 조금 이상한듯
-인터프리터도 번역을 하지 않나?-->
-
-파이썬은 인터프리터로 동작하는 고수준 언어: 코드를 작성할 때 컴파일러보다 쉽지만, 실행 시간에 있어서 비교했을 때 느리다.
-
 ### CPython
 
 Originally, Python interpreter was developed using C programming language. This implementation is called CPython and is the most widely used implementation of all. Other implementations are Jython (Java-implementation), IronPython (.NET-implementation), PyPy (Python-implementation), and more.
 
 While Python is introduced as an interpreter language, it actually is both interpreter and compiler: CPython first processes Python code into intermediate bytecode which is than executed by CPython interpreter. Because of this, Python execution takes longer time on first run from compilation.
-
-### CPython (C-파이썬)
-
-원래, 파이썬 인터프리터는 C 언어를 사용하여 개발되었다. 이렇게 구현된 것을 'CPython'이라 불리며 가장 널리 사용된다. 다른 언어로 구현된 것은 Jython(Java로 구현된 인터프리터), IronPython(.NET로 구현된 인터프리터), PyPy(Python로 구현된 인터프리터) 등 이 있다.
-
-파이썬은 인터프티 언어로 소개되지만, 실제로 인터프리터와 컴파일러 둘 다 해당된다: CPython은 먼저 파이썬 코드를 CPython 인터프리터에 의해 실행되기 전에 중간 바이트 코드로 처리한다. 이 때문에 파이썬의 실행은 첫 컴파일로부터 더 오랜 시간이 걸린다.
 
 ## Comment
 
@@ -51,21 +31,6 @@ BLOCK COMMENT:
 multiple line of comment can be placed here and can even be viewed on runtime.
 """
 # LINE COMMENT: for a single line of code.
-```
-## 주석
-
-
-파이썬에는 다른 두 가지 주석이 있다 : 줄 주석과 블록 주석
-
-* **줄 주석** : 코드 한 줄짜리 주석, `#`(octothorpe, 샵, 해시태그 등)에 의해 선언된다.
-* **블록 주석**(별명. docstrings) : 작은 따옴표 3개 `''' '''`나 큰 따옴표 3개 `""" """`를 사용해서 여러 줄 주석을 할 수 있다. Docstrings는 또한 여러 줄의 문장을 쓰는데 사용될 수 있고, 실행할 때 볼 수 있다.
-
-```Python
-"""
-블록 주석:
-여기에 여러 줄 주석을 달 수 있고, 실행 시 볼 수 있다.
-"""
-# 줄 주석: 한줄 짜리 주석이다.
 ```
 
 ## Input & Output
@@ -112,57 +77,6 @@ To print mixture of more than a single data type in a single `print()` function,
    B = "Python3"
    
    # MIXTURE OF STRING AND INT IS CONCATENATED USING "+" AFTER STRING CONVERSION.
-   print("A is", str(A) + ", \nand B is", B + ".")
-   ```
-
-   ```
-   A is 10.0,
-   and B is Python3.
-   ```
-
-## 입력 & 출력
-
-파이썬은 터미날 텍스트 기반으로 된 단일 입력, 출력 함수를 가지고 있다.
-
-| 입력/출력 | 구문            | 설명                                                  |
-| ------------ | ----------------- | ------------------------------------------------------------ |
-| `input()`    | `input("쓰기:")` | 입력이 필요할 때 텍스트 데이터를 `input()`함수에 넣으면 터미널에 표시되며, 항상 입력한 데이터는 텍스트의 형태로 반환된다. |
-| `print()`    | `print("읽기:",변수)` | 콘솔에서 데이터 타입(예 : 텍스트, 번호)을 출력한다. 여기서 `변수`는 연결을 위한 텍스트 데이터이다. |
-
-```python
-variable = input("쓰기: ")
-print("읽기:", variable)
-# 동일한 기능: print("읽기:", input("쓰기: "))
-```
-
-```
-쓰기: Hello World!
-읽기: Hello World!
-```
-단일 `print()` 함수를 사용하여 혼합된 단일 데이터 유형을 출력하려 하면, 약간의 다른 결과가 나오지만 두 가지의 방법이 있다.
-
-1. 쉼표(`'`)를 사용하여 연속적으로 데이터를 나열할 수 있다. 하지만 항상 쉼표에는 공백이 놓여지게 된다.
-    ```python
-    A = 10.0
-    B = "Python3"
-    
-    # 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
-    print("A is", A , ", \nand B is", B, ".")
-    ```
-
-    ```
-    A is 10.0 ,
-    and B is Python3 .
-    ```
-
-
-2. 문자열의 연결에서 `+`를 사용하면 사이에 공백이 생기지 않는다. 하지만, 문자열이 아닌 데이터 형식은 연결을 사용하려면 문자열로 변환해야 한다.
-
-   ```python
-   A = 10.0
-   B = "Python3"
-   
-   # 문자열 변환 후, 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
    print("A is", str(A) + ", \nand B is", B + ".")
    ```
 
@@ -248,6 +162,184 @@ Although a function and a method will be introduced in later chapter, knowing th
 * **Method**
   : an object-exclusive function. Method also has parenthesis `()` at suffix of its name but is always bounded to an object; `object.method()`.
 
+
+# **파이썬(Python): 기초**
+파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 줄-다음-줄로 순차적으로 실행되며 줄의 끝에 세미콜론(';')이 필요하지 않다.
+
+이 챕터에서는 파이썬에서 사용되는 코딩 구문과 기초적인 개념에 대해 설명하려 한다.
+
+
+
+## 인터프리터
+C/C++과 같은 프로그래밍 언어는 소스 코드(영어로 쓰여진)를 컴퓨터가 이해하고 실행할 수 있는 컴퓨터 언어(이진언어와 같이)로 번역하는데 컴파일러를 사용한다. 그러나, 인터프리터는 컴퓨터가 번역 없이 소스코드에서 직접 프로그램을 실행할 수 있도록 한다.
+<!-- 여기 문장이 조금 이상한듯
+인터프리터도 번역을 하지 않나?-->
+
+파이썬은 인터프리터로 동작하는 고수준 언어: 코드를 작성할 때 컴파일러보다 쉽지만, 실행 시간에 있어서 비교했을 때 느리다.
+
+
+
+### CPython (C-파이썬)
+
+원래, 파이썬 인터프리터는 C 언어를 사용하여 개발되었다. 이렇게 구현된 것을 'CPython'이라 불리며 가장 널리 사용된다. 다른 언어로 구현된 것은 Jython(Java로 구현된 인터프리터), IronPython(.NET로 구현된 인터프리터), PyPy(Python로 구현된 인터프리터) 등 이 있다.
+
+파이썬은 인터프티 언어로 소개되지만, 실제로 인터프리터와 컴파일러 둘 다 해당된다: CPython은 먼저 파이썬 코드를 CPython 인터프리터에 의해 실행되기 전에 중간 바이트 코드로 처리한다. 이 때문에 파이썬의 실행은 첫 컴파일로부터 더 오랜 시간이 걸린다.
+
+## 주석
+
+
+파이썬에는 다른 두 가지 주석이 있다 : 줄 주석과 블록 주석
+
+* **줄 주석** : 코드 한 줄짜리 주석, `#`(octothorpe, 샵, 해시태그 등)에 의해 선언된다.
+* **블록 주석**(별명. docstrings) : 작은 따옴표 3개 `''' '''`나 큰 따옴표 3개 `""" """`를 사용해서 여러 줄 주석을 할 수 있다. Docstrings는 또한 여러 줄의 문장을 쓰는데 사용될 수 있고, 실행할 때 볼 수 있다.
+
+```Python
+"""
+블록 주석:
+여기에 여러 줄 주석을 달 수 있고, 실행 시 볼 수 있다.
+"""
+# 줄 주석: 한줄 짜리 주석이다.
+```
+
+
+
+## 입력 & 출력
+
+파이썬은 터미날 텍스트 기반으로 된 단일 입력, 출력 함수를 가지고 있다.
+
+| 입력/출력 | 구문            | 설명                                                  |
+| ------------ | ----------------- | ------------------------------------------------------------ |
+| `input()`    | `input("쓰기:")` | 입력이 필요할 때 텍스트 데이터를 `input()`함수에 넣으면 터미널에 표시되며, 항상 입력한 데이터는 텍스트의 형태로 반환된다. |
+| `print()`    | `print("읽기:",변수)` | 콘솔에서 데이터 타입(예 : 텍스트, 번호)을 출력한다. 여기서 `변수`는 연결을 위한 텍스트 데이터이다. |
+
+```python
+variable = input("쓰기: ")
+print("읽기:", variable)
+# 동일한 기능: print("읽기:", input("쓰기: "))
+```
+
+```
+쓰기: Hello World!
+읽기: Hello World!
+```
+단일 `print()` 함수를 사용하여 혼합된 단일 데이터 유형을 출력하려 하면, 약간의 다른 결과가 나오지만 두 가지의 방법이 있다.
+
+1. 쉼표(`'`)를 사용하여 연속적으로 데이터를 나열할 수 있다. 하지만 항상 쉼표에는 공백이 놓여지게 된다.
+    ```python
+    A = 10.0
+    B = "Python3"
+    
+    # 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
+    print("A is", A , ", \nand B is", B, ".")
+    ```
+
+    ```
+    A is 10.0 ,
+    and B is Python3 .
+    ```
+
+
+2. 문자열의 연결에서 `+`를 사용하면 사이에 공백이 생기지 않는다. 하지만, 문자열이 아닌 데이터 형식은 연결을 사용하려면 문자열로 변환해야 한다.
+
+   ```python
+   A = 10.0
+   B = "Python3"
+   
+   # 문자열 변환 후, 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
+   print("A is", str(A) + ", \nand B is", B + ".")
+   ```
+
+   ```
+   A is 10.0,
+   and B is Python3.
+   ```
+
+## 변수
+
+변수는 할당 연산자 '='를 사용하여 할당할 수 있는 데이터의 컨테이너다. 변수에는 선언, 정의, 초기화 등 세 가지 공통 단계가 있다.
+
+
+* **선언**
+  : 선언은 변수, 함수, 객체 등의 존재를 선언하는 것이다. 다른 언어에서 선언은 어떠한 데이터 타입인지도 포함하지만, 파이썬에서는 예외적으로 데이터 타입으로 선언할 필요가 없다.
+
+* **정의**
+  : 정의는 코드 블록을 통해 구조물이 가지고 있고 할 수 있는 가치와 성능을 의미한다.
+
+
+  ```python
+  # 변수의 정의(+선언)
+  variable = 1
+  
+  # 함수의 정의(+선언)
+  def function():
+    statements
+      return 0
+  ```
+* **초기화**
+  : 초기화는 초기 값을 구조에 할당하는 것이다. 단순하게 *first* 정의. 첫 번째 정의는 일반적으로 구주 선언과 동시에 이루어진다. 따라서, 초기화는 사람들의 생각에 의해 일반적으로 *선언 + 정의*라고 생각되지만, 항상 사실인 것은 아니다.
+
+
+프로그래머는 파이썬에서 변수 이름 짓는 규칙을 준수해야 한다.
+
+* 오직 글자, 숫자, 밑줄만 허용된다.
+
+* 첫 글자가 숫자로 시작할 수 없다.
+
+* 공백은 허용되지 않는다.
+
+변수는 데이터 타입이 고정되어 있지 않아, 프로그래머가 원하는 모든 값으로, 원하는 시간에 단일 변수의 값을 변경할 수 있다.
+
+
+### 지역 & 전역 변수
+
+**지역 변수** 는 함수나 클래스로 된 코드 블록 내부에서 선언된 변수이다. 지역 변수에 저장된 데이터는 코드 블록을 종료할 때 제거되므로 외부에서 사용할 수 없다. 지역 변수는 외부에서 선언된 변수의 이름을 가질 수 있다.(기술적으로 다른 정체성으로 이름을 쓴다.)
+
+**전역 변수**는 코드 블록 외부에 있는 스크립트의 글로벌 범위에 선언된 변수이다. `global` 키워드를 이용해 코드 블록 내부의 글로벌 변수를 활용할 수 있다. 단, 글로벌 변수는 가능하면 피해야 변수 충돌로 인한 예상치 못한 결과와 오류를 방지할 수 있다.
+
+### 상수 변수
+
+상수 변수는 초기화 후 변경할 수 없는 특별한 유형의 변수이다. 불행히도, 파이썬은 *선언*의 개념이 없기 때문에 상수 변수가 없다. C 기반 언어는 이러한 기능을 가지고 있지만, 파이썬 개발자는 단지 사용 가능한 그대로의 변수를 망치지 않도록 주의해야 한다.
+
+파이썬에서 상수 변수를 나타내기 위해 사용되는 일반적인 방법은 변수 UPERCASE를 선언하는 것이다.
+
+
+### `del` 키워드
+
+이 키워드는 변수를 삭제 할 때 사용한다.
+삭제된 변수는 나중에 다시 할당할 수 있다.
+
+```python
+# "x" 변수의 정의
+x = "Python"
+print(x)
+
+# "x" 변수의 삭제
+del x
+print(x)
+```
+
+```
+Python
+NameError: name 'x' is not defined
+```
+
+## 데이터 타입
+
+변수가 파이썬에 저장할 수 있는 데이터 타입은 숫자, 문자열, 불 데이터 타입 등 세가지 유형으로 분류할 수 있다. 데이터 유형에 따라 파이썬은 *operation*이라 하는 데이터 처리 타입별 기능을 수행할 수 있따. 데이터를 조작할 수 있는 것은 (1) 연산자, (2) 함수, (3) 메서드 등이다.
+
+비록 함수와 메서드는 후반부에 소개될 것이지만, 이 세가지 사이의 주요 차이점을 아는 것은 프로그래밍 언어의 개념을 전반적으로 이해하는 데 있어서 혼동을 예방할 것이다.
+
+
+  
+* **연산자**
+  : 산술 부호와 같이 피연산자의 값을 조작할 수 있는 것. 작동에 대한 논쟁이 필요 없고 피연산자의 앞, 뒤 또는 사이에 배치한다.
+
+* **함수**
+  : 동작하는 이름으로 불리는 재사용 가능한 코드 조각. 함수는 함수 이름의 접미사에서 괄호 `()`로 연산자와 구별할 수 있다. `function()`
+
+* **메서드**
+  : 객체 변환 함수. 메서드 또한 이름 접미사에 괄호 `()`가 있지만 항상 객체에 묶여 있다. `object.method()` 
+  
 ### Numeric Data Type
 
 Numeric data type is widely used in Python for scientific purpose such as plotting, processing, and on the field of modeling neural network in artificial intelligence. Following are the list of numeric data types:
