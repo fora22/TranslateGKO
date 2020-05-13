@@ -58,16 +58,30 @@
 
 다음은 파이썬 번역에 사용된 용어정리 목록이다.
 
+*참고: https://docs.python.org/ko/3.8/glossary.html*
+
 ### PYTHON: BASIC
 |  영문  |  한글  |
 |-------|-------|
 | high-level programming language | 고급 프로그래밍 언어  |
+| docstring | 독스트링 |
+
+### PYTHON: CONDITIONAL AND LOOP
+|  영문  |  한글  |
+|-------|-------|
+| range | 범위 |
 
 ### PYTHON: ITERABLE OBJECT
 |  영문  |  한글  |
 |-------|-------|
-| iterable object | 반복 가능한 객체 |
-| iterator | 반복자 |
+| iterable | 이터러블 |
+| iterator | 이터레이터 |
+| sequence | 시퀀스 |
+| list | 리스트 |
+| tuple | 튜플 |
+| set | 집합 |
+| dictionary | 딕셔너리 |
+| generator | 제너레이터|
 
 ### PYTHON: FUNCTIONAL PROGRAMMING
 |  영문  |  한글  |
