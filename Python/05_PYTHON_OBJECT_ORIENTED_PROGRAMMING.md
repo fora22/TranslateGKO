@@ -322,7 +322,7 @@ class SUBCLASS(INTERCLASS1, INTERCLASS2):
         print("END SUBCLASS __INIT__")
         
         
-# 객체화
+# 객체화.
 instance = SUBCLASS()
 ```
 
