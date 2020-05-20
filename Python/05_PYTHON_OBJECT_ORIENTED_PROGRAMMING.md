@@ -412,3 +412,406 @@ class CLASS:
 `setter` 메소드는 프로퍼티 정의가 필요하지 않은 프로퍼티 속성을 수정하는 데 사용된다. 그러나 하나의 함수가 둘 이상의 메소드 (값 설정 및 리턴 값 전용 메소드)로 분리되므로 사실이 아니다.
 
 이 메소드들과 함께 이 프로퍼티를 사용하면 사용자가 수정해서는 안되는 민감한 코드 (예 :`setter` 메소드)를 캡슐화하면서, 업데이트된 기능에도 불구하고 일정한 API 사용자가 액세스할 수 있다.
+
+----
+
+# **PYTHON: OBJECT-ORIENTED PROGRAMMING**
+
+Previous chapter has explained and dealt with procedural and functional programming. The third scripting method, object-oriented programming (abbrev. OOP) is based around usage of classes and objects instead of functions.
+
+## Object
+
+Previous chapters have introduced variable (which can store data) and function (which can process data). Object, aka. instance, is a block of data which encapsulate these variables and functions into a single identity.
+
+The programming based around use of a custom objects is called *object-oriented programming*.
+
+```python
+x = [0, 3, 5, 9]
+print(x.index(5))
+# Using "index()" method that returns index of the value 5.
+```
+
+```
+2
+```
+
+### Encapsulation
+
+Encapsulation is the core concept in object which...
+
+1. combines variables and functions into a single object
+2. restrict direct access to these variables and functions to prevent accidental modification from external code. 
+
+### Attribute & Method
+
+The variables and function encapsulated to the object is called differently:
+
+* **Attribute** is an object-dependent variable, accessed by `object.attribute` format.
+* **Method** is an object-dependent function, accessed by `object.method()` format.
+
+## Class
+
+Class is used to create objects (aka. instance), hence can be deemed as a blueprint of the object. Classes are created using keyword `class` and inside defines variables and functions which becomes attributes and methods for the object.
+
+```python
+# CREATING CLASS
+class CLASS∶
+    # INSTANCE INITIALIZATION (= CONSTRUCTOR)
+    def __init__(self, arg1, arg2):
+        # ATTRIBUTES (similar to VARIABEL)
+        self.attr1 = arg1
+        self.attr2 = arg2
+        
+	# METHOD (similar to FUNCTION)
+    def method(self, arg3):
+        self.attr3 = arg3
+        return self.attr1 + self.attr2 - self.attr3
+
+# INSTANTIATION
+instance = CLASS(value1, value2)	# CREATE INSTANCE FROM THE CLASS
+
+# THEREFORE...
+print(instance.attr3)
+print(instance.method(value3))
+```
+
+```
+value3
+value1 + value2 - value3
+```
+
+### `self` Variable
+
+The `self` variable is a conventional name to indicate an instance itself. Placing `self` on variables or functions bounds them to an object, thus declares as attributes and methods. These attributes and methods can be accessed only from the instance.
+
+Variables and functions without `self` are local variables and functions inside the instance, and is not accessible. Attempting to do so results "AttributeError".
+
+```python
+# CREATING CLASS
+class CLASS:
+    def __init__(self, arg1, arg2):
+        self.attr1 = arg1
+        self.attr2 = None        # ATTRIBUTE MUST BE INITIALIZED, ELSE RESULTS "AttributeError"
+        attr3 = arg2             # LOCAL VARIABLE
+
+
+# INSTANTIATION
+instance = CLASS(1, 2)
+''' EQUIVALENT: 
+Class.__init__(self = instance, arg1 = 1, arg2 = 2, arg3 = 3)
+'''
+
+# THEREFORE...
+instance.attr1		# >> OUTPUT: 1
+instance.attr2		# >> OUTPUT: None
+instance.attr3		# AttributeError: 'CLASS' object has no attribute 'C'
+```
+
+### `__init__` Method
+
+The `__init__` method is the most important method needed to create instance. As the name implies (abbreviation of *initialization*), this method is automatically called when creating an object from class and is responsible for defining the number of arguments needed on instance initialization.
+
+## Instance Attribute/Method
+
+All methods (and attributes) that are declared normally within the class with `self` for self-indication are instance methods (and attributes). There is no special syntax that need to declare for instance method.
+
+However, instance attribute cannot be defined outside instance method where `self` variable in valid. Variables declared outside the method becomes class attribute instead.
+
+```python
+# CREATING CLASS
+class CLASS:
+    def __init__(self, arg1, arg2):
+        # INSTANCE ATTRIBUTES
+        self.attr1 = arg1
+        self.attr2 = arg2
+        self.attr3 = None
+
+	# INSTANCE METHOD
+    def method1(self, arg3):
+        self.attr3 = arg3
+```
+
+
+## Class Attribute/Method
+
+Class attributes and methods can be accessed both from instance and class without any instantiation. Class attribute is declared without under class definition, indented along with methods. `self` variable is not used.
+
+Class method is a method which can be accessed through class alone without needing to create an instance.
+
+|     SYNTAX     | DESCRIPTION                              |
+| :------------: | ---------------------------------------- |
+| `@classmethod` | Decorator used to declare class methods. |
+
+Though class method is defined by the decorator syntax mentioned above, the method also requires parameter to indicate the class itself (just like instance method have `self` parameter to mention instance itself), conventionally written as `cls`.
+
+```python
+# CREATING CLASS
+class CLASS:
+    # CLASS ATTRIBUTE
+    attribute = value
+    
+    def __init__(self, arg1, arg2):
+        self.attr1 = arg1
+        self.attr2 = arg2
+        self.attr3 = None
+
+    def method1(self, arg3):
+        self.attr3 = arg3
+    
+	# CLASS METHOD
+    @classmethod
+    def method2(cls, arg4):
+        return arg4
+    
+    # CLASS METHOD FOR INSTANTIATION
+    @classmethod
+    def method3(cls, x, y):
+        return cls(x**2, y**2)
+    
+    
+# INSTANTIATION
+instance1 = CLASS(1, 2)
+instance1.method1(4)
+
+instance2 = CLASS.method3(1, 2)	# INSTANTIATE: arg1 = 1**1, arg2 = 2**2
+instance2.method1(4)
+
+# THEREFORE...
+CLASS.attribute			# >> OUTPUT: value
+CLASS.method2(3)		# >> OUTPUT: 3
+
+instance1.attribute	 	# >> OUTPUT: value
+instance1.attr1			# >> OUTPUT: 1
+instance1.attr2			# >> OUTPUT: 2
+instance1.attr3			# >> OUTPUT: 4
+
+instance2.attribute	 	# >> OUTPUT: value
+instance2.attr1			# >> OUTPUT: 1 (= 1**2)
+instance2.attr2			# >> OUTPUT: 4 (= 2**2)
+instance2.attr3			# >> OUTPUT: 4
+```
+
+## Static Method
+
+Static method is a method that can be called without instantiation, but without parameter to call itself like `self` and `cls`.
+
+| SYNTAX          | DESCRIPTION                               |
+| --------------- | ----------------------------------------- |
+| `@staticmethod` | Decorator used to declare static methods. |
+
+Since static method does not have a parameter to call itself, static method cannot access or modify any attribute from class and instance. This makes static method identical to normal function belonged to class.
+
+```python
+# CREATING CLASS
+class CLASS:
+    def __init__(self, arg1, arg2):
+        self.attr1 = arg1
+        self.attr2 = arg2
+        self.attr3 = None
+        
+    def method1(self, arg3)
+        self.attr3 = arg3
+        
+    # STATIC METHOD
+    @staticmethod
+    def method2(arg4):
+        return True if arg4 is 4 else False
+
+
+# INSTANTIATION
+instance = CLASS(1, 2)
+instance.method1(4)
+
+# THEREFORE...
+instance.attr1			# >> OUTPUT: 1
+instance.attr2			# >> OUTPUT: 2
+instance.attr3			# >> OUTPUT: 4
+
+CLASS.method2(4)		# >> OUTPUT: True
+```
+
+## Magic Method
+
+Magic method is a special method which has Double UNDERscores(dunder) on both side of its name. These method generally represents operator, and are used when overloading operator to modify the operator's functionality. 
+
+Previously encountered `__init__` method used for instance initialization is one of the widely used magic method. More can be seen on the table below:
+
+| OPERATOR | NAME           | MAGIC METHOD               |
+| -------- | -------------- | -------------------------- |
+| `+`      | Addition       | `__add__(self, other)`     |
+| `-`      | Subtraction    | `__sub__(self, other)`     |
+| `*`      | Multiplication | `__mul__(self, other)`     |
+| `/`      | Division       | `__truediv__(self, other)` |
+| `&`      | AND            | `__and__(self, other)`     |
+| `^`      | XOR            | `__xor__(self, other)`     |
+| `|`      | OR             | `__or__(self, other)`      |
+
+### Operator Overloading
+
+Overloading operator means customizing operator to function differently on certain classes or portion of the script. Magic method is used to overload operator but overloaded functionality is only exclusive to that specific class. As an example, `x + y`  is expressed as `x.__add__(y)` .
+
+```python
+# CREATING CLASS
+class CLASS:
+    def __init__(self, arg1):
+        self.A = arg1
+        
+    def __add__(self, arg2):
+        return "\0".join([self.A, arg2.A])		# INSERT "\0" BETWEEN TWO STRING OBJECTS.
+
+# INSTANTIATION
+instance1 = CLASS("Hello")
+instance2 = CLASS("World!")
+
+instance1 + instance2		# >> OUTPUT: "Hello World!"
+```
+
+## Inheritance
+
+Inheritance is an act of superclass (base class) providing attributes and methods to derived subclass (child class). When the same name of attributes and methods exists on both superclass and subclass, attributes and methods from superclass are overridden by subclass's.
+
+```python
+# CREATING SUPERCLASS
+class SUPERCLASS:
+    attr1 = value1
+    attr2 = value2
+
+# CREATING SUBCLASS
+class SUBCLASS(SUPERCLASS):
+    attr2 = "Hello World!"
+    attr3 = value3
+
+# INSTANTIATION  
+instance = SUBCLASS()
+
+# THEREFORE...
+instance.attr1		# >> OUTPUT: value1
+instance.attr2		# >> OUTPUT: "Hello World!"
+instance.attr3		# >> OUTPUT: value3
+```
+
+### Super Function
+
+The `super()` function is used to access the superclass properties, such as class attributes instance/class/static methods directly. This function is mainly used to avoid overriding superclass attributes and methods.
+
+```python
+# CREATING SUPERCLASS
+class SUPERCLASS:
+    def __init__(self, arg1):
+        print("Hello World!")
+        self.attr = arg1
+
+# CREATING SUBCLASS
+class SUBCLASS(SUPERCLASS):
+    def __init__(self, arg2):
+        print("Goodbye World?")
+
+
+# INSTANTIATION
+instance = SUBCLASS(3)
+
+# THEREFORE...
+print(instance.attr)
+```
+
+```
+"Goodbye World?"
+AttributeError: 'SUBCLASS' object has no attribute 'attribute'
+```
+
+Originally, the `__init__()` method in `SUPERCLASS` would have been overridden by `SUBCLASS` since both methods share the same name. This is the reason `print(Hello World")` did not appeared and `self.attribute` cause an error despite inheritance.
+
+On the other hand, when using super function to called the `__init__()` method directly from the `SUPERCLASS`
+
+```python
+# CREATING SUPERCLASS
+class SUPERCLASS:
+    def __init__(self, arg1):
+        print("Hello World!")
+        self.attribute = arg1
+
+# CREATING SUBCLASS
+class SUBCLASS(SUPERCLASS):
+    def __init__(self, arg2):
+        # DIRECTLY INHERITING "__init__()" METHOD FROM SUPERCLASS
+        super().__init__(arg2)
+        print("Goodbye World?")
+
+
+# INSTANTIATION
+instance = SUBCLASS(3)
+
+# THEREFORE...
+print(instance.attribute)
+```
+
+```
+"Hello World!"
+"Goodbye World?"
+3
+```
+
+## Data Hiding
+
+Previously on *Encapsulation* subsection mentioned creating an object provides restriction on accessing attributes and methods, called *Data Hiding*. In Python, however, data hiding is not guaranteed and can be accessed easily from the code outside the class.
+
+Still, manual approach such as name mangling is possible to prevent access to attributes and methods of the class:
+
+| SYMBOL | EXAMPLE       | DESCRIPTION                                                  |
+| :----: | ------------- | ------------------------------------------------------------ |
+|  `_`   | `_attribute`  | Though not a name mangling, it can prevent accessing attributes and methods from being passed via module import but not from codes outside the class. |
+|  `__`  | `__attribute` | Name mangling: this prevents accessing attributes and methods from being passed via module import and codes outside the class, thus becomes "private". |
+
+### Properties
+
+Property is a decorator that supports data hiding by dividing a single method into three separate methods: `getter`, `setter`, and `deleter`. Because property is declared using decorator symbol, it can only be used on method.
+
+| METHOD  | SYNTAX            | DESCRIPTION                                           |
+| ------- | ----------------- | ----------------------------------------------------- |
+| Getter  | `@property`       | Method for getting the value from property attribute. |
+| Setter  | `@method.setter`  | Method for setting the value of property attribute.   |
+| Deleter | `@method.deleter` | Method for deleting property attribute.               |
+
+```python
+# CREATING CLASS
+class CLASS:
+    def __init__(self, arg1):
+        self.attr1 = arg1
+    
+    # DEFINITION: GETTER METHOD
+    @property
+    def method(self):
+        return self.attr1
+    
+    # DEFINITION: SETTER METHOD
+    @method.setter
+    def method(self, arg3):
+        self.attr1 = arg3
+    
+    # DEFINITION: DELETER METHOD
+    @method.deleter
+    def method(self):
+        del self.attr1
+        
+# INSTANTIATION
+instance = CLASS(3)
+
+# THEREFORE
+print(instance.method)        # EXAMPLE: GETTER METHOD
+
+instance.method = 1           # EXAMPLE: SETTER METHOD
+print(instance.method)
+
+del instance.method           # EXAMPLE: DELETER METHOD
+print(instance.method)
+```
+
+```
+3
+1
+AttributeError: 'CLASS' object has no attribute 'attr1'
+```
+
+Separating method using property encapsulate sensitive code that shouldn't be modified by the user (such as `setter` and `deleter` method), while providing constant access to the method via `getter` method despite any changes were made on `setter` and `deleter`.
+
+Although `getter` method is essential in property, the `setter` and `deleter` are optional; using `getter` method alone would make unmodifiable read-only method.
