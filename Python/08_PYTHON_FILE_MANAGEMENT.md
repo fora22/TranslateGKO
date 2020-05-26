@@ -21,8 +21,8 @@ open("filename.txt")
 The `close()` method is used to close currently opened files. Closing file in very important on avoiding wasting resource. Ensure the files are always closed even on exceptions by using try/except or with statement.
 
 ```python
-variable = open("file.txt", "r")
-variable.close()
+file = open("file.txt", "r")
+file.close()
 ```
 
 ### `with` Statement
@@ -30,9 +30,60 @@ variable.close()
 The `with` statement creates temporary variable only available inside an indented code block of the `with` statement. When the file is opened using this statement, the file automatically closes at the end of the code block even if exceptions occur within it.
 
 ```python
-with open("file.txt") as variable:
+with open("file.txt") as file:
     statements
 ```
+
+### Context Manager
+
+Context manager is an interface that allows support of `with` statement. There are two methods available for setting object method and function as context manager: (1) using `__enter__()` & `__exit__()` method pair and (2) using `contextlib` module.
+
+```python
+# CONTEXT MANAGER 1
+class CLASS:
+    def __init__(self):
+        pass
+    
+    # EXECUTE UPON ENTERING "WITH"
+    def __enter__(self):
+        self.variable = expression
+        return self.variable
+    
+    # EXECUTE UPON EXITING "WITH"
+    def __exit__(self):
+        statements
+```
+
+----
+
+```python
+from contextlib import contextmanager
+
+# CONTEXT MANAGER 2 
+class CLASS:
+    def __init__(self):
+        pass
+    
+    # "WITH" SUPPORTED FUNCTION/METHOD
+    @contextmanager
+    def method(self):
+        self.variable = expression`
+        yield self.variable
+        statements
+```
+
+Context manager returns (or yields) attribute (or variable) when using `with` statement, which becomes a resource to be handled while within the statement. Having implicitly determined resource makes `as` keyword unnecessary, unless there is a need to alias the name.
+
+```python
+# INSTANTIATION
+instance = CLASS()
+
+with instance.method():
+    # HANDLES "self.variable"
+    statements
+```
+
+One of the actual implementation of this syntax can be found on chapter *TENSORFLOW: BASIC § TensorBoard* in [*PRGMING_TensorFlow*](./PRGMING_TensorFlow.md) document.
 
 ### Absolute & Relative Paths
 
@@ -49,11 +100,11 @@ After opening the text-based file, Python can read lines of file's content using
 Read method can be used on the same file over again, but it will continue from where Python last read. When there’s no argument, the read method reads the rest of the text from where it last left off.
 
 ```python
-with open("path\\file.txt") as variable:
-    print(variable.read(16))	# READ 16 BYTES FROM THE START OF THE CONTENT.
-	print(variable.read(4))		# READ 4 BYTES FROM THE POINT AFTER PREVIOUS 16 BYTES.
-	print(variable.read())		# READ THE REST OF THE TEXT AFTER PREVIOUS 4 BYTES.
-	print(variable.read())		# READ NO TEXT AS NO MORE CONTENT TO READ.
+with open("path\\file.txt") as file:
+    print(file.read(16))	# READ 16 BYTES FROM THE START OF THE CONTENT.
+    print(file.read(4))		# READ 4 BYTES FROM THE POINT AFTER PREVIOUS 16 BYTES.
+    print(file.read())		# READ THE REST OF THE TEXT AFTER PREVIOUS 4 BYTES.
+    print(file.read())		# READ NO TEXT AS NO MORE CONTENT TO READ.
 ```
 
 The `Readlines()` method is used to return a list of text of each line. The method do accepts argument, but it works exactly same as a read method: it designates how many bytes to read.
@@ -68,9 +119,9 @@ Last line somewhere.
 ```
 
 ```python
-with open("path\\file.txt") as variable:
-    print(variable.readlines())
-    print(variable.readline())
+with open("path\\file.txt") as file:
+    print(file.readlines())
+    print(file.readline())
 ```
 
 ```
@@ -83,7 +134,7 @@ First line here.
 Each line of text-base content can be retrieved using `for` loop statement:
 
 ```python
-for variable in file:
+for file in variable:
     print(variable)
 ```
 
@@ -103,8 +154,8 @@ Last line somewhere.
 Overwrite mode `w` deletes all of previously existing content and write down fresh from the beginning.
 
 ```python
-with open("path\\file.txt", "w") as variable:
-    variable.write("TEXT OVERWRITTEN!")
+with open("path\\file.txt", "w") as file:
+    file.write("TEXT OVERWRITTEN!")
 ```
 
 ```
@@ -115,9 +166,9 @@ TEXT OVERWRITTEN!
 On the other hand, append mode `a` does not delete existing content but continue writing from the end.
 
 ```python
-with open("path\\file.txt", "a") as variable:
-    variable = variable.write("TEXT APPENDED.")
-	print(variable)
+with open("path\\file.txt", "a") as file:
+    file = file.write("TEXT APPENDED.")
+    print(file)
 ```
 
 ```
@@ -134,11 +185,11 @@ Upon successfully written, `write()` method returns the number of bytes written.
 New file can be created using the `write()` method which does not bound by just writing on existing file. Creating file is simply done by designating file name is doesn't exist on the specified path.
 
 ```python
-with open("path\\new-file.txt", "w") as variable:
-    variable.write("NEW FILE CREATED!")
+with open("path\\new_file.txt", "w") as file:
+    file.write("NEW FILE CREATED!")
 ```
 
 ```
-<new-file.txt>
+<new_file.txt>
 NEW FILE CREATED!
 ```
