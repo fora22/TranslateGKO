@@ -1,8 +1,6 @@
 # **PYTHON: CONDITIONAL AND LOOP**
 
-Line-by-line sequential code execution programming is also known as *procedural programming*. It is the basic programming style using mostly with conditional and loops statements and additional functions for assistance.
-
-This chapter introduce list of conditional and loop statements essential in Python programming.
+Conditional and loop statement is commonly used and one of the essential pieces of code in programming. This chapter introduces list of conditional and loop statements in Python programming.
 
 ## Indentation
 Indentation is used to delimit (mark the limits or boundaries) blocks of code. Simply put, it is used to distinguish where the block of code belongs to. Indentation is inserted on the section of code after colon `:`.
@@ -12,13 +10,13 @@ Beware as placement of indentation can change the script entirely.
 ```python
 # IDENTATION ON THE SECOND PRINT. 
 if 1 < 0:
-	print("Condition is False.") 
-	print("End of IF statement.")
+    print("Condition is False.") 
+    print("End of IF statement.")
 print("The End.") 
 
 # NO INDENTATION ON THE SECOND PRINT.
 if 1 < 0:
-	print("Condition is False.") 
+    print("Condition is False.") 
 print("End of IF statement.")
 print("The End.") 
 ```
@@ -36,7 +34,7 @@ Conditional `if` statement runs code if the condition is true. When the conditio
 
 ```python
 if condition:
-	statements
+    statements
 ```
 
 ### `else` Statement
@@ -45,20 +43,20 @@ Conditional `else` statement must be followed after `if` statement as it cannot 
 
 ```python
 if condition:
-	statements
+    statements
 else:
-	statements
+    statements
 ```
 Chaining `if` and `else` statement is possible in series of conditioning as follows:
 
 ```python
 if condition: 
-	statements
+    statements
 else:
-	if condition:
-		statements
-	else condition:
-		statements
+    if condition:
+        statements
+    else condition:
+        statements
 ```
 
 ### `elif` Statement
@@ -67,11 +65,11 @@ Conditional `elif` statement is a combination of `if` and `else` statement; when
 
 ```python
 if condition: 
-	statements
+    statements
 elif condition:
-	statments:
+    statments:
 else:
-	statements
+    statements
 ```
 
 However, this is not the same as chain of `else`-`if` conditional statement as that is a combination of two different conditional set, while `elif` statement guarantees a single conditional set.
@@ -92,26 +90,26 @@ The `while` loop statement repeatedly execute statements inside (aka. iterate) a
 
 ```python
 while condition:
-	statements
+    statements
 ```
 The `else` statement may follow after a `while` loop statement, which will be executed when the loop statement has successfully finished its iteration (by conditional mean).
 
 ```python
 # FINISHED LOOP: completed iteration
 while index < 10:
-	index += 1
-	if index == 999:
-		break
-	else:
-		print("First...successful!")
+    index += 1
+    if index == 100:
+        break
+    else:
+        print("First...successful!")
 
 # FINISHED LOOP: forece-escaped via break statement
 while index < 10:
-	index += 1
-	if index == 5:
-		break
-	else:
-		print("Second...successful!")
+    index += 1
+    if index == 5:
+        break
+    else:
+        print("Second...successful!")
 ```
 
 ```
@@ -124,10 +122,10 @@ The `break` statement can be used to end a loop prematurely, before complete ite
 
 ```python 
 while single_loop_condition:
-	statement1
-	statement2
-	break
-	statements3
+    statement1
+    statement2
+    break
+    statements3
 ```
 
 ```
@@ -160,24 +158,28 @@ statement2
 
 ## `for` Loop
 
-The `for` loop statements repeatedly execute statements inside (aka. iterate) as long as it is in the valid range. The loop ends once the range object is out of range integer.
+The `for` loop statements repeatedly execute statements inside (aka. iterate) as long as it is in the valid range. The loop ends once all the values in range are iterated.
 
 ```python
 for index in iterable:
-	statements
+    statements
 ```
 
-Here, a local variable `index` obtains integer from `iterable` iterable object and execute statements one-by-one until running all the values inside the object. The `iterable` doesn’t have to be an iterable object: string object can also work, which returns character comprising the string object instead.
+Here, a local variable `index` obtains value from `iterable` and execute statements one-by-one until running all the values inside. The `iterable`s commonly used in the loop are
+
+1. range object: contains pattern of number in sequence (refer to *PYTHON: ITERABLE OBJECT § Range*)
+2. list object: contains list of data regardless of data type and pattern (refer to *PYTHON: ITERABLE OBJECT § List*).
+3. string object: returns character comprising the string.
 
 ```python
-for var in range(3, 9, 2):
-	print("Hello World" , var)
+for var in range(3):
+    print("Hello World" , var)
 ```
 
 ```
-Hello World 3
-Hello World 5
-Hello World 7
+Hello World 0
+Hello World 1
+Hello World 2
 ```
 
 Just like the `while` loop statement, `break` and `continue` can be used in `for` loop as well since it is the same loop-iterating statement.
@@ -187,69 +189,30 @@ The `else` statement may follow after a `for` loop statement, which will be exec
 ```python
 # FINISHED LOOP: completed iteration
 for index in range(10):
-	if index == 999:
-		break
-	else:
-		print("First...successful!")
+    if index == 100:
+        break
+    else:
+        print("First...successful!")
 
 # FINISHED LOOP: forece-escaped via break statement
 while index in range(10):
-	if index == 5:
-		break
-	else:
-		print("Second...successful!")
+    if index == 5:
+        break
+    else:
+        print("Second...successful!")
 ```
 
 ```
 First...successful!
 ```
 
-### **`range()` Function**
-
-A function that creates a sequential list of integers, called "range" object.
-
-| FUNCTION  | EXAMPLE                             | DESCRIPTION                                                  |
-| --------- | ----------------------------------- | ------------------------------------------------------------ |
-| `range()` | `range(start_num, length,interval)` | Creates a range object that has `legnth` number of sequence of integer starting from 0.<br /><br />OPTIONAL: Sequence starts from `start_num` number (not an index) with `interval`. For easier understanding, refer to the sample code below. |
-| `list()`  | `list(rng)`                         | Convert range object `rng` to list.                          |
-
-```python
-print(range(10)) 
-
-print(list(range(10)))
-
-print(list(range(4,10)))
-
-print(list(range(4,10,2)))
-```
-
-```
-range(0,10)            # Range object (one of a types of iterable object)
-[0,1,2,3,4,5,6,7,8,9]
-[4,5,6,7,8,9]
-[4,6,8]
-```
-
-A yet explained `for` loop statement executes code while in valid range, and `range()` function creates a range object that can provide a valid range of iteration.
-
-```python
-for var in range(3, 9, 2):
-	print("Hello World" , var)
-```
-
-```
-Hello World 3
-Hello World 5
-Hello World 7
-```
-
 ## Exception
 
-Exception is an error-exclusive conditional statement: the statement checks whether something goes wrong due to incorrect coding or input, stopping the program immediately. There are some statements that can be used to handle the script errors as follows.
+Exception is an error-exclusive conditional statement: the statement checks whether the code is inexecutable due to incorrect coding or input, and stops the program immediately. There are some statements that can be used to handle the script errors.
 
 ### `try`/`except` Statement
 
-The `try`/`except` statement is used to handle exceptions, and to call certain statements when an exception occurred. There are additional statements that can be used together with the pair:
+The `try`/`except` statement pair is used to handle exceptions and call certain statements corresponding to an exception occurred. There are additional statements that can be used together with the pair:
 
 | KEYWORD   | DESCRIPTION                                                  |
 | --------- | ------------------------------------------------------------ |
@@ -260,22 +223,22 @@ The `try`/`except` statement is used to handle exceptions, and to call certain s
 
 ```python
 try:
-	statements
-except exception_type_1:
-	statements
-except exception_type_2:
-	statements
+    statements
+except exception_type1:
+    statements
+except exception_type2:
+    statements
 except:			# UNCONDITIONAL EXCEPTION LOCATES LAST.
-	statements
+    statements
 finally:
-	statements
+    statements
 ```
 
 Even after `try`/`except` statement is executed, the program does not stop and continues onward.
 
 ### `raise` Statement
 
-The `raise` statement is used to raise exception intentionally, but manually. As the statement raises error, it also stops the runtime immediately, preventing anymore further execution thereafter.
+The `raise` statement is used to manually raise exception intentionally. As the statement raises error, it also stops the runtime immediately, preventing anymore further execution thereafter.
 
 ```python
 # EXPLICITLY RAISE EXCEPTION: can be used alone, even inside an 'except' code above.
@@ -287,14 +250,14 @@ raise exception_description
 
 ### `assert` Statement
 
-The `assert` statement checks expressions of code for validity (aka. assertion). When tested expression is valid with no problem, assertion returns `True`. When assertion returns `False`, an exception is raised.
+The `assert` statement checks expressions for validity (aka. assertion). When tested expression is valid with no problem, assertion returns `True`. When an exception is raised, assertion returns `False`.
 
 ```python
-Print(0)
+print(0)
 assert TRUE_expression
-Print(1)
+print(1)
 assert FALSE_expression,"exception_type"
-Print(2)
+print(2)
 ```
 
 ```
