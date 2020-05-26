@@ -6,15 +6,15 @@ This chapter describes on basic concepts and coding syntax used in Python.
 
 ##  Interpreter
 
-Programming language such as C/C++ uses compiler that translates a source code (written in English) to a computer language (such as binary language) computer can understand for execution. However, interpreter allows computer to execute the program directly from a source code without translation.
+Programming language such as C/C++ uses compiler that translates a source code (written in English) to a computer language (such as binary code) computer can understand and execute. However, interpreter allows computer to execute the program directly from a source code without translation.
 
 Python is interpreter-driven high-level language: this allows scripting the code much easier than compiler, but its execution time can be slower in comparison.
 
 ### CPython
 
-Originally, Python interpreter was developed using C programming language. This implementation is called CPython and is the most widely used implementation of all. Other implementations are Jython (Java-implementation), IronPython (.NET-implementation), PyPy (Python-implementation), and more.
+Originally, Python interpreter was developed using C programming language. This implementation is called CPython and is the most widely used implementation of all. Other notable implementations are Jython (Java-implementation), IronPython (.NET-implementation), and PyPy (Python-implementation).
 
-While Python is introduced as an interpreter language, it actually is both interpreter and compiler: CPython first processes Python code into intermediate bytecode which is than executed by CPython interpreter. Because of this, Python execution takes longer time on first run from compilation.
+While Python is introduced as an interpreter language, it actually uses both interpreter and compiler: CPython first processes Python code into intermediate bytecode which is than executed by CPython interpreter. Because of this, Python execution takes longer time on first run from compilation.
 
 ## Comment
 
@@ -87,21 +87,21 @@ To print mixture of more than a single data type in a single `print()` function,
 
 ## Variable
 
-Variable is a container for the data which can be assigned using assignment operator `=`. There are three different common stages in variable: declaration, definition, and initialization.
+Variable is a container for a data which can be assigned using assignment operator `=`. There are three different common stages in variable: declaration, definition, and initialization.
 
 * **Declaration**
   : declaration is declaring existence of the construct of such as variables, functions, objects, and more. While declaration also includes specifying which data type the construct is in other languages, this is exception to Python since constructs in this language do not need to be declared with data type.
 
 * **Definition**
-  : definition refers to block of codes on values and performance the construct has and is capable of.
+  : definition refers to block of codes on values and performance the construct has and is capable of. In case of variable which can acquire new data, the term *assignment* is more likely to use.
 
   ```python
-  # DEFINITION (+DECLARATION) OF VARIABLE
+  # DEFINITION (+ DECLARATION) OF VARIABLE
   variable = 1
   
-  # DEFINITION (+DECLARATION) OF FUNCTION
+  # DEFINITION (+ DECLARATION) OF FUNCTION
   def function():
-    statements
+      statements
       return 0
   ```
   
@@ -116,23 +116,23 @@ Programmer should observe the rules on naming variable in Python:
 
 * Spaces are not allowed.
 
-Variables are not data-type fixed, allowing programmer to change the value whatever and whenever they want even from a single variable.
+Variable is not data-type fixed, allowing developers to change the value whatever and whenever using a single variable.
 
 ### Local & Global Variable
 
-**Local variable** is a variable declared inside a code block, such as function or class. Data stored in local variable is removed when exiting the code block, thus cannot be used outside. Local variable is allowed to have same variable name declared outside (technically, is borrowing the name as a different identity).
+**Local variable** is a variable declared inside a code block, such as function or class. Data stored in local variable is destroyed when exiting the code block, thus cannot be used outside. This allows variable with the same name to be declared outside the code block.
 
-**Global variable** is a variable declared on a global scope of the script which is outside a code block. It is possible to use the global variable inside a code block using `global` keyword. However, global variable should be avoided if possible to prevent unexpected result and error caused by conflicting variables.
+**Global variable** is a variable declared outside of any code block on the script. Accessing the global variable in a code block is done using `global` keyword. However, global variable should be avoided if possible to prevent unexpected result and error caused by conflicting variables.
 
 ### Constant Variable
 
-Constant variable is a special type of variable that cannot be changed after its initialization. Unfortunately, Python does not have a constant variable since Python does not have a concept of *declaration*. While C-based language do have this feature, Python developer should just be careful not to mess up the what-is-used-as-constant variable.
+Constant variable is a special type of variable that cannot be changed after its initialization. Unfortunately, Python does not have a constant variable since it does not have a concept of *declaration*. While C-based language do have this feature, Python developer should just be careful not to mess up the what-is-used-as-constant variable.
 
 Common method used in Python to indicate the constant variable is declaring the variable UPPERCASE.
 
 ### `del` Keyword
 
-A keyword used to delete variable. Deleted variable can be reassigned later.
+The `del` keyword is used to delete variable. Deleted variable can be reassigned later.
 
 ```python
 # DECLARATION OF THE VARIABLE "x"
@@ -156,7 +156,7 @@ Data type a variable can store in Python can be categorized into three different
 Although a function and a method will be introduced in later chapter, knowing the key difference between these three will prevent getting confused on understanding concepts of programming language overall.
 
 * **Operator**
-  : a constructs which can manipulate the value of operands, such as an arithmetic sign. It does not need argument to operates but by placing before, after, or between the operands.
+  : a constructs which can manipulate the value of operands, such as arithmetic operators. It operates simply by placing before, after, or between the operands.
 * **Function**
   : a reusable piece of code which is called by name to operates. Function can be distinguished from an operator by parenthesis `()` at suffix of the function's name; `function()`.
 * **Method**
@@ -198,22 +198,22 @@ Arithmetic operation of a numeric data type is as follows:
 | NAME                           | OPERATOR | DESCRIPTION                                                  |
 | ------------------------------ | :------: | ------------------------------------------------------------ |
 | Addition                       |   `+`    | -                                                            |
-| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Instead, negative sign substitutes subtraction, as adding negative value is equal to subtracting. |
+| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Negative sign substitutes subtraction, as adding negative value is equal to subtracting value. |
 | Multiplication                 |   `*`    | -                                                            |
 | Exponential                    |   `**`   | -                                                            |
-| Division                       |   `/`    | When divided, the value automatically changes to data type of `float`, a data type of number with decimal point. |
-| Quotient (aka. floor division) |   `//`   | When divided, gives an output a quotient of division only, without a remainder. |
-| Remainder                      |   `%`    | When divided, gives an output a remainder of the division.   |
+| Division                       |   `/`    | When divided, the value implicitly (or automatically) converts to `float`. |
+| Quotient (aka. floor division) |   `//`   | Outputs a quotient of division only, without a remainder.    |
+| Remainder                      |   `%`    | Outputs a remainder of the division.                         |
 
-For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect anything on its output.
+For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect on its output.
 
-Additional operations using with built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iteratable object called *list* which will be introduced later.
+Additional operations are available using built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iterable object called *list* which will be introduced later.
 
 | FUNCTION  | EXAMPLE             | DESCRIPTION                                                  |
 | --------- | ------------------- | ------------------------------------------------------------ |
-| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
-| `min()`   | `min([0,1,2,3,4])`  | Find the minimum number inside.                              |
 | `abs()`   | `abs(-21)`          | Find out absolute value of the number.                       |
+| `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
+| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
 | `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
 | `sum()`   | `sum([0,1,2,3,4])`  | Sum all the numbers in the list.                             |
 
@@ -228,49 +228,41 @@ print(round(164.259763145,2))
 164.26
 ```
 
-Assignment operator is a combination of an arithmetic and an assignment sign `=`, making numerical calculation code to be written more concisely.
+Assignment operator is a combination of an arithmetic and an assignment symbol `=`, making numerical calculation code to be written more concisely.
 
-| OPERATOR | EXAMPLE  | EQUIVALENT                                                   |
-| :------: | -------- | ------------------------------------------------------------ |
-|   `=`    | `x = y`  | `x = y`; assign the value of variable `y` to the variable `x`. |
-|   `+=`   | `x += y` | `x = x + y`                                                  |
-|   `-=`   | `x -= y` | `x = x - y`                                                  |
-|   `*=`   | `x *= y` | `x = x * y`                                                  |
-|   `/=`   | `x /= y` | `x = x / y`                                                  |
-|   `%=`   | `x %= y` | `x = x % y`                                                  |
+| OPERATOR | EXAMPLE  | EQUIVALENT                                                |
+| :------: | -------- | --------------------------------------------------------- |
+|   `=`    | `x = y`  | `x = y`; assigns a value of variable `y` to variable `x`. |
+|   `+=`   | `x += y` | `x = x + y`                                               |
+|   `-=`   | `x -= y` | `x = x - y`                                               |
+|   `*=`   | `x *= y` | `x = x * y`                                               |
+|   `/=`   | `x /= y` | `x = x / y`                                               |
+|   `%=`   | `x %= y` | `x = x % y`                                               |
 
 Increment and decrement does not exist in Python programming language.
 
 
 # **파이썬(Python): 기초**
-파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 줄-다음-줄로 순차적으로 실행되며 줄의 끝에 세미콜론(';')이 필요하지 않다.
+파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 위에서부터 아래로 순차적으로 실행되며 코드 문(文) 끝에는 세미콜론(';')이 필요하지 않다.
 
-이 챕터에서는 파이썬에서 사용되는 코딩 구문과 기초적인 개념에 대해 설명하려 한다.
-
-
+본 챕터에서는 파이썬에서 사용되는 코딩 구문과 기초적인 개념에 대해 설명한다.
 
 ## 인터프리터
-C/C++과 같은 프로그래밍 언어는 소스 코드(영어로 쓰여진)를 컴퓨터가 이해하고 실행할 수 있는 컴퓨터 언어(이진언어와 같이)로 번역하는데 컴파일러를 사용한다. 그러나, 인터프리터는 컴퓨터가 번역 없이 소스코드에서 직접 프로그램을 실행할 수 있도록 한다.
-<!-- 여기 문장이 조금 이상한듯
-인터프리터도 번역을 하지 않나?-->
+C/C++와 같은 프로그래밍 언어는 (영어로 쓰여진) 소스 코드를 컴퓨터가 이해하고 실행할 수 있는 (이진코드와 같은) 컴퓨터 언어로 번역하는데 컴파일러가 사용된다. 그러나 인터프리터는 컴퓨터 언어로의 번역 없이 소스코드에서 직접 프로그램을 실행한다.
+<!-- 여기 문장이 조금 이상한듯 인터프리터도 번역을 하지 않나?-->
 
-파이썬은 인터프리터로 동작하는 고수준 언어: 코드를 작성할 때 컴파일러보다 쉽지만, 실행 시간에 있어서 비교했을 때 느리다.
+파이썬은 인터프리터로 동작하는 고급 언어이다. 비록 코드 작성은 컴파일러보다 쉽지만, 프로그램 실행 시간은 비교적 느리다.
 
+### CPython
+본래 파이썬 인터프리터는 C 언어를 기반하여 개발되었다. C 기반의 인터프리터를 'CPython'이라 부르며 가장 널리 사용된다. 다른 언어로 구현된 것으로 Jython(Java로 구현된 인터프리터), IronPython(.NET로 구현된 인터프리터), 그리고 PyPy(Python로 구현된 인터프리터) 등이 있다.
 
-
-### CPython (C-파이썬)
-
-원래, 파이썬 인터프리터는 C 언어를 사용하여 개발되었다. 이렇게 구현된 것을 'CPython'이라 불리며 가장 널리 사용된다. 다른 언어로 구현된 것은 Jython(Java로 구현된 인터프리터), IronPython(.NET로 구현된 인터프리터), PyPy(Python로 구현된 인터프리터) 등 이 있다.
-
-파이썬은 인터프티 언어로 소개되지만, 실제로 인터프리터와 컴파일러 둘 다 해당된다: CPython은 먼저 파이썬 코드를 CPython 인터프리터에 의해 실행되기 전에 중간 바이트 코드로 처리한다. 이 때문에 파이썬의 실행은 첫 컴파일로부터 더 오랜 시간이 걸린다.
+파이썬은 인터프리터 언어로 소개되었으나, 실제로는 인터프리터와 컴파일러 둘 다 사용한다. CPython은 우선 파이썬 코드를 바이트코드로 컴파일한 다음 CPython 인터프리터에 의해 실행된다. 이 때문에 파이썬의 첫 실행은 컴파일 작업으로 인해 시간이 더 걸린다.
 
 ## 주석
+파이썬에는 한줄 주석과 블록 주석이 존재한다: 
 
-
-파이썬에는 다른 두 가지 주석이 있다 : 줄 주석과 블록 주석
-
-* **줄 주석** : 코드 한 줄짜리 주석, `#`(octothorpe, 샵, 해시태그 등)에 의해 선언된다.
-* **블록 주석**(별명. docstrings) : 작은 따옴표 3개 `''' '''`나 큰 따옴표 3개 `""" """`를 사용해서 여러 줄 주석을 할 수 있다. Docstrings는 또한 여러 줄의 문장을 쓰는데 사용될 수 있고, 실행할 때 볼 수 있다.
+* **한줄 주석** : 코드 한 줄을 차지하는 주석이며, `#`(해시 기호)로 표시된다.
+* **블록 주석**(일명 독스트링) : 코드 여러 줄을 차지하는 주석이며, 세 쌍의 작은 따옴표 `''' '''` 혹은 큰 따옴표 `""" """`로 표시된다. 독스크링(docstrings)은 또한 여러 줄의 문장을 쓰는데 사용되기도 하며, 프로그램 실행 도중에도 볼 수 있다.
 
 ```Python
 """
@@ -280,16 +272,13 @@ C/C++과 같은 프로그래밍 언어는 소스 코드(영어로 쓰여진)를 
 # 줄 주석: 한줄 짜리 주석이다.
 ```
 
-
-
 ## 입력 & 출력
-
-파이썬은 터미날 텍스트 기반으로 된 단일 입력, 출력 함수를 가지고 있다.
+파이썬은 터미널의 텍스트 기반 입력 및 출력 함수를 가진다.
 
 | 입력/출력 | 구문            | 설명                                                  |
 | ------------ | ----------------- | ------------------------------------------------------------ |
-| `input()`    | `input("쓰기:")` | 입력이 필요할 때 텍스트 데이터를 `input()`함수에 넣으면 터미널에 표시되며, 항상 입력한 데이터는 텍스트의 형태로 반환된다. |
-| `print()`    | `print("읽기:",변수)` | 콘솔에서 데이터 타입(예 : 텍스트, 번호)을 출력한다. 여기서 `변수`는 연결을 위한 텍스트 데이터이다. |
+| `input()`    | `input("쓰기:")` | 입력이 요구될 시 `input()` 함수 내에 있는 문자형 데이터가 터미널에 표시되며, 입력된 데이터는 항상 문자형으로 반환된다. |
+| `print()`    | `print("읽기:",variable)` | 콘솔창에 자료형(예 : 문자, 숫자)을 출력한다. 여기서 `variable`은 연결을 위한 문자형 데이터이다. |
 
 ```python
 variable = input("쓰기: ")
@@ -301,20 +290,20 @@ print("읽기:", variable)
 쓰기: Hello World!
 읽기: Hello World!
 ```
-단일 `print()` 함수를 사용하여 혼합된 단일 데이터 유형을 출력하려 하면, 약간의 다른 결과가 나오지만 두 가지의 방법이 있다.
+하나의 `print()` 함수에서 두 가지 이상의 자료형을 한 번에 출력하는 데 두 가지의 방법이 존재하며, 이들의 출력 방식은 약간 다르다.
 
-1. 쉼표(`'`)를 사용하여 연속적으로 데이터를 나열할 수 있다. 하지만 항상 쉼표에는 공백이 놓여지게 된다.
+1. 쉼표(`,`)를 사용하여 연속적으로 데이터를 나열할 수 있다. 하지만 항상 쉼표에는 공백이 놓여지게 된다.
     ```python
     A = 10.0
-    B = "Python3"
+    B = "파이썬3"
     
-    # 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
-    print("A is", A , ", \nand B is", B, ".")
+    # 문자열과 정수의 혼합된 데이터를 쉼표(",")를 사용해 나열한다.
+    print("A는", A , ", \n그리고 B는", B, "이다.")
     ```
 
     ```
-    A is 10.0 ,
-    and B is Python3 .
+    A는 10.0 ,
+    그리고 B는 파이썬3 이다.
     ```
 
 
@@ -322,20 +311,19 @@ print("읽기:", variable)
 
    ```python
    A = 10.0
-   B = "Python3"
+   B = "파이썬3"
    
    # 문자열 변환 후, 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
-   print("A is", str(A) + ", \nand B is", B + ".")
+   print("A는", str(A) + ", \n그리고 B 는", B + "이다.")
    ```
 
    ```
-   A is 10.0,
-   and B is Python3.
+   A는 10.0,
+   그리고 B는 파이썬3이다.
    ```
 
 ## 변수
-
-변수는 할당 연산자 '='를 사용하여 할당할 수 있는 데이터의 컨테이너다. 변수에는 선언, 정의, 초기화 등 세 가지 공통 단계가 있다.
+변수는 할당 연산자('=')를 사용하여 데이터를 할당할 수 있는 저장공간이다. 변수에는 선언, 정의, 초기화 등 세 가지 공통 단계가 있다.
 
 
 * **선언**
@@ -352,7 +340,7 @@ print("읽기:", variable)
   # 함수의 정의(+선언)
   def function():
     statements
-      return 0
+    return 0
   ```
 * **초기화**
   : 초기화는 초기 값을 구조에 할당하는 것이다. 단순하게 *first* 정의. 첫 번째 정의는 일반적으로 구주 선언과 동시에 이루어진다. 따라서, 초기화는 사람들의 생각에 의해 일반적으로 *선언 + 정의*라고 생각되지만, 항상 사실인 것은 아니다.
@@ -456,22 +444,22 @@ Arithmetic operation of a numeric data type is as follows:
 | NAME                           | OPERATOR | DESCRIPTION                                                  |
 | ------------------------------ | :------: | ------------------------------------------------------------ |
 | Addition                       |   `+`    | -                                                            |
-| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Instead, negative sign substitutes subtraction, as adding negative value is equal to subtracting. |
+| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Negative sign substitutes subtraction, as adding negative value is equal to subtracting value. |
 | Multiplication                 |   `*`    | -                                                            |
 | Exponential                    |   `**`   | -                                                            |
-| Division                       |   `/`    | When divided, the value automatically changes to data type of `float`, a data type of number with decimal point. |
-| Quotient (aka. floor division) |   `//`   | When divided, gives an output a quotient of division only, without a remainder. |
-| Remainder                      |   `%`    | When divided, gives an output a remainder of the division.   |
+| Division                       |   `/`    | When divided, the value implicitly (or automatically) converts to `float`. |
+| Quotient (aka. floor division) |   `//`   | Outputs a quotient of division only, without a remainder.    |
+| Remainder                      |   `%`    | Outputs a remainder of the division.                         |
 
-For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect anything on its output.
+For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect on its output.
 
-Additional operations using with built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iteratable object called *list* which will be introduced later.
+Additional operations are available using built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iterable object called *list* which will be introduced later.
 
 | FUNCTION  | EXAMPLE             | DESCRIPTION                                                  |
 | --------- | ------------------- | ------------------------------------------------------------ |
-| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
-| `min()`   | `min([0,1,2,3,4])`  | Find the minimum number inside.                              |
 | `abs()`   | `abs(-21)`          | Find out absolute value of the number.                       |
+| `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
+| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
 | `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
 | `sum()`   | `sum([0,1,2,3,4])`  | Sum all the numbers in the list.                             |
 
@@ -486,22 +474,22 @@ print(round(164.259763145,2))
 164.26
 ```
 
-Assignment operator is a combination of an arithmetic and an assignment sign `=`, making numerical calculation code to be written more concisely.
+Assignment operator is a combination of an arithmetic and an assignment symbol `=`, making numerical calculation code to be written more concisely.
 
-| OPERATOR | EXAMPLE  | EQUIVALENT                                                   |
-| :------: | -------- | ------------------------------------------------------------ |
-|   `=`    | `x = y`  | `x = y`; assign the value of variable `y` to the variable `x`. |
-|   `+=`   | `x += y` | `x = x + y`                                                  |
-|   `-=`   | `x -= y` | `x = x - y`                                                  |
-|   `*=`   | `x *= y` | `x = x * y`                                                  |
-|   `/=`   | `x /= y` | `x = x / y`                                                  |
-|   `%=`   | `x %= y` | `x = x % y`                                                  |
+| OPERATOR | EXAMPLE  | EQUIVALENT                                                |
+| :------: | -------- | --------------------------------------------------------- |
+|   `=`    | `x = y`  | `x = y`; assigns a value of variable `y` to variable `x`. |
+|   `+=`   | `x += y` | `x = x + y`                                               |
+|   `-=`   | `x -= y` | `x = x - y`                                               |
+|   `*=`   | `x *= y` | `x = x * y`                                               |
+|   `/=`   | `x /= y` | `x = x / y`                                               |
+|   `%=`   | `x %= y` | `x = x % y`                                               |
 
 Increment and decrement does not exist in Python programming language.
 
 ### Boolean Data Type
 
-Boolean data type is useful for a code that requires logical conditioning whether it is true or false:
+Boolean data type is useful for a code that requires logical conditioning whether the statement is true or false:
 
 | VALUE          | NAME            | DESCRIPTION                   |
 | -------------- | --------------- | ----------------------------- |
@@ -510,7 +498,7 @@ Boolean data type is useful for a code that requires logical conditioning whethe
 
 Any non-zero positive number can represents Boolean value of `True`. In other word, Boolean value of `2` or `3` are also equivalent to `True` while `False` is only represented by the number `0`.
 
-Comparison operation is used to compare relation of two or more values, returning corresponding Boolean data type depending on whether the condition is held true or false. 
+Comparison operator is used to compare relation of two or more values, returning corresponding Boolean data type depending on whether the condition is held true or false. 
 
 | OPERATOR | DESCRIPTION              |
 | -------- | ------------------------ |
@@ -532,7 +520,7 @@ Meanwhile, the Boolean data type can be added, multiplied, and complemented as f
 
 ### String Data Type
 
-String data type is a text-based data which can be distinguished with other data type by a pair of single quotation mark `''` or double quotation mark `""`. Variable or data that is a string data type is commonly called *string object*.
+String data type is a text-based data which can be distinguished by a pair of single quotation mark `''` or double quotation mark `""`. Variable or data that is a string data type is commonly called *string object*.
 
 Although placing the quotation mark inside a string object can cause broken string data, placing a backslash `\` before the quotation mark can escape from premature end of string.
 
@@ -587,7 +575,7 @@ String is an object (or simply, an independent individual of data), thus string 
 | -------------- | ------------------------ | ------------------------------------------------------------ |
 | `format()`     | `str.format(data)`       | Inserts string or non-string `data` type to a designated space via location or name designated by `{}`. |
 | `join()`       | `str.join(str_lst)`      | Joins a list of string objects `str_lst` by placing string object `str` in-between. |
-| `split()`      | `str.split([str1])`      | Convert a string `str` to a list by separating based on blank spaces if there's no argument in method.<br /><br />[OPTIONAL: In case there’s an argument `str1`, the string object `str` is separated based on `str1`.] |
+| `split()`      | `str.split([str1])`      | Convert a string `str` to a list by separating based on blank spaces if there's no argument in method.<br /><br />*[OPTIONAL: In case there’s an argument `str1`, the string object `str` is separated based on `str1`.]* |
 | `replace()`    | `str.replace(str1,str2)` | Replace `str1` to `str2` within the string object `str`.     |
 | `startswith()` | `str.startswith()`       | Check the start of the `str` for equivalence.                |
 | `endswith()`   | `str.endswith()`         | Check the end of the `str` for equivalence.                  |
@@ -629,7 +617,7 @@ this is a sentence.
 ```
 ### Type Conversion
 
-It is possible to convert one's data type to another different data type. The following three are the conversion widely used when developing Python program:
+It is possible to convert a data type to another different data type. The following three are the conversion widely used when developing Python program:
 
 | FUNCTION  | NAME               | DESCRIPTION                                                  |
 | --------- | ------------------ | ------------------------------------------------------------ |
@@ -650,16 +638,16 @@ Escape character `\` is used to escape from execution of operation intended for 
 | `\'`   | Single quote   |
 | `\"`   | Double quote   |
 
-Not just to escape from unwanted operation, escape character is also used to code a single long command into short consecutive multi-line commands.
+Not just to escape from unwanted operation, escape character is also used to code a single long line of code into short consecutive multi-line code.
 
 ## None
 
 An data with no value regardless of data type. Although `None` can be used as `False` in Boolean logic conditioning, `None` and `False` is completely different even in Boolean concept.
 
 ```python
-# CONDITIONAL CHECK: is None can be deemed as False in Boolean?
+# CONDITIONAL CHECK: can None be deemed as False in Boolean?
 if not(None and True):
-	print(None)
+    print(None)
 ```
 
 ```
