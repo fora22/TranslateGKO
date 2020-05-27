@@ -636,15 +636,16 @@ Magic method is a special method which has Double UNDERscores(dunder) on both si
 
 Previously encountered `__init__` method used for instance initialization is one of the widely used magic method. More can be seen on the table below:
 
-| OPERATOR | NAME           | MAGIC METHOD               |
-| -------- | -------------- | -------------------------- |
-| `+`      | Addition       | `__add__(self, other)`     |
-| `-`      | Subtraction    | `__sub__(self, other)`     |
-| `*`      | Multiplication | `__mul__(self, other)`     |
-| `/`      | Division       | `__truediv__(self, other)` |
-| `&`      | AND            | `__and__(self, other)`     |
-| `^`      | XOR            | `__xor__(self, other)`     |
-| `|`      | OR             | `__or__(self, other)`      |
+| OPERATOR | NAME                       | MAGIC METHOD             |
+| -------- | -------------------------- | ------------------------ |
+| `+`      | Arithmetic: Addition       | `__add__(self, arg)`     |
+| `-`      | Arithmetic: Subtraction    | `__sub__(self, arg)`     |
+| `*`      | Arithmetic: Multiplication | `__mul__(self, arg)`     |
+| `/`      | Arithmetic: Division       | `__truediv__(self, arg)` |
+| `&`      | Logic: AND                 | `__and__(self, arg)`     |
+| `^`      | Logic: XOR                 | `__xor__(self, arg)`     |
+| `|`      | Logic: OR                  | `__or__(self, arg)`      |
+| `()`     | Calling argument(s)        | `__call__(self, arg)`    |
 
 ### Operator Overloading
 
