@@ -439,32 +439,31 @@ print(4 + 1.0)
 5.0
 ```
 
-Arithmetic operation of a numeric data type is as follows:
+숫자 데이터 유형의 산술 연산은 다음과 같다:
 
-| NAME                           | OPERATOR | DESCRIPTION                                                  |
+| 이름                           | 연산자 | 설명                                                  |
 | ------------------------------ | :------: | ------------------------------------------------------------ |
-| Addition                       |   `+`    | -                                                            |
-| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Negative sign substitutes subtraction, as adding negative value is equal to subtracting value. |
-| Multiplication                 |   `*`    | -                                                            |
-| Exponential                    |   `**`   | -                                                            |
-| Division                       |   `/`    | When divided, the value implicitly (or automatically) converts to `float`. |
-| Quotient (aka. floor division) |   `//`   | Outputs a quotient of division only, without a remainder.    |
-| Remainder                      |   `%`    | Outputs a remainder of the division.                         |
+| 더하기                       |   `+`    | -                                                            |
+| 빼기                    |   `-`    |  파이썬은 뺄셈이 없다. 음수 기호는 음수 값을 추가하는 것이 감산 값과 같기 때문에 감산을 대체한다. |
+| 곱하기                 |   `*`    | -                                                            |
+| 제곱                    |   `**`   | -                                                            |
+| 나누기                       |   `/`    |  나누면 값이 암시적으로(또는 자동으로) `float` 형으로 변환된다. |
+| 몫 |   `//`   | 나머지 부분 없이 몫만 출력된다.    |
+| 나머지                     |   `%`    | 나눗셈의 나머지만 출력된다.                         |
 
-For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect on its output.
+산술 연산을 쉽게 읽을 수 있도록 숫자 사이에 공백을 넣을 수 있다. 이 공백은 숫자 및 연산자 출력에 영향을 주지 않는다.
 
-Additional operations are available using built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iterable object called *list* which will be introduced later.
+숫자 자료형에 국한된 내장 함수 및 메서드를 사용하여 추가적인 작업을 수행할 수 있다. 아래 대부분의 작업에는 *list* 라는 이터러블 객체가 필요하며 이 객체는 나중에 소개할 것이다.
 
-| FUNCTION  | EXAMPLE             | DESCRIPTION                                                  |
+| 함수  | 예시             | 설명                                                  |
 | --------- | ------------------- | ------------------------------------------------------------ |
-| `abs()`   | `abs(-21)`          | Find out absolute value of the number.                       |
-| `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
-| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
-| `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
-| `sum()`   | `sum([0,1,2,3,4])`  | Sum all the numbers in the list.                             |
+| `abs()`   | `abs(-21)`          | 숫자의 절댓값을 구한다.                       |
+| `round()` | `round(164.2597,2)` | 기본적으로 한 자릿수로 숫자를 반올림하거나 뒤의 소수 자릿수로 반올림한다. |
+| `max()`   | `max([0,1,2,3,4])`  | 가장 큰 숫자를 구한다.                              |
+| `sum()`   | `sum([0,1,2,3,4])`  | list에서 숫자를 모두 더한다.                             |
 
 ```python
-# EXAMPLE OF ROUND() FUNCTION
+# ROUND() 함수의 예
 print(round(164.259763145))
 print(round(164.259763145,2))
 ```
@@ -474,58 +473,58 @@ print(round(164.259763145,2))
 164.26
 ```
 
-Assignment operator is a combination of an arithmetic and an assignment symbol `=`, making numerical calculation code to be written more concisely.
+할당 연산자는 산술과 할당 기호 `=`의 조합으로, 숫자 계산 코드를 보다 간결하게 작성하게 한다.
 
-| OPERATOR | EXAMPLE  | EQUIVALENT                                                |
+| 연산자 | 예시  | 동일한 코드                                                |
 | :------: | -------- | --------------------------------------------------------- |
-|   `=`    | `x = y`  | `x = y`; assigns a value of variable `y` to variable `x`. |
+|   `=`    | `x = y`  | `x = y`;    `x`에 `y`변수의 값을 할당한다. |
 |   `+=`   | `x += y` | `x = x + y`                                               |
 |   `-=`   | `x -= y` | `x = x - y`                                               |
 |   `*=`   | `x *= y` | `x = x * y`                                               |
 |   `/=`   | `x /= y` | `x = x / y`                                               |
 |   `%=`   | `x %= y` | `x = x % y`                                               |
 
-Increment and decrement does not exist in Python programming language.
+파이썬 프로그래밍 언어에는 증분 및 감소가 없다.
 
-### Boolean Data Type
+### 논리형 데이터 타입
 
-Boolean data type is useful for a code that requires logical conditioning whether the statement is true or false:
+논리형 데이터 타입은 문장이 참인지 거짓인지 논리적 조건화가 필요한 코드에 유용하다.
 
-| VALUE          | NAME            | DESCRIPTION                   |
+| 값          | 이름            | 설명                   |
 | -------------- | --------------- | ----------------------------- |
-| `True` or `1`  | Logically true  | Returned when logic is true.  |
-| `False` or `0` | Logically false | Returned when logic is false. |
+| `True` or `1`  | 논리적 참  | 논리가 참일 때 반환.  |
+| `False` or `0` | 논리적 거짓 | 논리가 거짓일 때 반환. |
 
-Any non-zero positive number can represents Boolean value of `True`. In other word, Boolean value of `2` or `3` are also equivalent to `True` while `False` is only represented by the number `0`.
+0이 아닌 양수는 `True`에 논리형 값을 나타낼 수 있따. 즉, 논리형 `2` 또는 `3`은 `True`와 같고 거짓(`False`)은 숫자 `0`으로만 표현 된다.
 
-Comparison operator is used to compare relation of two or more values, returning corresponding Boolean data type depending on whether the condition is held true or false. 
+비교 연산자는 둘 이상의 값의 관계를 비교하는데 사용되며, 조건이 참인지 거짓인지 여부에 따라 해당하는 논리형 데이터 타입을 반환한다.
 
-| OPERATOR | DESCRIPTION              |
+| 연산자 | 표현              |
 | -------- | ------------------------ |
-| `<`      | Lesser than              |
-| `<=`     | Lesser than or equal to  |
-| `>`      | Greater than             |
-| `>=`     | Greater than or equal to |
-| `==`     | Equal to                 |
-| `!=`     | Not equal to             |
+| `<`      | 보다 작음              |
+| `<=`     | 보다 작거나 같음  |
+| `>`      | 보다 큼             |
+| `>=`     | 보다 크거나 같음 |
+| `==`     | 같음                 |
+| `!=`     | 같지 않음             |
 
-Meanwhile, the Boolean data type can be added, multiplied, and complemented as follows:
+한편, 다음과 같이 논리형 데이터 타입을 추가, 증분 및 보완할 수 있다.
 
-| OPERATOR | NAME           | DESCRIPTION                                             |
+| 연산자 | 이름           | 표현                                             |
 | :------: | -------------- | ------------------------------------------------------- |
-|   `is`   | Equivalence    | Boolean evaluator between two data: equivalent to `==`. |
-|  `and`   | Multiplication | True when all the arguments are True, else False.       |
-|   `or`   | Addition       | True when at least one argument is True, else False.    |
-|  `not`   | Complement     | Change True to False and vice versa.                    |
+|   `is`   | 등가    | 두 데이터 사이의 논리형 평가기이다. `==`와 동일하다.|
+|  `and`   | 곱하기 | 모든 인수가 True이면 True이고 그렇지 않으면 False이다.       |
+|   `or`   | 더하기       | 하나 이상의 인수가 True이면 True이고 그렇지 않으면 False이다.    |
+|  `not`   | 보충     | True를 False로 변경하거나 False로 변경한다.                    |
 
-### String Data Type
+### 문자열 데이터 타입
 
-String data type is a text-based data which can be distinguished by a pair of single quotation mark `''` or double quotation mark `""`. Variable or data that is a string data type is commonly called *string object*.
+문자열 데이터 유형은 단일 따옴표 `''` 또는 큰따옴표 `""`로 구분할 수 있는 텍스트 기반 데이터이다. 문자열 데이터 유형인 변수 또는 데이터를 일반적으로 *문자열 객체* 라고 한다.
 
-Although placing the quotation mark inside a string object can cause broken string data, placing a backslash `\` before the quotation mark can escape from premature end of string.
+문자열 개체 내부에 따옴표를 배치하면 문자열 데이터가 손상될 수 있지만 따옴표 앞에 `\`를 배치하면 문자열을 유지할 수 있다.
 
 ```python
-# COMPARISON BETWEEN IMPROPER AND PROPER WAY OF TYPING STRINGS.
+# 입력 문자열의 부적절한 방법과 적절한 방법을 비교.
 print('Where's my "Cat in the Hat" book?')
 print('Where\'s my "Cat in the Hat" book?')
 ```
@@ -535,10 +534,10 @@ Where
 Where's my "Cat in the Hat" book?
 ```
 
-Create a string with three sets of quotes (either single or double) becomes docstring; docstring can create a newlines just by pressing Enter/Return button. Otherwise, developer need to insert `\n` code manually.
+따옴표 세 집합(단일 또는 이중)이 있는 문자열을 만든다. 문서 문자열은 Enter/Return 버튼을 누르는 것만으로도 새 줄을 만들 수 있다. 그렇지 않으면 개발자가 수동으로 `\n` 코드를 삽입해야 한다.
 
 ```python
-# PRINTING AND WRITING STRING IN MULTIPLE LINES.
+# 여러 줄로 문자열을 인쇄하고 씀
 print("Thank you!\nYou're welcome.")
 print("""Thank you!
 You're welcome.""")
@@ -551,12 +550,12 @@ Thank you!
 You're welcome.
 ```
 
-String objects in Python can be added and multiplied like a number data type:
+Python의 문자열 개체를 숫자 데이터 유형처럼 추가하고 곱할 수 있다:
 
-| OPERATOR | NAME           | DESCRIPTION                                                  |
+| 연산자 | 이름           | 표현                                                  |
 | :------: | -------------- | ------------------------------------------------------------ |
-|   `+`    | Concatenation  | Merge two different strings to one (type of quote doesn’t matter). |
-|   `*`    | Multiplication | Multiply the string by the number of integer (float does not work). |
+|   `+`    | 연쇄  | 서로 다른 두 문자열을 하나의 문자열에 병합한다(따옴표 유형은 중요하지 않다). |
+|   `*`    | 곱하기 | 문자열을 정수 수로 곱한다(float는 동작하지 않음)). |
 
 ```python
 print("Pyt" + 'hon')
@@ -568,36 +567,37 @@ Python
 2222
 ```
 
-String is an object (or simply, an independent individual of data), thus string has its own unique operations that has not been introduced in previous two data types:
+문자열은 객체(또는 단순히 데이터의 독립적인 개체)이므로 이전 두 데이터 유형에는 적용되지 않은 고유한 작업을 가진다.
 
 
-| METHOD         | EXAMPLE                  | DESCRIPTION                                                  |
+| 메서드         | 예                  | 설명                                                  |
 | -------------- | ------------------------ | ------------------------------------------------------------ |
-| `format()`     | `str.format(data)`       | Inserts string or non-string `data` type to a designated space via location or name designated by `{}`. |
-| `join()`       | `str.join(str_lst)`      | Joins a list of string objects `str_lst` by placing string object `str` in-between. |
-| `split()`      | `str.split([str1])`      | Convert a string `str` to a list by separating based on blank spaces if there's no argument in method.<br /><br />*[OPTIONAL: In case there’s an argument `str1`, the string object `str` is separated based on `str1`.]* |
-| `replace()`    | `str.replace(str1,str2)` | Replace `str1` to `str2` within the string object `str`.     |
-| `startswith()` | `str.startswith()`       | Check the start of the `str` for equivalence.                |
-| `endswith()`   | `str.endswith()`         | Check the end of the `str` for equivalence.                  |
-| `upper()`      | `str.upper()`            | Change every text in `str` to uppercase letter.              |
-| `lower()`      | `str.lower()`            | Change every text in `str` to lowercase letter.              |
+| `format()`     | `str.format(data)`       | 문자열 또는 비 문자열 `data` 유형을 `{}` 에서 지정한 위치에 삽입한다. |
+| `join()`       | `str.join(str_lst)`      | 문자열 객체 `str`를 중간에 배치하여 문자열 객체 `str_lst` list에 결합한다. |
+| `split()`      | `str.split([str1])`      | 메서드에 인수가 없는 경우 공백에 따라 구분하여 문자열 `str`를 목록으로 변환합니다.<br/>*[옵션: `str1`] 인수가 있을 경우 문자열 개체인 `str`은 `str1`을 기준으로 구분된다.]* |
+| `replace()`    | `str.replace(str1,str2)` | 문자열 객체인 `str`에서 `str1`을 `str2`로 바꾼다.     |
+| `startswith()` | `str.startswith()`       | `str`의 시작에서 동등성을 확인한다.
+            |
+| `endswith()`   | `str.endswith()`         | `str`의 끝에서 동등성을 확인한다.                  |
+| `upper()`      | `str.upper()`            | `str`의 모든 텍스트를 대문자로 변경한다.              |
+| `lower()`      | `str.lower()`            | `str`의 모든 텍스트를 소문자로 변경한다.              |
 
 
 ```python
-# STRING FORMAT: [1] BY-LOCATION & [2] BY-NAME ASSIGNMENT
+# 문자열 형식: [1] 위치별 및 [2] 이름별 할당.
 lst = [str0, int1, int2]
 print("{2} {0} {1}".format(lst[0], lst[2], lst[1]))
 print("{x} {y} {z}".format(x = lst[0], y = lst[2], z = lst[1]))
 
-# STRING CONCATENATION
+# 문자열 연쇄
 print(" ! ".join([str0, str1, str2]))
 print("str0 ! str1 ! str2".split(" ! "))
 
-# CHECK-UP FOR THE STRING
+# 문자열 확인
 print("This is a sentence.".startswith("this"))
 print("This is a sentence.".endswith("sentence."))
 
-# ALPHABET UPPER/LOWERCASE
+# 알파벳 대문자/소문자 구분
 print("This is a SENTENCE.".upper())
 print("This is a SENTENCE.".lower())
 ```
@@ -618,38 +618,42 @@ this is a sentence.
 ### Type Conversion
 
 It is possible to convert a data type to another different data type. The following three are the conversion widely used when developing Python program:
+데이터 유형을 다른 데이터 유형으로 변환할 수 있다. 다음은 Python 프로그램을 개발할 때 널리 사용되는 변환이다.
 
-| FUNCTION  | NAME               | DESCRIPTION                                                  |
+| 함수  | 이름               | 설명                                                  |
 | --------- | ------------------ | ------------------------------------------------------------ |
-| `int()`   | Convert to integer | `float`: Fraction is eliminated, returning integer only.<br />`string`: Only numerical characters are convertible. |
-| `float()` | Convert to float   | `int`: No restriction.<br />`string`: Only numerical characters are convertible. |
-| `str()`   | Convert to string  | `int`: No restriction.<br />`float`: No restriction.         |
+| `int()`   | 정수로 변환 | `float`: 분수는 제거되고 정수만 반환됨<br />`string`: 숫자만 변환할 수 있음. |
+| `float()` | 실수로 변환   | `int`: 제한 없음.<br />`string`: 숫자만 변환할 수 있음  |
+| `str()`   | 문자로 변환  | `int`: 제한 없음.<br />`float`: 제한 없음.         |
 
-## Escape Character
+## 탈출 문자
 
 Escape character `\` is used to escape from execution of operation intended for an operator. On introduction on string data type, `\'` is used to prevent string from premature ending.
+탈출 문자 `\`는 조작자가 의도한 조작의 실행에서 벗어날 때 사용한다. 문자열 데이터 유형에 대해 소개할 때 문자열의 조기 종료를 방지하기 위해 `\`를 사용하기도 한다.
 
-| SYNTAX | DESCRIPTION    |
+| 구문 | 설명    |
 | ------ | -------------- |
-| `\n`   | New line       |
-| `\t`   | Horizontal tab |
-| `\\`   | Backslash      |
-| `\b`   | Backspace      |
-| `\'`   | Single quote   |
-| `\"`   | Double quote   |
+| `\n`   | 새로운 줄       |
+| `\t`   | 수평 탭 |
+| `\\`   | 백슬래시      |
+| `\b`   | 백스페이스      |
+| `\'`   | 단일 인용   |
+| `\"`   | 복수 인용   |
 
-Not just to escape from unwanted operation, escape character is also used to code a single long line of code into short consecutive multi-line code.
+원치 않는 작업에서 벗어나기 위해 탈출 문자를 사용하면 긴 코드 한 줄을 짧은 연속 다중 라인 코드로 코드화할 수 있다.
 
 ## None
 
 An data with no value regardless of data type. Although `None` can be used as `False` in Boolean logic conditioning, `None` and `False` is completely different even in Boolean concept.
+데이터 유형에 관계없이 값이 없는 데이터다. 논리 조건화에서는 `None`을 `False`으로 사용할 수 있지만 논리 개념에서도 `None`와 `False`은 완전히 다르다.
+
 
 ```python
-# CONDITIONAL CHECK: can None be deemed as False in Boolean?
+# 조건부 확인: 부울에서 None을 False로 간주할 수 있을까?
 if not(None and True):
     print(None)
 ```
 
 ```
-None                    # This proves that None can be used as False in Boolean.
+None                    # 이는 None을 False로 사용할 수 없음을 증명한다.Boolean.
 ```
