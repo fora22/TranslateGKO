@@ -174,18 +174,18 @@ instance2.attr2			# >> 출력: 4 (= 2**2)
 instance2.attr3			# >> 출력: 4
 ```
 
-## Static Method
+## 정적 메소드
 
-Static method is a method that can be called without instantiation, but without parameter to call itself like `self` and `cls`.
+정적 메소드는 객체화없이 호출 할 수 있고 `self` 및`cls`와 같이 자신을 호출하는 매개 변수없이 호출 할 수있는 메소드이다.
 
-| SYNTAX          | DESCRIPTION                               |
+| 구문         | 상세설명                               |
 | --------------- | ----------------------------------------- |
-| `@staticmethod` | Decorator used to declare static methods. |
+| `@staticmethod` | 정적메소드를 선언하는데 사용되는 데코레이터|
 
-Since static method does not have a parameter to call itself, static method cannot access or modify any attribute from class and instance. This makes static method identical to normal function belonged to class.
+정적 메소드에는 자체 호출 할 매개 변수가 없으므로 정적 메소드는 클래스 및 객체의 속성에 접근하거나 수정할 수 없다. 이것은 정적 메소드를 클래스에 속하는 일반 함수와 동일하게 만든다.
 
 ```python
-# CREATING CLASS
+# 클래스 생성
 class CLASS:
     def __init__(self, arg1, arg2):
         self.attr1 = arg1
@@ -195,106 +195,106 @@ class CLASS:
     def method1(self, arg3)
         self.attr3 = arg3
         
-    # STATIC METHOD
+    # 정적 메소드
     @staticmethod
     def method2(arg4):
         return True if arg4 is 4 else False
 
 
-# INSTANTIATION
+# 객체화
 instance = CLASS(1, 2)
 instance.method1(4)
 
-# THEREFORE...
-instance.attr1			# >> OUTPUT: 1
-instance.attr2			# >> OUTPUT: 2
-instance.attr3			# >> OUTPUT: 4
+# 그러므로...
+instance.attr1			# >> 출력: 1
+instance.attr2			# >> 출력: 2
+instance.attr3			# >> 출력: 4
 
-CLASS.method2(4)		# >> OUTPUT: True
+CLASS.method2(4)		# >> 출력: True
 ```
 
-## Magic Method
+## 매직 메소드
 
-Magic method is a special method which has Double UNDERscores(dunder) on both side of its name. These method generally represents operator, and are used when overloading operator to modify the operator's functionality. 
+매직 메소드는 이름의 양쪽에  dunder가있는 특수한 방법입이다. 이 방법은 일반적으로 연산자를 나타내며 연산자를 오버로드하여 연산자의 기능을 수정하는 데 사용된다.
 
-Previously encountered `__init__` method used for instance initialization is one of the widely used magic method. More can be seen on the table below:
+예를 들어 초기화에 사용 된 `__init__` 메소드는 널리 사용되는 매직 메소드 중 하나이다. 아래 표에서 더 많은 것을 볼 수 있다:
 
-| OPERATOR | NAME                       | MAGIC METHOD             |
+| 연산자 | 이름                       | 매직메소드             |
 | -------- | -------------------------- | ------------------------ |
-| `+`      | Arithmetic: Addition       | `__add__(self, arg)`     |
-| `-`      | Arithmetic: Subtraction    | `__sub__(self, arg)`     |
-| `*`      | Arithmetic: Multiplication | `__mul__(self, arg)`     |
-| `/`      | Arithmetic: Division       | `__truediv__(self, arg)` |
-| `&`      | Logic: AND                 | `__and__(self, arg)`     |
-| `^`      | Logic: XOR                 | `__xor__(self, arg)`     |
-| `|`      | Logic: OR                  | `__or__(self, arg)`      |
-| `()`     | Calling argument(s)        | `__call__(self, arg)`    |
+| `+`      | 산술: 덧셈       | `__add__(self, arg)`     |
+| `-`      | 산술: 뺄셈    | `__sub__(self, arg)`     |
+| `*`      | 산술 : 곱셈 | `__mul__(self, arg)`     |
+| `/`      | 산술 : 나눗셈       | `__truediv__(self, arg)` |
+| `&`      | 논리: AND                 | `__and__(self, arg)`     |
+| `^`      | 논리: XOR                 | `__xor__(self, arg)`     |
+| `|`      | 논리: OR                  | `__or__(self, arg)`      |
+| `()`     | 인자호출        | `__call__(self, arg)`    |
 
-### Operator Overloading
+### 연산자 오버로딩
 
-Overloading operator means customizing operator to function differently on certain classes or portion of the script. Magic method is used to overload operator but overloaded functionality is only exclusive to that specific class. As an example, `x + y`  is expressed as `x.__add__(y)` .
+연산자 오버로딩은 특정 클래스 또는 스크립트의 일부에서 다르게 작동하도록 연산자를 사용자 정의하는 것을 의미한다. 매직 메소드는 연산자를 오버로드하는 데 사용되지만 오버로드 된 기능은 해당 특정 클래스에만 적용된다. 예를 들어,`x + y`는`x .__ add __ (y)`로 표현이 된다.
 
 ```python
-# CREATING CLASS
+# 클래스 생성
 class CLASS:
     def __init__(self, arg1):
         self.A = arg1
         
     def __add__(self, arg2):
-        return "\0".join([self.A, arg2.A])		# INSERT "\0" BETWEEN TWO STRING OBJECTS.
+        return "\0".join([self.A, arg2.A])		#두 문자열 객체 사이에 "\0"추가
 
-# INSTANTIATION
+# 객체화
 instance1 = CLASS("Hello")
 instance2 = CLASS("World!")
 
-instance1 + instance2		# >> OUTPUT: "Hello World!"
+instance1 + instance2		# >> 출력: "Hello World!"
 ```
 
-## Inheritance
+## 상속
 
-Inheritance is an act of superclass (base class) providing attributes and methods to derived subclass (child class). When the same name of attributes and methods exists on both superclass and subclass, attributes and methods from superclass are overridden by subclass's.
+상속은 파생 된 서브 클래스 (자식 클래스)에 속성과 메소드를 제공하는 수퍼 클래스 (기본 클래스)의 동작이다. 수퍼 클래스와 서브 클래스 둘 다에 동일한 이름의 속성과 메소드가 존재하는 경우, 수퍼 클래스의 속성과 메소드가 서브 클래스에 의해 대체된다.
 
 ```python
-# CREATING SUPERCLASS
+# 수퍼클래스 생성
 class SUPERCLASS:
     attr1 = value1
     attr2 = value2
 
-# CREATING SUBCLASS
+# 서브클래스 생성
 class SUBCLASS(SUPERCLASS):
     attr2 = "Hello World!"
     attr3 = value3
 
-# INSTANTIATION  
+# 객체화  
 instance = SUBCLASS()
 
-# THEREFORE...
-instance.attr1		# >> OUTPUT: value1
-instance.attr2		# >> OUTPUT: "Hello World!"
-instance.attr3		# >> OUTPUT: value3
+# 그러므로...
+instance.attr1		# >> 출력: value1
+instance.attr2		# >> 출력: "Hello World!"
+instance.attr3		# >> 출력: value3
 ```
 
-### Super Function
+### 수퍼 함수
 
-The `super()` function is used to access the superclass properties, such as class attributes instance/class/static methods directly. This function is mainly used to avoid overriding superclass attributes and methods.
+`super ()`함수는 클래스 속성인 instance / class / static 메소드와 같은 수퍼 클래스 속성에 직접 접근하는 데 사용된다. 이 함수는 주로 수퍼 클래스 속성과 메서드를 재정의하는 것을 피하기 위해 사용된다.
 
 ```python
-# CREATING SUPERCLASS
+# 수퍼클래스 생성
 class SUPERCLASS:
     def __init__(self, arg1):
         print("Hello World!")
         self.attr = arg1
 
-# CREATING SUBCLASS
+# 서브클래스 생성
 class SUBCLASS(SUPERCLASS):
     def __init__(self, arg2):
         print("Goodbye World?")
 
 
-# INSTANTIATION
+# 객체화
 instance = SUBCLASS(3)
 
-# THEREFORE...
+# 그러므로...
 print(instance.attr)
 ```
 
@@ -303,29 +303,29 @@ print(instance.attr)
 AttributeError: 'SUBCLASS' object has no attribute 'attribute'
 ```
 
-Originally, the `__init__()` method in `SUPERCLASS` would have been overridden by `SUBCLASS` since both methods share the same name. This is the reason `print(Hello World")` did not appeared and `self.attribute` cause an error despite inheritance.
+사실 `SUPERCLASS`의`__init __ ()`메소드는 두 개의 메소드가 같은 이름을 공유하기 때문에 `SUBCLASS`로 대체된다. 이것이 `print(Hello World")`가 나타나지 않았고 `self.attribute`가 상속에도 불구하고 오류를 일으키는 이유이다.
 
-On the other hand, when using super function to called the `__init__()` method directly from the `SUPERCLASS`
+한편, 수퍼 함수를 사용할때  `SUPERCLASS`에서 직접 `__init__()`메소드를 호출 할 때 아래와 같이 한다.
 
 ```python
-# CREATING SUPERCLASS
+# 수퍼클래스 생성
 class SUPERCLASS:
     def __init__(self, arg1):
         print("Hello World!")
         self.attribute = arg1
 
-# CREATING SUBCLASS
+# 서브클래스 생성
 class SUBCLASS(SUPERCLASS):
     def __init__(self, arg2):
-        # DIRECTLY INHERITING "__init__()" METHOD FROM SUPERCLASS
+        # 수퍼클래스로부터 "__init__()" 메소드 직접 상속
         super().__init__(arg2)
         print("Goodbye World?")
 
 
-# INSTANTIATION
+# 객체화
 instance = SUBCLASS(3)
 
-# THEREFORE...
+# 그러므로...
 print(instance.attribute)
 ```
 
@@ -335,18 +335,18 @@ print(instance.attribute)
 3
 ```
 
-## Data Hiding
+## 데이터 숨기기
 
-Previously on *Encapsulation* subsection mentioned creating an object provides restriction on accessing attributes and methods, called *Data Hiding*. In Python, however, data hiding is not guaranteed and can be accessed easily from the code outside the class.
+이전에 객체 작성에서는 언급 된 캡슐화 서브 부분에서 데이터 숨기기라는 속성 및 메소드 접근에 대한 제한 사항이 제공된다. 그러나 파이썬에서는 데이터 숨기기가 보장되지 않으며 클래스 외부의 코드에서 쉽게 접근할 수 있다.
 
-Still, manual approach such as name mangling is possible to prevent access to attributes and methods of the class:
+여전히, 클래스 이름 속성과 같은 수동 접근 방식이 클래스의 속성 및 메소드에 대한 접근을 방지 할 수 있다:
 
-| SYMBOL | EXAMPLE       | DESCRIPTION                                                  |
+| 상징 | 예시       | 상세설명                                                 |
 | :----: | ------------- | ------------------------------------------------------------ |
-|  `_`   | `_attribute`  | Though not a name mangling, it can prevent accessing attributes and methods from being passed via module import but not from codes outside the class. |
-|  `__`  | `__attribute` | Name mangling: this prevents accessing attributes and methods from being passed via module import and codes outside the class, thus becomes "private". |
+|  `_`   | `_attribute`  |이름을 다루지 않아도 속성 및 메소드에 접근하는 것은 모듈 가져 오기를 통해 전달되지만 클래스 외부의 코드에서는 전달되지 않는다. |
+|  `__`  | `__attribute` | 이름 맹 글링 : 클래스 외부의 모듈 가져 오기 및 코드를 통해 접근 속성 및 메소드가 전달되지 않도록하여 `private`이 된다. |
 
-### Properties
+### 프로퍼티
 
 Property is a decorator that supports data hiding by dividing a single method into three separate methods: `getter`, `setter`, and `deleter`. Because property is declared using decorator symbol, it can only be used on method.
 
