@@ -348,45 +348,45 @@ print(instance.attribute)
 
 ### 프로퍼티
 
-Property is a decorator that supports data hiding by dividing a single method into three separate methods: `getter`, `setter`, and `deleter`. Because property is declared using decorator symbol, it can only be used on method.
+프로퍼티는 단일 메소드를 세 개의 개별 메소드 `getter`,`setter` 및`deleter`로 나누어 데이터 숨기기를 지원하는 데코레이터이다. 왜냐하면 프로퍼티는 데코레이터 기호를 사용하여 선언되므로 메소드에서만 사용할 수 있다.
 
-| METHOD  | SYNTAX            | DESCRIPTION                                           |
+| 메소드  | 구문            | 상세설명                                           |
 | ------- | ----------------- | ----------------------------------------------------- |
-| Getter  | `@property`       | Method for getting the value from property attribute. |
-| Setter  | `@method.setter`  | Method for setting the value of property attribute.   |
-| Deleter | `@method.deleter` | Method for deleting property attribute.               |
+| Getter  | `@property`       | 프로퍼티 속성에서 값을 가져 오는 메소드 |
+| Setter  | `@method.setter`  | 프로퍼티 속성 값을 설정하는 메소드   |
+| Deleter | `@method.deleter` | 프로퍼티 속성을 삭제하는 메소드              |
 
 ```python
-# CREATING CLASS
+# 클래스 생성
 class CLASS:
     def __init__(self, arg1):
         self.attr1 = arg1
     
-    # DEFINITION: GETTER METHOD
+    # 정의: GETTER 메소드
     @property
     def method(self):
         return self.attr1
     
-    # DEFINITION: SETTER METHOD
+    # 정의: SETTER 메소드
     @method.setter
     def method(self, arg3):
         self.attr1 = arg3
     
-    # DEFINITION: DELETER METHOD
+    # 정의: DELETER 메소드
     @method.deleter
     def method(self):
         del self.attr1
         
-# INSTANTIATION
+# 객체화
 instance = CLASS(3)
 
-# THEREFORE
-print(instance.method)        # EXAMPLE: GETTER METHOD
+# 그러므로
+print(instance.method)        # 예시: GETTER 메소드
 
-instance.method = 1           # EXAMPLE: SETTER METHOD
+instance.method = 1           # 예시: SETTER 메소드
 print(instance.method)
 
-del instance.method           # EXAMPLE: DELETER METHOD
+del instance.method           # 예시: DELETER 메소드
 print(instance.method)
 ```
 
@@ -398,4 +398,5 @@ AttributeError: 'CLASS' object has no attribute 'attr1'
 
 Separating method using property encapsulate sensitive code that shouldn't be modified by the user (such as `setter` and `deleter` method), while providing constant access to the method via `getter` method despite any changes were made on `setter` and `deleter`.
 
-Although `getter` method is essential in property, the `setter` and `deleter` are optional; using `getter` method alone would make unmodifiable read-only method.
+
+`getter` 메소드는 프로퍼티에 필수적이지만`setter` 및`deleter`는 선택 사항이다: `getter` 메소드 만 사용하면 수정할 수없는 읽기 전용 메소드가 된다.
