@@ -348,7 +348,7 @@ print(instance.attribute)
 
 ### 프로퍼티
 
-프로퍼티는 단일 메소드를 세 개의 개별 메소드 `getter`,`setter` 및`deleter`로 나누어 데이터 숨기기를 지원하는 데코레이터이다. 왜냐하면 프로퍼티는 데코레이터 기호를 사용하여 선언되므로 메소드에서만 사용할 수 있다.
+프로퍼티는 단일 메소드를 세 개의 개별 메소드 `getter`,`setter` 및`deleter`로 나누어 데이터 숨기기를 지원하는 데코레이터이다. 프로퍼티는 데코레이터 기호를 사용하여 선언되기 때문에 메소드에서만 사용할 수 있다.
 
 | 메소드  | 구문            | 상세설명                                           |
 | ------- | ----------------- | ----------------------------------------------------- |
@@ -396,7 +396,6 @@ print(instance.method)
 AttributeError: 'CLASS' object has no attribute 'attr1'
 ```
 
-Separating method using property encapsulate sensitive code that shouldn't be modified by the user (such as `setter` and `deleter` method), while providing constant access to the method via `getter` method despite any changes were made on `setter` and `deleter`.
+사용자가 수정해서는 안되는 프로터리를 캡슐화하여 민감한 코드 사용을 구분하는 메소드는(`setter` 와 `deleter` 메소드와 같은) `setter`와`deleter`를 변경함에도 불구하고 `getter`메소드를 통해 메소드에 계속해서 접근할 수 있다.
 
-
-`getter` 메소드는 프로퍼티에 필수적이지만`setter` 및`deleter`는 선택 사항이다: `getter` 메소드 만 사용하면 수정할 수없는 읽기 전용 메소드가 된다.
+`getter` 메소드는 프로퍼티에 필수지만`setter` 및`deleter`는 선택 사항이다: `getter` 메소드만 사용하면 수정할 수 없는 읽기 전용 메소드가 된다.
