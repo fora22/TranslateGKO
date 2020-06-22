@@ -1,145 +1,136 @@
-# **PYTHON: BASIC**
+# **파이썬: 기초**
+파이썬은 웹 프로그래밍, 컴퓨터 과학, 인공지능을 포함한 수많은 영역에서 응용 가능한 고급 프로그래밍 언어이다. 파이썬은 위에서부터 아래로 순차적으로 실행되며 코드 문(文) 끝에는 세미콜론(';')이 필요하지 않다.
 
-Python is a high-level programming language with applications in numerous areas, including web programming, scientific computing, and artificial intelligence. The language is executed sequentially line-after-line and doesn't need semicolon `;` to end the line of statement.
+본 챕터에서는 파이썬에서 사용되는 코딩 구문과 기초적인 개념에 대해 설명한다.
 
-This chapter describes on basic concepts and coding syntax used in Python.
+## 인터프리터
+C/C++와 같은 프로그래밍 언어는 (영어로 쓰여진) 소스 코드를 컴퓨터가 이해하고 실행할 수 있는 (이진코드와 같은) 컴퓨터 언어로 번역하는데 컴파일러가 사용된다. 그러나 인터프리터는 컴퓨터 언어로의 번역 없이 소스코드에서 직접 프로그램을 실행한다.
+<!-- 여기 문장이 조금 이상한듯 인터프리터도 번역을 하지 않나?-->
 
-## Interpreter
-
-Programming language such as C/C++ uses compiler that translates a source code (written in English) to a computer language (such as binary language) computer can understand for execution. However, interpreter allows computer to execute the program directly from a source code without translation.
-
-Python is interpreter-driven high-level language: this allows scripting the code much easier than compiler, but its execution time can be slower in comparison.
+파이썬은 인터프리터로 동작하는 고급 언어이다. 비록 코드 작성은 컴파일러보다 쉽지만, 프로그램 실행 시간은 비교적 느리다.
 
 ### CPython
+본래 파이썬 인터프리터는 C 언어를 기반하여 개발되었다. C 기반의 인터프리터를 'CPython'이라 부르며 가장 널리 사용된다. 다른 언어로 구현된 것으로 Jython(Java로 구현된 인터프리터), IronPython(.NET로 구현된 인터프리터), 그리고 PyPy(Python로 구현된 인터프리터) 등이 있다.
 
-Originally, Python interpreter was developed using C programming language. This implementation is called CPython and is the most widely used implementation of all. Other implementations are Jython (Java-implementation), IronPython (.NET-implementation), PyPy (Python-implementation), and more.
+파이썬은 인터프리터 언어로 소개되었으나, 실제로는 인터프리터와 컴파일러 둘 다 사용한다. CPython은 우선 파이썬 코드를 바이트코드로 컴파일한 다음 CPython 인터프리터에 의해 실행된다. 이 때문에 파이썬의 첫 실행은 컴파일 작업으로 인해 시간이 더 걸린다.
 
-While Python is introduced as an interpreter language, it actually is both interpreter and compiler: CPython first processes Python code into intermediate bytecode which is than executed by CPython interpreter. Because of this, Python execution takes longer time on first run from compilation.
+## 주석
+파이썬에는 한줄 주석과 블록 주석이 존재한다: 
 
-## Comment
+* **한줄 주석** : 코드 한 줄을 차지하는 주석이며, `#`(해시 기호)로 표시된다.
+* **블록 주석**(일명 독스트링) : 코드 여러 줄을 차지하는 주석이며, 세 쌍의 작은 따옴표 `''' '''` 혹은 큰 따옴표 `""" """`로 표시된다. 독스크링(docstrings)은 또한 여러 줄의 문장을 쓰는데 사용되기도 하며, 프로그램 실행 도중에도 볼 수 있다.
 
-There are two different comments in Python: line comment and block comment.
+```Python
+"""
+블록 주석:
+여기에 여러 줄 주석을 달 수 있고, 실행 시 볼 수 있다.
+"""
+# 줄 주석: 한줄 짜리 주석이다.
+```
 
-* **Line comment**
-  : a comment worth a single line of code, and is declared by `#` (octothorpe).
-* **Block comment** (aka. **docstrings**)
-  : a comment with multiple lines of code by using three pairs of double quote `""" """` or single quote `''' '''`. Docstrings can even be used to write multiple lines of sentence and view it on runtime.
+## 입력 & 출력
+파이썬은 터미널의 텍스트 기반 입력 및 출력 함수를 가진다.
+
+| 입력/출력     | 구문                      | 설명                                                                       |
+|-----------|-------------------------|--------------------------------------------------------------------------|
+| `input()` | `input("쓰기:")`          | 입력이 요구될 시 `input()` 함수 내에 있는 문자형 데이터가 터미널에 표시되며, 입력된 데이터는 항상 문자형으로 반환된다. |
+| `print()` | `print("읽기:",variable)` | 콘솔창에 자료형(예 : 문자, 숫자)을 출력한다. 여기서 `variable`은 연결을 위한 문자형 데이터이다.            |
 
 ```python
-"""
-BLOCK COMMENT:
-multiple line of comment can be placed here and can even be viewed on runtime.
-"""
-# LINE COMMENT: for a single line of code.
-```
-
-## Input & Output
-
-Python has a single input and output function for a terminal text-based:
-
-| INPUT/OUTPUT | SYNTAX            | DESCRIPTION                                                  |
-| ------------ | ----------------- | ------------------------------------------------------------ |
-| `input()`    | `input("Write:")` | Text data inside a function `input()` is shown on a terminal when input is needed, and always return input data as text. |
-| `print()`    | `print("Read:",variable)` | Print data types (e.g. text, number) on a console, where `variable` is a text data for concatenation. |
-
-```python
-variable = input("Write: ")
-print("Read:", variable)
-# EQUIVALENT: print("Read:", input("Write: "))
+variable = input("쓰기: ")
+print("읽기:", variable)
+# 동일한 기능: print("읽기:", input("쓰기: "))
 ```
 
 ```
-Write: Hello World!
-Read: Hello World!
+쓰기: Hello World!
+읽기: Hello World!
 ```
+하나의 `print()` 함수에서 두 가지 이상의 자료형을 한 번에 출력하는 데 두 가지의 방법이 존재하며, 이들의 출력 방식은 약간 다르다.
 
-To print mixture of more than a single data type in a single `print()` function, there are two possible methods with slightly different results.
+1. 쉼표(`,`)를 사용하여 연속적으로 데이터를 나열할 수 있다. 하지만 항상 쉼표에는 공백이 놓여지게 된다.
+    ```python
+    A = 10.0
+    B = "파이썬3"
+    
+    # 문자열과 정수의 혼합된 데이터를 쉼표(",")를 사용해 나열한다.
+    print("A는", A , ", \n그리고 B는", B, "이다.")
+    ```
 
-1. Using a comma `,` can list the data in sequence but always places blank space on each comma.
+    ```
+    A는 10.0 ,
+    그리고 B는 파이썬3 이다.
+    ```
+
+
+2. 문자열의 연결에서 `+`를 사용하면 사이에 공백이 생기지 않는다. 하지만, 문자열이 아닌 데이터 형식은 연결을 사용하려면 문자열로 변환해야 한다.
 
    ```python
    A = 10.0
-   B = "Python3"
+   B = "파이썬3"
    
-   # MIXTURE OF STRING AND INT IS LISTED USING COMMA ",".
-   print("A is", A , ", \nand B is", B, ".")
+   # 문자열 변환 후, 문자열과 정수의 혼합된 데이터를 쉼표("'")를 사용해 나열했다.
+   print("A는", str(A) + ", \n그리고 B 는", B + "이다.")
    ```
 
    ```
-   A is 10.0 ,
-   and B is Python3 .
+   A는 10.0,
+   그리고 B는 파이썬3이다.
    ```
 
-2. Concatenation of string using `+` and does not create blank space between. However, data type that is not a string needs to be converted to string to use a concatenation.
+## 변수
+변수는 할당 연산자(`=`)를 사용하여 데이터를 할당할 수 있는 저장공간이다. 변수에는 선언, 정의, 초기화 등 세 가지 공통 단계가 있다.
 
-   ```python
-   A = 10.0
-   B = "Python3"
-   
-   # MIXTURE OF STRING AND INT IS CONCATENATED USING "+" AFTER STRING CONVERSION.
-   print("A is", str(A) + ", \nand B is", B + ".")
-   ```
+* **선언**
+  : 선언이란 변수, 함수, 객체 등의 존재를 알리는 것이다. 다른 프로그래밍 언어에서 선언은 변수의 자료형 지정도 포함하지만, 파이썬은 예외적으로 자료형 지정이 없다.
 
-   ```
-   A is 10.0,
-   and B is Python3.
-   ```
-
-## Variable
-
-Variable is a container for the data which can be assigned using assignment operator `=`. There are three different common stages in variable: declaration, definition, and initialization.
-
-* **Declaration**
-  : declaration is declaring existence of the construct of such as variables, functions, objects, and more. While declaration also includes specifying which data type the construct is in other languages, this is exception to Python since constructs in this language do not need to be declared with data type.
-
-* **Definition**
-  : definition refers to block of codes on values and performance the construct has and is capable of.
+* **정의**
+  : 정의란 변수에 할당된 값이나 함수 및 객체의 코드 블록 내에 코드로 입력된 기능을 의미한다. 변수의 경우에는 *할당*이란 용어가 흔히 사용된다.
 
   ```python
-  # DEFINITION (+DECLARATION) OF VARIABLE
+  # 변수의 정의 (+선언)
   variable = 1
   
-  # DEFINITION (+DECLARATION) OF FUNCTION
+  # 함수의 정의 (+선언)
   def function():
     statements
-      return 0
+    return 0
   ```
-  
-* **Initialization**
-  : initialization is assigning the initial value to the construct, simply the *first* definition. The first definition is generally done on the same time when declaring the construct. Hence, initialization is commonly thought by people as *declaration + definition*, but is not always true.
 
-Programmer should observe the rules on naming variable in Python:
+* **초기화**
+  : 초기화는 초기값을 할당하는 것이며, 즉 *최초 정의*라고 볼 수 있다. 변수 또는 함수의 가장 첫 정의는 선언 단계와 함께 이루어지는 게 일반적이다. 이러한 이유로 초기화는 *선어 + 정의*라고 흔히 여겨지지만 이는 사실이 아니다.
 
-* Only letters, numbers, and underscores are allowed.
+프로그래머는 파이썬에서 변수의 이름을 선정하는 데 아래의 규칙을 준수해야 한다.
 
-* Name cannot start with numbers.
+* 오직 영문, 숫자, 밑줄만 허용된다.
 
-* Spaces are not allowed.
+* 첫 문자는 숫자로 시작할 수 없다.
 
-Variables are not data-type fixed, allowing programmer to change the value whatever and whenever they want even from a single variable.
+* 공백은 허용되지 않는다.
 
-### Local & Global Variable
+변수의 자료형은 고정되어 있지 않다. 그러므로 프로그래머는 하나의 변수로 원하는 어떠한 값으로 언제든지 변경할 수 있다.
 
-**Local variable** is a variable declared inside a code block, such as function or class. Data stored in local variable is removed when exiting the code block, thus cannot be used outside. Local variable is allowed to have same variable name declared outside (technically, is borrowing the name as a different identity).
+### 지역 & 전역변수
 
-**Global variable** is a variable declared on a global scope of the script which is outside a code block. It is possible to use the global variable inside a code block using `global` keyword. However, global variable should be avoided if possible to prevent unexpected result and error caused by conflicting variables.
+**지역 변수**는 함수나 클래스의 코드 블록 내부에서 선언된 변수이다. 단, 이는 조건문이나 반복문, `with` 문 등과 같은 코드 문에서는 적용되지 않는다. 지역 변수에 저장된 데이터는 코드 블록 밖에서는 소멸되므로 외부에서 사용할 수 없다. 지역 변수는 외부에서 선언된 변수의 이름을 가질 수 있다.
 
-### Constant Variable
+**전역 변수**는 스크립트 내에서 어떠한 코드 블록에도 속하지 않은 외부에 선언된 변수이다. `global` 키워드를 이용해 코드 블록 내부에서 전역 변수를 사용할 수 있다. 단, 변수의 충돌로 인한 예상치 못한 결과와 오류를 방지하기 위해 가급적 전역 변수는 피해야 한다.
 
-Constant variable is a special type of variable that cannot be changed after its initialization. Unfortunately, Python does not have a constant variable since Python does not have a concept of *declaration*. While C-based language do have this feature, Python developer should just be careful not to mess up the what-is-used-as-constant variable.
+### 상수 변수
+상수 변수는 초기화 후 변경할 수 없는 특별한 유형의 변수이다. 그러나 파이썬은 *선언*의 개념이 없기 때문에 실질적으로 상수 변수란 존재하지 않는다. C 기반 언어는 이러한 기능을 가지고 있지만, 파이썬 개발자는 상수 변수로 사용될 변수의 할당값을 수정하지 않도록 주의할 수 밖에 없다.
 
-Common method used in Python to indicate the constant variable is declaring the variable UPPERCASE.
+파이썬에서 상수 변수를 나타내기 위해 사용되는 일반적인 방법은 변수의 이름을 전부 대문자로 표기하는 것이다.
 
-### `del` Keyword
+### `del` 키워드
 
-A keyword used to delete variable. Deleted variable can be reassigned later.
+`del` 키워드는 변수를 삭제 할 때 사용한다. 삭제된 변수 이름으로 나중에 재선언 할 수 있다.
 
 ```python
-# DECLARATION OF THE VARIABLE "x"
+# "x" 변수의 선언
 x = "Python"
 print(x)
 
-# DELETION OF THE VARIABLE "x"
+# "x" 변수의 삭제
 del x
 print(x)
 ```
@@ -149,37 +140,37 @@ Python
 NameError: name 'x' is not defined
 ```
 
-## Data Type
+## 자료형
+변수가 파이썬에 저장할 수 있는 자료형은 숫자형, 문자열, 논리형 등 세 가지 유형으로 분류할 수 있다. 파이썬은 데이터의 자료형에 따라 수행할 수 있는 기능이 있으며, 이는 *연산*이라고 부른다. 연산이 가능한 것으로는 (1) 연산자, (2) 함수, 그리고 (3) 메소드가 있다.
 
-Data type a variable can store in Python can be categorized into three different type: numeric, string, and Boolean data type. Depending on the data type, Python can perform type-specific features that process the data, called *operation*. Those that can operates data are (1) operator, (2) function, and (3) method.
+비록 함수와 메서드는 후반부에 소개될 것이지만, 이 세 가지 사이의 주요 차이점을 아는 것은 프로그래밍 언어의 개념을 전반적으로 이해하는 데 있어서 혼동을 예방할 수 있다.
 
-Although a function and a method will be introduced in later chapter, knowing the key difference between these three will prevent getting confused on understanding concepts of programming language overall.
+* **연산자**
+  : 사칙 연산자와 같이 피연산자의 값을 조작하는 데 사용되는 코드이다. 간단히 피연산자의 앞, 뒤 혹은 두 피연산자 사이에 배치하여 사용한다.
 
-* **Operator**
-  : a constructs which can manipulate the value of operands, such as an arithmetic sign. It does not need argument to operates but by placing before, after, or between the operands.
-* **Function**
-  : a reusable piece of code which is called by name to operates. Function can be distinguished from an operator by parenthesis `()` at suffix of the function's name; `function()`.
-* **Method**
-  : an object-exclusive function. Method also has parenthesis `()` at suffix of its name but is always bounded to an object; `object.method()`.
+* **함수**
+  : 실행하고자 하는 기능을 이름으로 호출하여 재사용 가능한 코드 조각이다. 함수는 `function()`과 같이 이름 접무사에 괄호 `()`를 가지므로써 연산자와 구별할 수 있다.
 
-### Numeric Data Type
+* **메서드**
+  : 객체에서만 사용할 수 있는 함수이다. 메서드는 `object.method()`와 같이 이름 접미사에 괄호 `()`가 있지만 항상 객체에 종속되어 있다.
+  
+### 숫자 자료형
+숫자 자료형은 그래프, 연산처리, 인공지능의 신경망 모델링 등 과학적인 목적으로 파이썬에서 널리 사용된다. 다음은 숫자 자료형 목록이다.
 
-Numeric data type is widely used in Python for scientific purpose such as plotting, processing, and on the field of modeling neural network in artificial intelligence. Following are the list of numeric data types:
+| 키워드       | 자료형      | 설명                            |
+|-----------|----------|-------------------------------|
+| `int`     | 정수       | 32 비트 정밀 정수.<br /> 크기 : 제한 없음 (최대 400 바이트) |
+| `float`   | 부동 소수점 수 | 소수점을 포함한 실수.<br />크기: 제한 없음 (최대 400 바이트)  |
+| `complex` | 복소수      | 부동 소수와 허수의 합.<br />크기: 제한 없음 (최대 400 바이트) |
 
-| KEYWORD   | DATA TYPE             | DESCRIPTION                                                  |
-| --------- | --------------------- | ------------------------------------------------------------ |
-| `int`     | Integer               | 32-bits precision integer number.<br />Size: unlimited (max. 400 bytes) |
-| `float`   | Floating point number | Real number with decimal points.<br />Size: unlimited (max. 400 bytes) |
-| `complex` | Complex number        | Contains floating real and imaginary number.<br />Size: unlimited (max. 400 bytes) |
+숫자 자료형의 바이트 크기는 다른 언어에서 보다 크다. 이는 숫자 자료형이 가질 수 있는 최대 바이트 크기일 뿐이며, 어떤 숫자인지에 따라 훨씬 더 작을 수 있다. 이러한 바이트 크기의 유연성은 파이썬에 자료형 선언이 불필요하게 만든다.
 
-The byte size of numeric data type is greater than any other languages. This is just a maximum byte size numeric data type can have and it can be much smaller depending on the what the number is. This flexibility of the byte size makes Python doesn't require data type declaration.
+`float` 자료형은 가장 흔히 사용되는 숫자 자료형이며 `complex` 외에 분수를 표현할 수 있는 가장 작은 자료형이다. `float` 자료형은 다음과 같은 특징을 가진다.
 
-Data type `float` is one of the commonly used numeric data type as it’s the smallest data type that can express the fraction besides `complex`. The `float` data type has following properties:
-
-* Extra zeros (beside right behind the decimal point) at end of the number are ignored.
-* Calculation returns `float` data type automatically when…
-  * Arithmetic operation involving even one single `float`.
-  * Division of `int`.
+* 소수점 끝에 있는 추가 0은 무시된다.
+* 다음 계산은 자동적으로 `float` 자료형을 반환한다:
+  * `float`를 하나라도 포함한 연산
+  * `int` 나눗셈 연산
 
 ```python
 print(9.8765000)
@@ -193,32 +184,31 @@ print(4 + 1.0)
 5.0
 ```
 
-Arithmetic operation of a numeric data type is as follows:
+숫자 자료형의 산술 연산은 다음과 같다.
 
-| NAME                           | OPERATOR | DESCRIPTION                                                  |
+| 이름                           | 연산자 | 설명                                                  |
 | ------------------------------ | :------: | ------------------------------------------------------------ |
-| Addition                       |   `+`    | -                                                            |
-| Subtraction                    |   `-`    | Python doesn’t have a subtraction. Instead, negative sign substitutes subtraction, as adding negative value is equal to subtracting. |
-| Multiplication                 |   `*`    | -                                                            |
-| Exponential                    |   `**`   | -                                                            |
-| Division                       |   `/`    | When divided, the value automatically changes to data type of `float`, a data type of number with decimal point. |
-| Quotient (aka. floor division) |   `//`   | When divided, gives an output a quotient of division only, without a remainder. |
-| Remainder                      |   `%`    | When divided, gives an output a remainder of the division.   |
+| 더하기                       |   `+`    | -                                                            |
+| 빼기                    |   `-`    |  파이썬은 뺄셈이 없다. 그 대신 음수를 더하는 것은 뺄셈과 동일하므로, 음수 기호가 뺄셈을 대체한다. |
+| 곱하기                 |   `*`    | -                                                            |
+| 제곱                    |   `**`   | -                                                            |
+| 나누기                       |   `/`    |  나누면 값이 암시적으로 (혹은 자동으로) `float` 자료형으로 변환된다. |
+| 몫 |   `//`   | 나머지 부분 없이 몫만 출력된다.    |
+| 나머지                     |   `%`    | 나눗셈의 나머지만 출력된다.                         |
 
-For easier readability of the arithmetic operation, you can place blank spaces between number and operator as it does not affect anything on its output.
+산술 연산을 쉽게 읽을 수 있도록 숫자 사이에 공백을 넣어도 된다. 이 공백은 숫자 및 연산자 출력에 영향을 주지 않는다.
 
-Additional operations using with built-in functions and methods exclusive to numeric data type. Most of the operation below requires an iteratable object called *list* which will be introduced later.
+숫자 자료형에 국한된 파이썬 내장 함수 및 메서드를 사용하여 추가적인 연산을 수행할 수 있다. 아래 대부분의 연산은 *리스트* 라는 이터러블 객체가 필요하며 이 객체는 나중에 소개할 것이다.
 
-| FUNCTION  | EXAMPLE             | DESCRIPTION                                                  |
-| --------- | ------------------- | ------------------------------------------------------------ |
-| `max()`   | `max([0,1,2,3,4])`  | Find the maximum number inside.                              |
-| `min()`   | `min([0,1,2,3,4])`  | Find the minimum number inside.                              |
-| `abs()`   | `abs(-21)`          | Find out absolute value of the number.                       |
-| `round()` | `round(164.2597,2)` | Rounds up the number to one’s digit on default, or to a fraction digit behind. |
-| `sum()`   | `sum([0,1,2,3,4])`  | Sum all the numbers in the list.                             |
+| 함수        | 예시                  | 설명                                        |
+|-----------|---------------------|-------------------------------------------|
+| `abs()`   | `abs(-21)`          | 숫자의 절댓값을 구한다.                             |
+| `round()` | `round(164.2597,2)` | 기본적으로 한 자릿수로 숫자를 반올림하거나 뒤의 소수 자릿수로 반올림한다. |
+| `max()`   | `max([0,1,2,3,4])`  | 리스트 객체 내에서 가장 큰 숫자를 반환한다.                 |
+| `sum()`   | `sum([0,1,2,3,4])`  | 리스트 객체 내에에서 숫자를 모두 더한다.                   |
 
 ```python
-# EXAMPLE OF ROUND() FUNCTION
+# round() 함수의 예
 print(round(164.259763145))
 print(round(164.259763145,2))
 ```
@@ -228,58 +218,56 @@ print(round(164.259763145,2))
 164.26
 ```
 
-Assignment operator is a combination of an arithmetic and an assignment sign `=`, making numerical calculation code to be written more concisely.
+할당 연산자는 산술 기호와 할당 기호 `=`의 조합으로, 숫자 계산 코드를 보다 간결하게 작성하도록 한다.
 
-| OPERATOR | EXAMPLE  | EQUIVALENT                                                   |
-| :------: | -------- | ------------------------------------------------------------ |
-|   `=`    | `x = y`  | `x = y`; assign the value of variable `y` to the variable `x`. |
-|   `+=`   | `x += y` | `x = x + y`                                                  |
-|   `-=`   | `x -= y` | `x = x - y`                                                  |
-|   `*=`   | `x *= y` | `x = x * y`                                                  |
-|   `/=`   | `x /= y` | `x = x / y`                                                  |
-|   `%=`   | `x %= y` | `x = x % y`                                                  |
+| 연산자  | 예시       | 동일한 코드                           |
+|:----:|----------|----------------------------------|
+| `=`  | `x = y`  | `x = y`; `x` 변수에 `y`변수의 값을 할당한다. |
+| `+=` | `x += y` | `x = x + y`                      |
+| `-=` | `x -= y` | `x = x - y`                      |
+| `*=` | `x *= y` | `x = x * y`                      |
+| `/=` | `x /= y` | `x = x / y`                      |
+| `%=` | `x %= y` | `x = x % y`                      |
 
-Increment and decrement does not exist in Python programming language.
+파이썬 프로그래밍 언어에는 증감 연산자가 존재하지 않는다.
 
-### Boolean Data Type
+### 논리 자료형
+논리형 자료형은 문장이 참인지 거짓인지 판별하는 논리적 조건이 요구되는 코드에 유용하게 사용된다.
 
-Boolean data type is useful for a code that requires logical conditioning whether it is true or false:
+| 값              | 이름     | 설명            |
+|----------------|--------|---------------|
+| `True` 혹은 `1`  | 논리적 참  | 논리가 참일 때 반환.  |
+| `False` 혹은 `0` | 논리적 거짓 | 논리가 거짓일 때 반환. |
 
-| VALUE          | NAME            | DESCRIPTION                   |
-| -------------- | --------------- | ----------------------------- |
-| `True` or `1`  | Logically true  | Returned when logic is true.  |
-| `False` or `0` | Logically false | Returned when logic is false. |
+0이 아닌 아무런 정수는 `True` 논리값을 나타낸다. 즉, 정수 `2` 또는 `3`은 `True` 논리값과 같고 `False`은 오로지 정수 `0`으로만 표현된다.
 
-Any non-zero positive number can represents Boolean value of `True`. In other word, Boolean value of `2` or `3` are also equivalent to `True` while `False` is only represented by the number `0`.
+비교 연산자는 둘 이상의 값의 관계를 비교하는데 사용되며, 조건이 참인지 거짓인지 여부에 따라 해당하는 논리 자료형을 반환한다.
 
-Comparison operation is used to compare relation of two or more values, returning corresponding Boolean data type depending on whether the condition is held true or false. 
+| 연산자  | 설명        |
+|------|-----------|
+| `<`  | 보다 작음     |
+| `<=` | 보다 작거나 같음 |
+| `>`  | 보다 큼      |
+| `>=` | 보다 크거나 같음 |
+| `==` | 같음        |
+| `!=` | 같지 않음     |
 
-| OPERATOR | DESCRIPTION              |
-| -------- | ------------------------ |
-| `<`      | Lesser than              |
-| `<=`     | Lesser than or equal to  |
-| `>`      | Greater than             |
-| `>=`     | Greater than or equal to |
-| `==`     | Equal to                 |
-| `!=`     | Not equal to             |
+한편, 논리 자료형을 논리합, 논리곱, 및 보수가 가능하다
 
-Meanwhile, the Boolean data type can be added, multiplied, and complemented as follows:
+| 연산자   | 이름  | 설명                                              |
+|:-----:|-----|-------------------------------------------------|
+| `is`  | 등가  | 두 데이터 사이의 논리 판단자이며, `==`와 동일하다.                 |
+| `and` | 논리곱 | 모든 인수가 `True`이면 `True`이고 그렇지 않으면 `False`이다.     |
+| `or`  | 논리합 | 하나 이상의 인수가 `True`이면 `True`이고 그렇지 않으면 `False`이다. |
+| `not` | 보수  | `True`를 `False`로 변경 혹은 `False`를 `True`로 변경한다.   |
 
-| OPERATOR | NAME           | DESCRIPTION                                             |
-| :------: | -------------- | ------------------------------------------------------- |
-|   `is`   | Equivalence    | Boolean evaluator between two data: equivalent to `==`. |
-|  `and`   | Multiplication | True when all the arguments are True, else False.       |
-|   `or`   | Addition       | True when at least one argument is True, else False.    |
-|  `not`   | Complement     | Change True to False and vice versa.                    |
+### 문자열 자료형
+문자열 자료형은 한 쌍의 작은 따옴표 `''` 또는 큰 따옴표 `""`로 구별되는 텍스트 기반 데이터이다. 문자열 자료형의 변수 또는 데이터 값을 일반적으로 *문자열 객체*라고 부른다.
 
-### String Data Type
-
-String data type is a text-based data which can be distinguished with other data type by a pair of single quotation mark `''` or double quotation mark `""`. Variable or data that is a string data type is commonly called *string object*.
-
-Although placing the quotation mark inside a string object can cause broken string data, placing a backslash `\` before the quotation mark can escape from premature end of string.
+문자열 객체 내부에 따옴표를 배치하면 문자열 데이터가 손상될 수 있지만, 따옴표 앞에 `\`를 배치하면 문자열을 유지할 수 있다.
 
 ```python
-# COMPARISON BETWEEN IMPROPER AND PROPER WAY OF TYPING STRINGS.
+# 문자열 작성의 부적절한 예시와 적절한 예시의 비교.
 print('Where's my "Cat in the Hat" book?')
 print('Where\'s my "Cat in the Hat" book?')
 ```
@@ -289,10 +277,10 @@ Where
 Where's my "Cat in the Hat" book?
 ```
 
-Create a string with three sets of quotes (either single or double) becomes docstring; docstring can create a newlines just by pressing Enter/Return button. Otherwise, developer need to insert `\n` code manually.
+세 쌍의 (작은 혹은 큰) 따옴표는 독스트링(docstring)을 생성한다. 독스트링에서는 단순히 키보드의 Enter/Return 버튼을 눌러 줄바꿈이 가능하다. 독스트링이 아닐 시, 줄바꿈은 `\n`을 직접 삽입해야 한다.
 
 ```python
-# PRINTING AND WRITING STRING IN MULTIPLE LINES.
+# 여러 줄의 문자열을 작성 및 출력.
 print("Thank you!\nYou're welcome.")
 print("""Thank you!
 You're welcome.""")
@@ -305,12 +293,12 @@ Thank you!
 You're welcome.
 ```
 
-String objects in Python can be added and multiplied like a number data type:
+파이썬의 문자열 객체는 숫자 자료형과 같이 덧셈과 곱셈이 가능하다.
 
-| OPERATOR | NAME           | DESCRIPTION                                                  |
-| :------: | -------------- | ------------------------------------------------------------ |
-|   `+`    | Concatenation  | Merge two different strings to one (type of quote doesn’t matter). |
-|   `*`    | Multiplication | Multiply the string by the number of integer (float does not work). |
+| 연산자 | 이름  | 설명                                            |
+|:---:|-----|-----------------------------------------------|
+| `+` | 연쇄  | 서로 다른 두 문자열을 하나의 문자열에 병합한다 (따옴표 유형은 중요하지 않다). |
+| `*` | 곱하기 | 문자열을 정수 값만큼 곱한다 (`float`는 사용 불가).             |
 
 ```python
 print("Pyt" + 'hon')
@@ -322,36 +310,34 @@ Python
 2222
 ```
 
-String is an object (or simply, an independent individual of data), thus string has its own unique operations that has not been introduced in previous two data types:
+문자열은 객체(간략히 말해, 하나의 독립적 데이터)이므로 이전 두 자료형에는 적용되지 않은 고유한 연산을 가진다.
 
-
-| METHOD         | EXAMPLE                  | DESCRIPTION                                                  |
-| -------------- | ------------------------ | ------------------------------------------------------------ |
-| `format()`     | `str.format(data)`       | Inserts string or non-string `data` type to a designated space via location or name designated by `{}`. |
-| `join()`       | `str.join(str_lst)`      | Joins a list of string objects `str_lst` by placing string object `str` in-between. |
-| `split()`      | `str.split([str1])`      | Convert a string `str` to a list by separating based on blank spaces if there's no argument in method.<br /><br />[OPTIONAL: In case there’s an argument `str1`, the string object `str` is separated based on `str1`.] |
-| `replace()`    | `str.replace(str1,str2)` | Replace `str1` to `str2` within the string object `str`.     |
-| `startswith()` | `str.startswith()`       | Check the start of the `str` for equivalence.                |
-| `endswith()`   | `str.endswith()`         | Check the end of the `str` for equivalence.                  |
-| `upper()`      | `str.upper()`            | Change every text in `str` to uppercase letter.              |
-| `lower()`      | `str.lower()`            | Change every text in `str` to lowercase letter.              |
-
+| 메소드            | 예시                       | 설명                                                                                                                         |
+|----------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| `format()`     | `str.format(data)`       | 문자열 또는 비문자열 `data`를 지정된 `{}` 위치에 삽입한다.                                                                                     |
+| `join()`       | `str.join(str_lst)`      | `str_lst` 리스트 객체 내의 문자열 객체들 간에 `str` 문자열을 삽입하여 하나의 문자열로 결합한다.                                                              |
+| `split()`      | `str.split([str1])`      | 괄호 안에 문자열이 없는 경우, 공백에 따라 `str` 문자열을 구분하여 리스트 객체로 변환한다.<br/><br/>*[선택사항: 괄호 안에 `str1`가 존재하면 `str` 문자열은 `str1`을 기준으로 구분된다.]* |
+| `replace()`    | `str.replace(str1,str2)` | `str` 문자열 내에서 `str1` 텍스트를 `str2`로 바꾼다.                                                                                     |
+| `startswith()` | `str.startswith()`       | `str` 문자열의 첫 텍스트의 동등성을 확인한다.                                                                                               |
+| `endswith()`   | `str.endswith()`         | `str` 문자열의 마지막 텍스트의 동등성을 확인한다.                                                                                             |
+| `upper()`      | `str.upper()`            | `str` 문자열의 모든 텍스트를 대문자로 변경한다.                                                                                              |
+| `lower()`      | `str.lower()`            | `str` 문자열의 모든 텍스트를 소문자로 변경한다.                                                                                              |
 
 ```python
-# STRING FORMAT: [1] BY-LOCATION & [2] BY-NAME ASSIGNMENT
+# 문자열 형식: [1] 위치별 및 [2] 이름별 할당.
 lst = [str0, int1, int2]
 print("{2} {0} {1}".format(lst[0], lst[2], lst[1]))
 print("{x} {y} {z}".format(x = lst[0], y = lst[2], z = lst[1]))
 
-# STRING CONCATENATION
+# 문자열 연쇄
 print(" ! ".join([str0, str1, str2]))
 print("str0 ! str1 ! str2".split(" ! "))
 
-# CHECK-UP FOR THE STRING
+# 문자열 확인
 print("This is a sentence.".startswith("this"))
 print("This is a sentence.".endswith("sentence."))
 
-# ALPHABET UPPER/LOWERCASE
+# 알파벳 대문자/소문자 변경
 print("This is a SENTENCE.".upper())
 print("This is a SENTENCE.".lower())
 ```
@@ -363,47 +349,45 @@ str0 int2 int1
 str0 ! str1 ! str2
 [str0, str1, str2]
 
-False       # False as the first letter "t" is not capitalized.
-True        # True as it also includes a period at the end.
+False       # 첫 문자 "t"가 대문자가 아니므로 거짓.
+True        # 마지막에 온점 "."을 포함하여 참.
 
 THIS IS A SENTENCE.
 this is a sentence.
 ```
-### Type Conversion
 
-It is possible to convert one's data type to another different data type. The following three are the conversion widely used when developing Python program:
+### 자료형 변환
+자료형을 다른 자료형으로 변환할 수 있다. 다음 세 변환은 파이썬 프로그램 개발에서 가장 널리 사용되는 변환이다.
 
-| FUNCTION  | NAME               | DESCRIPTION                                                  |
-| --------- | ------------------ | ------------------------------------------------------------ |
-| `int()`   | Convert to integer | `float`: Fraction is eliminated, returning integer only.<br />`string`: Only numerical characters are convertible. |
-| `float()` | Convert to float   | `int`: No restriction.<br />`string`: Only numerical characters are convertible. |
-| `str()`   | Convert to string  | `int`: No restriction.<br />`float`: No restriction.         |
+| 함수        | 이름     | 설명                                                     |
+|-----------|--------|--------------------------------------------------------|
+| `int()`   | 정수로 변환 | `float`: 분수는 제거되고 정수만 반환<br />`string`: 숫자만 변환 및 반환 가능 |
+| `float()` | 실수로 변환 | `int`: 제한 없음<br />`string`: 숫자만 변환 및 반환 가능             |
+| `str()`   | 문자로 변환 | `int`: 제한 없음<br />`float`: 제한 없음                       |
 
-## Escape Character
+## 탈출 문자
+탈출 문자 `\`는 문자열로부터 탈출하여 텍스트 데이터 내에서 특정 연산을 수행하도록 하도록 한다. 문자열 자료형을 소개할 때 문자열의 조기 종료를 방지하기 위해 `\`를 사용하였다.
 
-Escape character `\` is used to escape from execution of operation intended for an operator. On introduction on string data type, `\'` is used to prevent string from premature ending.
+| 구문   | 설명     |
+|------|--------|
+| `\n` | 줄바꿈    |
+| `\t` | 탭      |
+| `\\` | 역슬래시   |
+| `\b` | 백스페이스  |
+| `\'` | 작은 따옴표 |
+| `\"` | 큰 따옴표  |
 
-| SYNTAX | DESCRIPTION    |
-| ------ | -------------- |
-| `\n`   | New line       |
-| `\t`   | Horizontal tab |
-| `\\`   | Backslash      |
-| `\b`   | Backspace      |
-| `\'`   | Single quote   |
-| `\"`   | Double quote   |
+문자열로부터 탈출하여 연산을 수행하는 것 이외에, 탈출문자는 하나의 긴 문장을 연속의 다수 짧은 문장으로 작성할 수 있다.
 
-Not just to escape from unwanted operation, escape character is also used to code a single long command into short consecutive multi-line commands.
-
-## None
-
-An data with no value regardless of data type. Although `None` can be used as `False` in Boolean logic conditioning, `None` and `False` is completely different even in Boolean concept.
+## `None` 키워드
+자료형에 관계없이 아무런 값이 없는 데이터이다. 비록 논리 조건에서는 `None`을 `False`으로 사용할 수 있지만, 개념적으로는 `None`과 `False`는 완전히 다른 존재이다.
 
 ```python
-# CONDITIONAL CHECK: is None can be deemed as False in Boolean?
+# 조건부 확인: 논리 조건에서 None을 False로 간주할 수 있는가?
 if not(None and True):
-	print(None)
+    print(None)
 ```
 
 ```
-None                    # This proves that None can be used as False in Boolean.
+None                  # 이는 논리 조건에서 None을 False로 사용할 수 있음을 보여준다.
 ```
