@@ -1,59 +1,52 @@
-# **PYTHON: FUNCTIONAL PROGRAMMING**
+# 파이썬: 함수형 프로그래밍
+함수형 프로그래밍은 프로그램 작성 스타일 중 한 유형으로 함수 사용을 중심으로 한다. 본 챕터는 파이썬에서 함수형 프로그래밍을 구현하기 위한 사용자 정의 함수의 생성 및 사용 방법에 대한 가이드를 소개한다.
 
-There are three different types of programming method that can be applied to Python language: procedural, functional, and object-oriented.
+## 함수
+함수는 독립적인 코드 블록으로써 데이터를 처리하여, 호출 시 처리된 데이터를 보여주어 유동적인 프로그램 스크립팅을 가능하게 한다. 함수는 이름 뒤에 괄호가 있는 `function()` 형식으로 구별된다.
 
-Functional programming is a style of program scripting that is based mostly around usage of the functions. This chapter will be introducing the guide on how to create and use function in Python for functional programming.
-
-## Function
-
-Function is an independent block of code which can process the data and present newly processed data once it’s called, allowing dynamic program scripting. Function can be distinguished from its code format which has parenthesis after its name; `function()`.
-
-The programming based around use of custom functions is called *functional programming*.
+사용자 지정 함수 사용을 중심으로 한 프로그래밍을 *함수형 프로그래밍*이라고 한다.
 
 ```python
 x = [0, 3, 5, 9]
 print(len(x))
-# Code "print()" function, and "len( )" function that returns the length of list object.
+# "print()" 함수, 그리고 리스트 객체의 길이를 반환하는 "len( )" 함수.
 ```
 
 ```
 4
 ```
 
-Although function acts quite different from variable, they can be treated just the same. For easier understanding please refer to the example below:
+비록 함수는 변수와 다르지만 동일하게 취급할 수 있다. 이에 대한 내용은 아래의 예제를 참고하여 확인할 수 있다:
 
 ```python
-# ORIGINAL FUNCTION
+# 본래 함수
 function(arg1, arg2)
 
-# ASSIGNING AND EXECUTING FUNCTION VIA VARIABLE
+# 변수로 함수를 할당 및 실행
 variable = function
 print(variable(arg1, arg2))
 ```
 
-Not only can it be assigned to variable, but function can also be passed as parameter of the other function. Therefore, you can define a function by using another function that’s been already defined.
+함수는 변수로 할당될 수 있을 뿐만 아니라, 다른 함수의 매개변수로도 전달될 수 있다. 그러므로 이미 정의된 다른 함수를 사용하여 또 다른 함수를 정의할 수 있다.
 
-### Pure Function
+### 순수 함수 
+순수 함수는 외부적 요인의 영향 없이 반환값이 순수히 함수의 매개변수에만 의존하는 함수이다.
 
-Function that returns a value that depends only on their arguments without any side effects.
-
-As for an example, cosine function `cos(x)` that only has single parameter `x` returns the value which depends only on the argument `x`; hence, the the cosine function is a pure function.
+예를 들어, 코사인 함수 `cos(x)`는 매개변수 `x` 하나만을 가지며 반환값도 `x`에만 의존한다. 그러므로 코사인 함수는 순수 함수이다.
 
 ```python
-# FUNCTION WITH x AND y PARAMETER.
+# 매개변수 x와 y로 이루어진 함수
 def function(x,y):
     variable = 2 * x
     vairable += y
-    return variable			# RETURN DEPENDS ONLY ON x AND y PARAMETER.
+    return variable			# 반환값이 x와 y 매개변수에만 의존
 ```
 
-### Higher-Order Function
+### 고차 함수
+고차 함수는 다른 함수를 매개변수로 사용하거나 함수를 반환하는 함수이다.
 
-A function that takes other function(s) as parameters or return the function(s) as a result.
-
-## `def` Keyword
-
-The `def` keyword is used to create your own function. When calling your newly created function before defining one, an error occurs as Python executes sequentially, thus is deemed calling non-existing function.
+## `def` 키워드
+`def` 키워드는  사용자 지정 함수를 만들기 위해 사용된다. 새로 생성한 함수를 정의하기도 전에 호출할 시, 순차적으로 실행되는 파이썬에서는 존재하지 않는 함수를 호출하는 것으로 간주되어 오류가 발생한다.
 
 ```python
 def function(arg1, ar2):
@@ -70,13 +63,12 @@ WorldWorld
 2
 ```
 
-Parentheses `()` is necessary when defining a function even the function does not have any parameter.
+함수를 정의할 때는 어떠한 매개변수가 없을지언정 `()` 괄호가 필요하다.
 
-### `return` Statement
+### 반환문
+반환문 `return`은 함수로부터 직접 사용할 수 있도록 특정 데이터의 값을 반환하는 함수 전용 문장이다. 반환문이 실행되면 코드가 남아 있음에도 불구하고 함수는 즉시 종료된다.
 
-The `return` statement is a function-exclusive statement that returns value of certain data that can be directly used from the function. Once a return statement is executed, the function ends immediately despite there are codes still left inside.
-
-Function does not need to have a `return` statement which will return `None` when passed to variable or be printed on console terminal (for example, by using `print()` function).
+함수는 반환문을 반드시 필요로 하지 않으며, 이러한 경우에는 `None` 값이 반환되어 변수에 전달되거나 콘솔창에 출력되어 나타난다. 
 
 ```python
 def function_name():
@@ -91,26 +83,26 @@ None
 ```
 
 
-### Parameter & Argument
+### 매개변수 및 전달인자
 
-Following are the difference between parameters and arguments that is referred significantly when discussed on function.
+다음은 함수에 대해 논의할 때 중요하게 언급되는 매개변수와 전달인자의 차이에 대하여 설명한다.
 
-**Parameter**
-Parameter is a function-internal local variable: because parameters is a function-exclusive local variable, it cannot be called from outside.
+**매개변수**
+매개변수는 함수 내의 지역변수이다. 즉, 매개변수는 함수 전용 지역변수이기 때문에 외부에서 호출 할 수가 없다.
 
-| OPERATOR |    SYNTAX    | DESCRIPTION                                                  |
+**전달인자**
+전달인자(혹은  간략하게 "인자")는 함수 매개변수로 전달되는 값 혹은 객체이며 전달된 데이터는 함수 코드에 의해 처리된다.
+
+| 연산자 |    구문    | 설명                                                 |
 | :------: | :----------: | ------------------------------------------------------------ |
-|   `*`    |   `*args`    | Allows multiple number of arguments.<br />Call by `args`(arguments) without asterisk, and returns tuple of arguments. Must locate after normal parameter. |
-|   `**`   |  `**kwargs`  | Allows use of undefined parameter in advance.<br />Call by `kwargs`(keyword arguments) without asterisks, and returns dictionary of arguments’ name and corresponding values. |
-|   `=`    | `arg1=value` | Returns default value otherwise inputted to its parameter. Must locate after normal parameter. |
+|   `*`    |   `*args`    | 여러 개의 전달인자들을 한 번에 허용한다.<br />함수 내에서는 별표 없이 `args`로 호출하며 튜플을 반환한다. 반드시 일반 매개변수 뒤에 위치해야 한다. |
+|   `**`   |  `**kwargs`  | 정의되지 않은 매개변수를 미리 사용할 수 있도록 한다.<br />함수 내에서는 별표 없이 `kwargs`로 호출하며 전달인자 이름과 해당 값으로 구성된 딕셔너리를 반환한다. |
+|   `=`    | `arg1=value` | 매개변수에 전달인자가 없으면 기본값이 대신 반환된다. 반드시 일반 매개변수 뒤에 위치해야 한다. |
 
-**Argument**
-Argument is a value/object being passed to the function parameter and those passed values and objects will be processed by the function code.
-
-Examples below show how function parameter and argument works:
+아래의 예제는 함수의 매개변수와 전달인자가 동작하는지 보여준다:
 
 ```python
-# PARAMETER *args ALLOWS MORE ARGUMENT TO BE PASSED.
+# 매개변수 *args는 하나 이상의 인자를 전달할 수 있다.
 def function(arg1, *args):
     print(arg1)
     print(args)
@@ -128,7 +120,7 @@ function(1, 2, 3, 4)
 ----
 
 ```python
-# PARAMETER **kwargs ACCEPTS FUNCTION-UNDEFINED PARAMETER.
+# 매개변수 **kwargs는 함수 내에서 정의되지 않은 매개변수를 수용할 수 있다.
 def function(arg1, **kwargs):
     print(kwargs)
     
@@ -136,45 +128,44 @@ function(1, key0 = value0, key1 = value1)
 ```
 
 ```
-{key_0∶value_0, key_1∶value_1}
+{key0∶ value0, key1∶ value1}
 ```
 
 ----
 
 ```python
-# DEFAULT-INITIALIZED PARAMETER arg2
-def function(arg1, arg2="string"):
-    print(arg_2)
+# 매개변수 arg2의 기본값 초기화
+def function(arg1, arg2 = "Hello"):
+    print(arg2)
     
 function(1)
-function(2, "needle")
+function(2, "World!")
 ```
 
 ```
-string
-needle
+Hello
+World!
 ```
 
-## Anonymous Function
+## 익명 함수
+일명 **람다 함수** 혹은 **람다식**은 선언과 이름이 없는 (즉, 익명) 함수로, 데이터를 저장하지 않고 단일 표현식으로만 값을 반환한다. 익명 함수는 일반적으로 일회용 함수로 사용되거나 고차 함수의 전달인자로 사용된다.
 
-Also known as **Lambda function (express)**, is a function without declaration without name (thus, anonymous) and does not store data, returning value only from a single expression. Anonymous function is generally used for a single-use function, or as an argument of higher-order function's parameter.
+| 구문                                                      |
+| --------------------------------------------------------- |
+| `lambda param0, param1 ∶ expression`                      |
+| 익명 함수은 매개변수와 이를 반환하는 표현식으로 구성된다. |
 
-| SYNTAX                                                       |
-| ------------------------------------------------------------ |
-| `lambda param0, param1 ∶ expression`                         |
-| A main body of anonymous function consisting parameters and its return expression. |
-
-Although anonymous function is a function without a name for a single-use, it can be assigned to variables and called when the function is needed. The anonymous function of the named function at *Pure Function* example section is expressed as below:
+비록 익명 함수가 한 번만 사용되는 이름없는 함수이지만, 익명 함수는 변수에 할당되어 필요할 시 호출이 가능하다. 다음은 *순수 함수* 예제를 익명 함수로 표현한 것이다.
 
 ```python
-# NAMED FUNCTION
+# 이름이 있는 함수
 def function(x, y):
     return 2 * x + y
 
-# ANONYMOUS FUNCTION
+# 익명 함수
 (lambda x, y: 2 * x + y)(2, 3)
 
-# ANONYMOUS FUNCTION ASSIGNED TO VARIABLE
+# 변수에 할당된 익명 함수
 variable = lambda x, y: 2 * x + y
 variable(2,3)
 ```
@@ -183,16 +174,15 @@ variable(2,3)
 7
 ```
 
-## Map Function
+## 맵 함수
+맵 함수는 이터러블 객체와 매개변수를 갖는 함수를 인자로 가지는 내장 함수이다. 맵 함수는 이터러블 객체를 인자로 갖는 매개변수 함수의 반환값으로 구성된, 즉 함수로 맵핑(mapping)된 리스트를 반환한다.
 
-Built-in function which takes iterable objects and function with parameters as arguments. Map function returns a list containing return value of the function with iterable objects as arguments.
-
-| SYNTAX                                                       |
+| 구문                                                         |
 | ------------------------------------------------------------ |
 | `map(function, iter0, iter1, ...)`                           |
-| In higher-order `map` function, iterable object `iter0` and `iter1` are passed as argument for `function`. |
+| 고차 맵 함수에서 이터러블 객체 `iter0`와 `iter1`가 `function`의 인자로 전달된다. |
 
-Conversion to an iterable object, such as `list()` function is necessary to avoid error such as "SyntaxError".
+"SyntaxError"와 같은 오류를 방지하려면 `list()`와 같은 함수로 이터러블 객체로 변환해야 한다.
 
 ```python 
 lst0 = [1, 2, 3, 4, 5]
@@ -210,16 +200,15 @@ print( list(var1) )
 [1, 83, 67, 53, 41]
 ```
 
-## Filter Function
+## 필터 함수
+필터 함수는 이터러블 객체와 조건 함수(일명 술어)를 인자로 갖는 내장 함수이며, 술어의 조건에 만족하는 데이터만 필터링되어 구성된 이터러블 객체로 반환된다.
 
-Built-in function which takes iterable object and Boolean conditioning function (aka. predicate) as arguments and returns iterable object containing only with the data that passed the predicate.
-
-| SYNTAX                                                       |
+| 구문                                                         |
 | ------------------------------------------------------------ |
 | `filter(predicate, iterable)`                                |
-| In higher-order `filter` function, iterable object `iterable`are passed as argument for `predicate`. |
+| 고차 필터 함수에서 이터러블 객체 `iterable`는 술어의 인자로 전달된다. |
 
-Conversion to an iterable object, such as `list()` function is necessary to avoid error such as "SyntaxError".
+"SyntaxError"와 같은 오류를 방지하려면 `list()`와 같은 함수로 이터러블 객체로 변환해야 한다.
 
 ```python
 lst = [1, 2, 3, 4, 5]
@@ -233,14 +222,13 @@ print( list(var) )
 [2, 4]
 ```
 
-## Recursive Function
-
-Recursive function is a function that calls itself (recursion). Factorial $!$ in mathematic is the best example of recursive function implementation.
+## 재귀 함수 
+재귀 함수는 스스로를 호출하는 함수이다. 수학에서의 펙토리얼 $!$이 재귀 함수 구현의 대표적인 예제이다.
 
 ```python
-# EXAMPLE: FACTORIAL "!"
-def factorial( x ):
-    # BASE CASE: a case when to escape from the recursion.
+# 예제: 펙토리얼 "!"
+def factorial(x):
+    # 기저 조건: 재귀로부터 탈출하는 조건
     if x == 1: 
         return 1
     else:
@@ -253,79 +241,76 @@ print( factorial(5) )
 120
 ```
 
-Recursion can occur indirectly by multiple number of functions calling one to another, then back to the beginning.
+여러 함수가 서로의 꼬리를 물어 호출하는 간접적 재귀도 가능하다.
 
-### Base Case
-
-A case of recursion which doesn’t involve referring to itself anymore. It can be deemed as an exit condition. Without a base case, recursion results infinitely and thus crashes due to memory shortage:
+### 기저 조건
+더 이상 스스로를 호출하지 않는 재귀 조건을 말하며, 출구 조건으로 인식할 수 있다. 기저 조건이 없을 시, 재귀는 무한히 발생하여 메모리 부족으로 충돌한다.
 
 ```
 RuntimeError: maximum recursion depth exceeded
 ```
 
-## Decorator
-
-A function which modifies original function’s functionality and returns the modified "function" itself (rather than returning value). Hence, assignment to a variable is needed for a function to properly work after processing through the decorator. Its function will then have a same name as the variable.
+## 데코레이터
+데코레이터는 함수의 기능을 수정하며, 값을 반환하기 보다는 수정된 함수 자체를 반환하는 함수이다. 그러므로 데코레이터를 통해 처리된 후에 제대로 동작하기 위해서는 변수로의 할당이 필요하며, 함수 호출 또한 변수를 통해 이루어진다.
 
 ```python
-# ORIGINAL FUNCTION
+# 본래 함수
 def function():
 	statements
 
-# CREATING DECORATOR
+# 데코레이터 생성
 def decorator(func):
 	def modified_function():
         """
-        statements including func()
+        func() 함수를 포함한 문
         """
 	return modified_function
 
-# DECORATING (MODIFYING) FUNCTION
+# 함수 수정하기(데코레이팅)
 variable = decorator(function) 
-variable()		# WHICH IS ACTUALLY A FUNCTION ASSIGNED TO "variable".
-
-# DECORATING (MODIFYING) FUNCTION: MAINTAIN FUNCTION NAME
+variable()		# 실제로는 "variable" 변수에 할당된 함수이다.
+                
+# 함수 수정하기(데코레이팅): 함수 이름 유지
 function = decorator(function)
 function()
 ```
 
-Decorator above have decorated (modified) `function()` and assigned the decorated function to a variable `variable()` and `function()`, where latter maintains the function name.
+위의 데코레이터는 `function()`을 수정하고 변수 `variable()` 및  `function()`에 할당하였으며, 후자의 경우는 함수명을 유지하였다.
 
-When passing function as a parameter of a decorator, no parenthesis are needed like `function()`. This is because former passes function itself and latter passes return value of the function.
+데코레이터의 인자로 함수를 전달할 때  `function()`처럼 괄호가 필요하지 않다. 이는 함수의 반환값을 전달하기 때문이며, 함수 자체를 전달하기 위해서는 괄호를 사용하지 않는다.
 
-### `@` Symbol
+### `@` 기호
+데코레이터의 `@` 기호는 적용될 데코레이터 이름과 함께 수정될 함수 앞에 놓여 사용된다.
 
-A decorator symbol `@` used for pre-pending the function definition, placed before pre-decorated function.
-
-| OPERATOR | EXAMPLE      | DESCRIPTION                                               |
+| 연산자 |  예시   | 설명                                              |
 | :------: | ------------ | --------------------------------------------------------- |
-|   `@`    | `@decorator` | `@decorator` is a replacement of `func = decorator(func)` |
+|   `@`    | `@decorator` | `@decorator` 는 `function = decorator(function)`을 대체한다. |
 
 ```python
-# CREATING DECORATOR.
+# 데코레이터 생성
 def decorator(func):
     def modified_function():
         """
-        statements including func()
+        func() 함수를 포함한 문
         """
     return function_modified
 
-# DECORATING FUNCTION: @ SYMBOL
+# 함수 수정하기: @ 기호 사용
 @decorator
-def function():	# ORIGINAL FUNCTION OF "function()"
+def function():	# "function()"의 본래 함수
     statements
 
-# FUNCTION NAME REMAINS THE SAME.
+# 함수 이름은 그대로 유지된다.
 function()
 ```
 
-Additionally, more than one decorator can be applied to a single pre-decorated function.
+추가적으로, 수정될 함수에는 하나 이상의 데코레이터를 적용 할 수 있다.
 
 ```python
-@decorator0
 @decorator1
+@decorator2
 def function():
     statements
 ```
 
-A decorator located closest to pre-decorated function will be applied firsthand. Thus, the function object `function()` will first be decorated by `@decorator1`  then `@decorator0` sequentially.
+수정될 함수에 가장 가까운 데코레이터가 우선적으로 적용된다. 그러므로, `function()` 함수는 먼저 `@decorator2` 다음 `@decorator1`으로 순차적으로 적용된다.
