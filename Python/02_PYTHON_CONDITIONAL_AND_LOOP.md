@@ -270,7 +270,7 @@ AssertionError: exception_type
 
 The `pass` statement is a null operation that does nothing when executed. This comes useful by inserting it where the code will be placed hasn’t been written yet.
 
-# **파이썬: 조건문과 반복문
+# **파이썬: 조건문과 반복문**
 
 조건문 및 반복문은 일반적으로 사용되며 프로그래밍에 필수적인 코드 중 하나이다. 이 챕터에서는 파이썬 프로그래밍의 조건문과 반복문을 소개하려 한다.
 
@@ -280,13 +280,13 @@ The `pass` statement is a null operation that does nothing when executed. This c
 들여쓰기의 위치에 따라 코드가 완전히 변경될 수 있으므로 주의해야 한다.
 
 ```python
-# 두번째 print에 들여쓰기가 된 모습. 
+# 두번째 print에 들여쓰기가  된 경우
 if 1 < 0:
     print("Condition is False.") 
     print("End of IF statement.")
 print("The End.") 
 
-# 두번째 print에 들여쓰기가 되지 않은 모습.
+# 두번째 print에 들여쓰기가 되지 않은 경우
 if 1 < 0:
     print("Condition is False.") 
 print("End of IF statement.")
@@ -333,7 +333,7 @@ else:
 
 ### `elif` 문
 
-조건부 `elif`문은 `if`와 `else`문의 조합으로 첫 번째 조건이 거짓이고, 첫 번째 조건과 다른 조건을 평가할 수 있는 두 번째(혹은 그 이상) 기회를 제공한다.
+조건부 `elif`문은 `if`와 `else`문의 조합으로 첫 번째 조건이 거짓일 경우, 첫 번째 조건과 다른 조건을 평가할 수 있는 두 번째(혹은 그 이상) 기회를 제공한다.
 
 ```python
 if 조건1: 
@@ -479,18 +479,18 @@ First...successful!
 
 ## 예외
 
-예외는 오류 전용 조건문이다. 이 문장은 잘못된 코딩이나 입력으로 인해 실행 불가능한지 여부를 확인하고 프로그램을 즉시 중지한다. 스크립트 오류를 처리하는 데 사용할 수 있는 몇 가지 문이 있따.
+예외는 오류 전용 조건문이다. 이 문장은 잘못된 코딩이나 입력으로 인해 실행 불가능한지 여부를 확인하고 프로그램을 즉시 중지한다. 스크립트 오류를 처리하는 데 사용할 수 있는 몇 가지 문이 있다.
 
 ### `try`/`except` 문
 
-`try`/`except` 문 쌍은 예외를 처리하고 예외 발생에 해당하는 특정 문을 호출하는 데 사용된다. 다음 쌍과 함께 사용할 수 있는 추가 문장이 있다.
+`try`/`except` 문은 예외를 처리하고 예외 발생에 해당하는 특정 문을 호출하는 데 사용된다. 다음 쌍과 함께 사용할 수 있는 추가 문장이 있다.
 
-| 용어      | 표현                                                  |
+| 용어      | 설명                                                  |
 | --------- | ------------------------------------------------------------ |
-| `try`     | 예외가 있는지 확인되어야 할 코드 블록이다.                 |
+| `try`     | 예외가 있는지 확인되어야 할 코드이다.                 |
 | `except`  | 특정한 예외가 발생했을 때 실행할 코드이다.         |
 | `else`    | [선택사항: 오류(예외)없이 코드가 통과되었을 때 실행할 코드이다.] |
-| `finally` | [선택사항: 어떤 예외가 발생했든, 오류가 없더라도 실행된 코드 블록이다.] |
+| `finally` | [선택사항: 어떤 예외가 발생했든, 오류가 없더라도 실행된 코드이다.] |
 
 ```python
 try:
@@ -499,7 +499,7 @@ except exception_type1:
     statements
 except exception_type2:
     statements
-except:			# UNCONDITIONAL EXCEPTION LOCATES LAST.
+except:			# 전조건 예외처리는 마지막에 위치
     statements
 finally:
     statements
@@ -509,7 +509,7 @@ finally:
 
 ### `raise` 문
 
-`raise`문은 수동으로 의도적으로 예외를 처리하는데 사용된다. 이 명령문은 오류가 발생하면 런타임도 즉시 중지하므로 더 이상 실행되지 않는다.
+`raise`문은 수동으로 의도적으로 예외를 처리하는데 사용된다. 이 명령문은 오류가 발생하면 실행도 즉시 중지하므로 더 이상 실행되지 않는다.
 
 ```python
 # 명시적인 raise 예외: 위의 'except' 코드 안에서도 단독으로 사용할 수 있음
