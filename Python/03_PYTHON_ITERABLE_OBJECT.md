@@ -463,52 +463,52 @@ lst = [i**2 for i in range(5) if (i**2) % 2 == 0]
 [0, 4, 16]
 ```
 
-### List Operation
+### 리스트(List) 기능
 
-A list can be added and multiplied, with operations exclusive to iterable objects. Operations below are not restricted to a list alone but can be applied to other iterable objects introduced later.
+리스트는 추가하고 곱할 수 있으며 이터러블 객체 전용의 기능이다. 아래 작업은 리스트에만 제한되지는 않지만 나중에 도입된 다른 이터러블 객체에 적용할 수 있다.
 
-| OPERATOR | NAME           | DESCRIPTION                                                  |
+| 연산자 | 이름           | 설명                                                  |
 | -------- | -------------- | ------------------------------------------------------------ |
-| `+`      | Addition       | Merge two or more different lists to a single list.          |
-| `*`      | Multiplication | Multiply the string by the number of integer (float does not work). |
-| `in`     | Included       | Check if an item is in a list.                               |
+| `+`      | 더하기       | 둘 이상의 서로 다른 리스트를 단일 리스트로 병합한다.          |
+| `*`      | 곱하기 | 문자열을 정수 수로 곱한다(float는 동작 안함). |
+| `in`     | 포함됨       | 리스트에 항목이 있는지 확인한다.                               |
 
 ```python
 lst = [value1, value2, value3]
 
-# + OPERATOR
+# + 연산자
 print(lst + [value3, value4])	 # >> ㅊ: [value1, value2, value3, value3, value4]
 
-# * OPERATOR
+# * 연산자
 print(lst * 2)				   	# >> ㅊ: [value1, value2, value3, value1, value2, value3]
 
-# in OPERATOR
+# in 연산자
 print(value1 in lst)		   	# >> ㅊ: True
 print(value2 not in lst)		# >> ㅊ: False
 ```
 
-Following are functions that does certain features to and for a list (or more like iterable) object.
+다음은 리스트(또는 더 많은 이터러블) 객체에 대해 특정 기능을 수행하는 기능이다.
 
-| FUNCTION      | EXAMPLE                             | DESCRIPTION                                                  |
+| 함수      | 예시                             | 예시                                                  |
 | ------------- | ----------------------------------- | ------------------------------------------------------------ |
-| `len()`       | `len(lst)`                          | Find the length of the `lst` list by counting elements.      |
-| `all()`       | `all([condition for index in lst])` | Return `True` when all elements inside the `lst` list meets `condition`. |
-| `any()`       | `any([condition for index in lst])` | Return `True` when any element inside the `lst` list meets `condition`. |
-| `enumerate()` | `enumerate(lst)`                    | Iterates elements inside the `lst` list with sequencing.     |
-| `list()`      | `list(iterable)`                    | Convert an iterable object (such as string and range) to a list; creates empty list if `iterable` is not presented. |
+| `len()`       | `len(lst)`                          | `lst` 리스트에 있는 원소들의 개수를 세어 길이를 찾음.      |
+| `all()`       | `all([condition for index in lst])` | `lst` 리스트에 있는 모든 원소들이 `condition`과 만날때 `True`를 반환. |
+| `any()`       | `any([condition for index in lst])` | `lst` 리스트에 있는 어떤 원소들이 `condition`과 만날때 `True`를 반환. |
+| `enumerate()` | `enumerate(lst)`                    | `lst` 리스트 내부의 요소를 시퀀싱으로 반복함.     |
+| `list()`      | `list(iterable)`                    | 문자열 및 범위와 같은 반복 가능한 객체를 리스트로 변환함. `iterable`이 표시되지 않으면 빈 리스트를 만듭니다. |
 
 ```python
 lst = [10, 9, 8, 7, 6]
 
-# ALL() FUNCTION
+# ALL() 함수
 if all( [var > 5 for var in lst] ):
     print("Numbers are all above 5.")		   # >> OUTPUT: Numbers are all above 5.
 
-# ANY() FUNCTION
+# ANY() 함수
 if any( [ var % 2 ==  0 for var in lst] ):
     print("At least one number is even.")	   # >> OUTPUT: At least one number is even.
     
-# ENUMERATE() FUNCTION
+# ENUMERATE() 함수
 for var in enumerate(lst):
     print(var)								 # >> OUTPUT: (0,10)
                                                 # >>		 (1,9)
@@ -517,30 +517,31 @@ for var in enumerate(lst):
                                                 # >>		 (4,6)
 ```
 
-Since list is an (iterable) object, it also has methods it can use to perform certain features:
+리스트는 (이터러블)객체이므로 특정 기능을 수행하는 데 사용할 수 있는 메소드도 있다.
 
-| METHOD     | EXAMPLE                    | DESCRIPTION                                                |
+| 메서드     | 예시                    | 설명                                                |
 | ---------- | -------------------------- | ---------------------------------------------------------- |
-| `append()` | `lst.append(value)`        | Add `value` at the end of the `lst` list.                  |
-| `insert()` | `lst.insert(index, value)` | Add `value` at `index` element location of the `lst` list. |
-| `index()`  | `lst.index(value)`         | Find the smallest number of location of `value`.           |
+| `append()` | `lst.append(value)`        | `lst`리스트 끝에 `value` 를 추가함.                  |
+| `insert()` | `lst.insert(index, value)` | `lst`리스트에서 해당 `index`에 해당하는 `value`를 추가함. |
+| `index()`  | `lst.index(value)`         | `value`에 해당하는 가장 작은 해당 원소의 위치의 숫자를 찾음           |
 
-## Tuple
+## 튜플
 
 Tuple iterable object is used to store item in order just like a list, but cannot change value after initialization. This property of iterable object is called immutable (opp. mutable). Tuple use parentheses `()` or even without any to distinguish itself from other iterable.
+튜플 이터러블 객체는 리스트와 마찬가지로 항목을 순서대로 저장하는데 사용되지만 초기화 후에는 값을 변경할 수 없다. 이터러블 객체의 이 속성을 불변이라고 한다. 튜플은 괄호 `()`를 사용하거나, 괄호 없이 사용할 수도 있다.
 
 ```python
 tpl = (value1, value2, value3)
 print(tpl)			# >> OUTPUT: (value1, value2, value3)
 print(tpl[0])		# >> OUTPUT: value1
 
-# ALTERNATIVE: tuple without parentheses
+# 대안 : 괄호 없이 튜플한다.
 tpl = value1, value2, value3
 print(tpl)			# >> OUTPUT: (value1, value2, value3)
 print(tpl[0])		# >> OUTPUT: value1
 ```
 
-Because tuple is a constant version of a list, the data inside cannot be changed. The error will occur when such effort is made.
+왜냐하면 튜플은 리스트의 상수 버전이고, 안의 데이터는 바꿀 수 없다. 이러한 작업을 수행하면 오류가 발생한다.
 
 ```python
 tpl = (value1, value2, value3)
@@ -551,35 +552,34 @@ tpl[1] = value4
 TypeError: 'tuple' object does not support item assignment
 ```
 
-Tuple operation can be referred from operation, function, and method table in *PYTHON: ITERABLE OBJECT § List Operation* subsection.
+튜플 연산은 *파이썬: 이터러블 객체 § 리스트 기능* 하위 섹션의 조작, 기능 및 메서드 표에서 참조할 수 있다. 
 
+### 튜플 해제
 
-### Unpacking Tuple
-
-Unpacking tuple means assigning individual element in tuple to variables or another tuples. Placing asterisk `*` on prefix of a variable would return multiple leftover elements as a list object. This will be explained in *PYTHON: FUNCTIONAL PROGRAMMING § Parameters & Arguments* subsection.
+튜플을 해제하는 것은 튜플의 개별 요소를 변수나 다른 튜플에 할당하는 것을 의미한다. 변수의 접두사에 별표 `*`를 지정하면 남은 여러 요소가 리스트 객체로 반환된다. 이 내용은 *파이썬: 형식 제안 § 매개변수 & 인수* 하위 섹션에서 설명된다.
 
 ```python
 variable1, variable2, *variable3, variable3 = [value1, value2, value3, value4, value5]
 
-print(variable1)		# >> OUTPUT: value1
-print(variable2)		# >> OUTPUT: value2
-print(variable3)		# >> OUTPUT: [value3, value4]
-print(variable3)		# >> OUTPUT: value5
+print(variable1)		# >> 출력: value1
+print(variable2)		# >> 출력: value2
+print(variable3)		# >> 출력: [value3, value4]
+print(variable3)		# >> 출력: value5
 ```
 
-## Dictionary
+## 딕셔너리
 
-Dictionary is an iterable object that has indexing `key` data and `value` data paired as a single element. Dictionary does not call value by integer index but through `key`. Dictionary uses curly bracket `{}` to distinguish itself from other iterable.
+딕셔너리는 인덱싱 `key` 데이터와 값 `value` 데이터를 단일 요소로 쌍을 이루는 이터러블 객체입니다. 딕셔너리는 정수 인덱싱으로 값을 호출하지 않고 `key`를 통해 호출한다. 딕셔너리는 중괄호 `{}`를 사용하여 다른 이터러블 항목과 구별한다.
 
 ```python
 dictionary = {key1: value1, key2: value2, key3: value3}
 
-print(dictionary[key1])		# >> OUTPUT: value1
-print(dictionary[key2])		# >> OUTPUT: value2
+print(dictionary[key1])		# >> 출력: value1
+print(dictionary[key2])		# >> 출력: value2
 print(dictionary[key4])		# KeyError: key4
 ```
 
-Mutable object (e.g. list and dictionary) cannot be used as `key` of the element; only immutable object is allowed. However, mutable object can still be used as a `value` of the element.
+변경 가능한 객체(예: 리스트, 딕셔너리)는 원소의 `key`로 사용할 수 없으며, 불변의 객체만 허용된다. 그러나 변경 가능한 객체는 여전히 원소의 `value`로 사용될 수 있다.
 
 ```python
 dictionary = {lst1: value1, key2: value2}
@@ -589,7 +589,7 @@ dictionary = {lst1: value1, key2: value2}
 TypeError: unhashable type: 'list'
 ```
 
-It is possible to change the existing `value` of the `key` within a dictionary. Unlike list object, creating new `key` data and assigning its `value` is also possible without needing any help from a method.
+사전 내에서 키의 기존 `value`를 변경할 수 있다. 리스트 객체와 달리 새로운 `key` 데이터를 생성하고 `value`를 할당한는 것도 메서드의 도움 없이도 가능하다.
 
 ```python
 dictionary = {key1: value1, key2: value2, key3: value3}
@@ -601,13 +601,13 @@ dictionary[key5] = value5
 {key1: value1, key2: value2, key3: value3, key5: value5}
 ```
 
-Operations for a dictionary is same as other iterable objects but have slight difference:
+딕셔너리 기능은 다른 이터러블 객체와 동일하지만 약간의 차이가 있다.
 
-| OPERATOR | NAME                     | DESCRIPTION                                                  |
+| 연산자 | 이름                     | 설명                                                  |
 | -------- | ------------------------ | ------------------------------------------------------------ |
-| `+`      | Addition                 | Merge two or more different lists to a single list.          |
-| `*`      | Multiplication           | Multiply the string by the number of integer (float does not work). |
-| `in`     | Included (key exclusive) | Check if the key is in a dictionary. However, it does not check the value. |
+| `+`      | 더하기                 | 둘 이상의 서로 다른 리스트을 단일 리스트로 병합한다.          |
+| `*`      | 곱하기           | 문자열을 정수 수로 곱한다(float가 동작하지 않음). |
+| `in`     | 포함됨(key는 제외) | key가 딕셔너리에 있는지 확인한다. 그러나 값을 확인하지는 않은다. |
 
 ```python
 dictionary = {key1: value1, key2: value2}
@@ -617,12 +617,12 @@ print(value2 in dictionary )		# >> OUTPUT: False
 print(key3 not in dictionary )		# >> OUTPUT: True
 ```
 
-Dictionary have its own function and method to execute certain features exclusive for dictionary:
+딕셔너리에는 딕셔너리 전용의 특정 기능을 실행하는 고유한 방법이 있다.
 
-| OPERATION | EXAMPLE                             | DESCRIPTION                                                  |
+| 연산자 | 예시                             | 설명                                                  |
 | --------- | ----------------------------------- | ------------------------------------------------------------ |
-| `get()`   | `dictionary.get(key,[description])` | Find the key and get its value; additional description can be added when the key is not found (`None` by default). |
-| `dict()`  | `dictionary=dict()`                 | Can create empty dictionary.                                 |
+| `get()`   | `dictionary.get(key,[description])` | 키를 찾아서 값을 가져온다. 키를 찾을 수 없을 때 추가 설명을 추가할 수 있습니다(기본적으로 없음). |
+| `dict()`  | `dictionary=dict()`                 | 빈 딕셔너리를 만들 수 있다.                                 |
 
 ```python
 dictionary = {key1: value1, key2: value2}
@@ -632,9 +632,9 @@ print(dictionary.get(key2))							# >> OUTPUT: None
 print(dictionary.get(key3, "not in dictionary"))	  # >> OUTPUT: not in dictionary
 ```
 
-## Set
+## 세트(Set)
 
-Set is an iterable object that guarantees uniqueness, meaning it does not allow duplicate element within the object. Just like dictionary, set uses curly bracket `{}` to assign values but without `key`-`value` pair. Due to the reasons above, set is much faster to check the elements than list.
+세트는 객체 내에서 중복 요소를 허용하지 않는다는 의미의 고유성을 보장하는 이터러블 객체이다. 딕셔너리와 마찬가지로 세트(set)는 값을 할당하기 위해 중괄호 `{}`를 사용하지만 `key` 값 쌍은 사용하지 않는다. 위와 같은 이유로 인해 세트가 리스트보다 요소를 확인하는 것이 훨씬 빠르다.
 
 ```python
 st = {value1, value2, value3}
@@ -645,72 +645,72 @@ print(st)
 {value1, value2, value3}
 ```
 
-Set have mathematical operations available which works exactly like mathematical set.
+세트에는 수학적 집합과 정확히 같은 수학적 연산을 사용할 수 있다.
 
-| OPERATION | NAME                 | DESCRIPTION                                                  |
+| 연산자 | 이름                 | 설명                                                  |
 | --------- | -------------------- | ------------------------------------------------------------ |
-| `|`       | Union                | Returns the combined of two sets.                            |
-| `&`       | Intersection         | Returns data which only exist in both sets.                  |
-| `-`       | Difference           | Returns data which only exist in subtrahend and not in minuend. |
-| `^`       | Symmetric difference | Return data exclusive to each set, but not both.             |
+| `|`       | OR                | 두 세트의 합을 반환한다.                            |
+| `&`       | AND         | 두 세트가 동일하게 가지고 있는 것을 반환한다.                  |
+| `-`       | 차           | 기존에서 다음 세트에 해당하지 않는 데이터를 반환한다. |
+| `^`       | 대칭 차 | 각 집합의 서로 고유하게 가지고 잇는 데이터를 반환한다.             |
 
 ```python
 set1 = {1, 2, 3, 4, 5, 6}
 set2 = {4, 5, 6, 7, 8, 9}
 
-print(set1 | set2)		# >> OUTPUT: {1, 2, 3, 4, 5, 6, 7, 8, 9}
+print(set1 | set2)		# >> 출력: {1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-print(set1 & set2)		# >> OUTPUT: {4, 5, 6}
+print(set1 & set2)		# >> 출력: {4, 5, 6}
 
-print(set1 - set2)		# >> OUTPUT: {1, 2, 3}
-print(set2 - set1)		# >> OUTPUT: {7, 8, 9}
+print(set1 - set2)		# >> 출력: {1, 2, 3}
+print(set2 - set1)		# >> 출력: {7, 8, 9}
 
-print(set1 ^ set2)		# >> OUTPUT: {1, 2, 3, 7, 8, 9}
+print(set1 ^ set2)		# >> 출력: {1, 2, 3, 7, 8, 9}
 ```
 
-Set have its own function to execute certain features exclusive for set:
+세트에는 세트 전용의 특정 기능을 실행하는 고유한 기능이 있다.
 
-| FUNCTION | EXAMPLE         | DESCRIPTION                                                  |
+| 함수 | 예시         | 설명                                                  |
 | -------- | --------------- | ------------------------------------------------------------ |
-| `set()`  | `set(iterable)` | Function which creates a set: list and tuple assigned with parentheses `()` are allowed, but dictionary is not possible. |
+| `set()`  | `set(iterable)` | 세트를 만드는 기능: 리스트와 소괄호 `()`가 할당된 튜플이 허용되지만 딕셔너리는 사용할 수 없다. |
 
-The function above is necessary when creating an empty set, as `{}` creates an empty dictionary instead. Meanwhile, the methods used by set object are as follows:
+위의 함수는 빈 사트를 생성할 때 필요하다. `{}`는 빈 딕셔너리를 만든다. 한편, 세트 객체를 사용하는 방법은 다음과 같다.
 
-| METHOD     | EXAMPLE             | DESCRIPTION                                                 |
+| 메서드     | 예시             | 설명                                                 |
 | ---------- | ------------------- | ----------------------------------------------------------- |
-| `add()`    | `set.add(value)`    | Add `value` at the end of the set.                          |
-| `remove()` | `set.remove(value)` | Remove `value` in the set.                                  |
-| `pop()`    | `set.pop()`         | Randomly selected element is popped (removed) from the set. |
+| `add()`    | `set.add(value)`    | 세트의 끝에 `value`를 추가한다.                         |
+| `remove()` | `set.remove(value)` | 세트에서 `value`를 삭제한다.                                  |
+| `pop()`    | `set.pop()`         | 임의로 선택한 원소가 셑에서 제거된다. |
 
 ```python
 st = set([value1, value2, value3, value1])
-print(st)				# >> OUTPUT: {value1, value2, value3}
+print(st)				# >> 출력: {value1, value2, value3}
 
 set0.add(value4)
 set0.remove(value1)
-print(st)				# >> OUTPUT: {value2, value3, value4}
+print(st)				# >> 출력: {value2, value3, value4}
 
-print(st.pop())			# >> OUTPUT: value2 (randomly popped)
-print(st)				# >> OUTPUT: {value3, value4}
+print(st.pop())			# >> 출력: value2 (randomly popped)
+print(st)				# >> 출력: {value3, value4}
 ```
 
-## Generator
+## 생성자
 
-Generator is an iterable object that can be created by developer using `yield` and `for` loop statement. Generator is especially useful due to its absence of memory restrictions, allowing generator to yield infinite number of data.
+생성자는 개발자가 `yield`와 `for` 루프 문을 사용하여 만들 수 있는 이터러블 객체이다. 특히 생성자는 메모리 제한이 없으므로 데이터를 무한대로 생성할 수 있기 때문에 유용하다.
 
 ```python
-# CREATING THE GENERATOR.
+# 생성자 만들기.
 def generator_function():
     var = 0
     while var < 5
         yield var
         var += 1
 
-# ITERATING GENERATOR ELEMENT-BY-ELEMENT.
+# 생성자 원소를 원소별로 반복한다.
 for var in generator_function():
     print(var)
 
-# CONVERSION TO "LIST" DATA TYPE.
+# 리스트 데이터 타입으로 변환
 lst = list(generator_function())
 print(lst)
 ```
@@ -724,6 +724,6 @@ print(lst)
 [0, 1, 2, 3, 4]
 ```
 
-### `yield` Keyword
+### `yield` 키워드
 
-A keyword used to create a generator; keyword returns the value when iterated by `for` loop statement.
+생성자를 만드는데 사용되는 키워드이다. 키워드는 `for` 루프 문으로 반복될때 값을 반환한다.
